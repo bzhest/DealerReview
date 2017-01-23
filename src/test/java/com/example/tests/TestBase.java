@@ -18,7 +18,7 @@ public class TestBase {
     // В методе beforeTest у нас иниц. ApplicationManager, поэтому в его конструктор можем перенести содержимое
     @BeforeTest
     public void beforeTest() {
-
+        app = ApplicationManager.getInstance();
         app = new ApplicationManager();
     }
 
@@ -36,7 +36,7 @@ public class TestBase {
     //Ниже указаны реализационные детали (низкоуровневая часть)
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-        app.stop();
+        ApplicationManager.getInstance().stop();
 
     }
 }

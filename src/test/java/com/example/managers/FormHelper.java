@@ -1,8 +1,8 @@
 package com.example.managers;
 
-import com.example.tests.FormFieldsObject;
+import  com.example.tests.FormFieldsObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by SYSTEM on 17.01.2017.
@@ -51,6 +51,23 @@ public class FormHelper extends HelperWithWebDriverBase {
     }
 
     public void deleteReview() {
+        driver.get("http://www.solomia.andreyb.ixloo.com/" + "/dms/login");
+        loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+        Select dropdown = new Select(driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3));
+        dropdown.selectByVisibleText("Reviews");
+        findElement(By.id("leads_container")).click();
+        findElement(By.linkText("Reviews")).click();
+        findElement(By.xpath("//div[@id='tabs-1']/div[3]")).click();
+        findElement(By.id("jqg_reviews-list_2857")).click();
+        //Идем обратно в ДВС на Dealer Review страницу
+        driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review.html");
+    }
+
+    public void loginToDMS(String loginValue, String loginLocator, String passwordValue, String passwordLocator) {
+        typeTextInField(loginValue, loginLocator);
+        typeTextInField(passwordValue, passwordLocator);
+        driver.findElement(By.id("login2")).click();
+
     }
 
 

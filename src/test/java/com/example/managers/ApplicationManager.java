@@ -7,9 +7,17 @@ import org.openqa.selenium.WebDriver;
  */
 public class ApplicationManager {
 
+    private static ApplicationManager singleton;
     public WebDriverHelper webDriverHelper;
     public FormHelper formHelper;
     public NavigationHelper navigationHelper;
+
+    public static ApplicationManager getInstance() {
+        if (singleton == null) {
+            singleton = new ApplicationManager();
+        }
+        return singleton;
+    }
 
 
 
@@ -56,4 +64,6 @@ public class ApplicationManager {
         }
         return webDriverHelper;
     }
+
+
 }

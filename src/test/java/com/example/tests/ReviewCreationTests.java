@@ -58,10 +58,7 @@ public class ReviewCreationTests extends TestBase {
     }
 
 
-    @Test(priority = 3) //этот тест будет выполняться первым
-    public void reviewCanBeDeleted() {
-        app.getNavigationHelper().deleteReview();
-    }
+
 
 
 
