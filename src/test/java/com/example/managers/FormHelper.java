@@ -2,6 +2,9 @@ package com.example.managers;
 
 import  com.example.tests.FormFieldsObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 /**
@@ -53,12 +56,27 @@ public class FormHelper extends HelperWithWebDriverBase {
     public void deleteReview() {
         driver.get("http://www.solomia.andreyb.ixloo.com/" + "/dms/login");
         loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
-        Select dropdown = new Select(driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3));
-        dropdown.selectByVisibleText("Reviews");
-        findElement(By.id("leads_container")).click();
-        findElement(By.linkText("Reviews")).click();
-        findElement(By.xpath("//div[@id='tabs-1']/div[3]")).click();
-        findElement(By.id("jqg_reviews-list_2857")).click();
+        Actions action = new Actions(driver);
+        //Нахожу меню Tools
+        WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
+        action.moveToElement(toolsMenu).build().perform();
+        //В выпадающем списке кликаю на Reviews
+        WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("li a:contains('Reviews')"));
+        manager.getWebDriverHelper().wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a:contains('Reviews')")));
+        toolMenuItemReviews.click();
+        //нахожу последнее добавленое Review и получаю его ID в поле ReviewIDforLastAddedReview
+        WebElement lastAddedReview = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
+        int ReviewIDforLastAddedReview = Integer.parseInt(lastAddedReview.getAttribute("id"));
+        //Кликаю на чекбокс последнего добавленного ревью
+        WebElement firstReviewsCheckbox = driver.findElement(By.cssSelector("#jqg_reviews-list_"+ReviewIDforLastAddedReview+""));
+        if (!firstReviewsCheckbox.isSelected())
+        {
+            firstReviewsCheckbox.click();
+        }
+        //Нажимаю кнопку Удалить
+        WebElement deleteButton = driver.findElement(By.cssSelector("td[title='Delete review']"));
+        deleteButton.click();
+
         //Идем обратно в ДВС на Dealer Review страницу
         driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review.html");
     }

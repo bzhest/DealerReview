@@ -22,7 +22,7 @@ public class WebDriverHelper {
 
     public WebDriverHelper(ApplicationManager manager){
         this.manager = manager;
-        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver-2.5.exe");
+        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
