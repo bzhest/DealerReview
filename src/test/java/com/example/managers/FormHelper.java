@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 
 import java.awt.*;
@@ -70,27 +71,12 @@ public class FormHelper extends HelperWithWebDriverBase {
         //Нахожу меню Tools
         WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
 
-        action.moveToElement(toolsMenu).build().perform();
-
-        //В выпадающем списке кликаю на Reviews
-        manager.getWebDriverHelper().wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a:contains('Reviews')")));
-
-        /*WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("li a:contains('Reviews')"));
-        toolMenuItemReviews.click();*/
-        Select dropdown = new Select(driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3));
-        dropdown.selectByVisibleText("Reviews");
-
-
-
-
-        //нахожу последнее добавленое Review и получаю его ID в поле ReviewIDforLastAddedReview
-        WebElement lastAddedReview = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
-        int ReviewIDforLastAddedReview = Integer.parseInt(lastAddedReview.getAttribute("id"));
-
         action.moveToElement(toolsMenu).build();
         action.moveToElement(toolsMenu).perform();
 
+
         //В выпадающем списке кликаю на Reviews
+
         WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("a[href='/dms/tools/reviews']"));
         manager.getWebDriverHelper().wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='/dms/tools/reviews']")));
         toolMenuItemReviews.click();
@@ -114,14 +100,18 @@ public class FormHelper extends HelperWithWebDriverBase {
         //Идем обратно в ДВС на Dealer Review страницу
         driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review.html");
 
-        //Нахожу последнее добавленое Review в DWS и получаю его ID в поле ReviewIDforLastAddedReviewDWS
+        //Нахожу последнее добавленое Review в DWS и получаю его полный адрес в ссылку hrefValue
         WebElement lastAddedReviewDWS = driver.findElements(By.cssSelector("a[href*='dealer-review_caption_title']")).get(0);
         String hrefValue = lastAddedReviewDWS.getAttribute("href");
-        //Взять первое попавшееся число в тексте (в моем случае это будет ID)
-        Pattern p = Pattern.compile("(^|\\s)([0-9]+)($|\\s)");
-        Matcher ReviewIDforLastAddedReviewDWS = p.matcher(hrefValue);
+        //Проверяю, есть ли в этом адресе ID из ДМС
+        Pattern p = Pattern.compile(String.valueOf(ReviewIDforLastAddedReviewDMS));
+        Matcher m = p.matcher(hrefValue);
+        boolean b = m.matches();
+        Assert.assertFalse(b);
+        //перед запуском надо чистить куки!!!!!!
+        //Если результат False - то удаление прошло успешно, test прошел
 
-        //int ReviewIDforLastAddedReviewDWS = Integer.parseInt(StringReviewIDforLastAddedReviewDWS);
+
     }
 
     public void loginToDMS(String loginValue, String loginLocator, String passwordValue, String passwordLocator) {
