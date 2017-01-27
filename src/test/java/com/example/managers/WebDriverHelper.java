@@ -27,7 +27,7 @@ public class WebDriverHelper {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         baseUrl = "http://www.solomia.andreyb.ixloo.com/";
-        wait = new WebDriverWait(driver,5);
+        wait = new WebDriverWait(driver,15);
         driver.get("http://www.solomia.andreyb.ixloo.com/");
 
     }
