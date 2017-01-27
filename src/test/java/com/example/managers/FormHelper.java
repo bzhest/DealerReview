@@ -2,10 +2,15 @@ package com.example.managers;
 
 import  com.example.tests.FormFieldsObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by SYSTEM on 17.01.2017.
@@ -60,10 +65,18 @@ public class FormHelper extends HelperWithWebDriverBase {
         //Нахожу меню Tools
         WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
         action.moveToElement(toolsMenu).build().perform();
+
         //В выпадающем списке кликаю на Reviews
-        WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("li a:contains('Reviews')"));
         manager.getWebDriverHelper().wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a:contains('Reviews')")));
-        toolMenuItemReviews.click();
+
+        /*WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("li a:contains('Reviews')"));
+        toolMenuItemReviews.click();*/
+        Select dropdown = new Select(driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3));
+        dropdown.selectByVisibleText("Reviews");
+
+
+
+
         //нахожу последнее добавленое Review и получаю его ID в поле ReviewIDforLastAddedReview
         WebElement lastAddedReview = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
         int ReviewIDforLastAddedReview = Integer.parseInt(lastAddedReview.getAttribute("id"));
