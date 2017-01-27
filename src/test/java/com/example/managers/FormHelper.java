@@ -9,13 +9,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-<<<<<<< HEAD
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
-=======
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
->>>>>>> 9dfd41f8b24b5313ffaaf86c007a617e0ca5c984
+
 
 /**
  * Created by SYSTEM on 17.01.2017.
@@ -69,7 +69,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         Actions action = new Actions(driver);
         //Нахожу меню Tools
         WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
-<<<<<<< HEAD
+
         action.moveToElement(toolsMenu).build().perform();
 
         //В выпадающем списке кликаю на Reviews
@@ -86,7 +86,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         //нахожу последнее добавленое Review и получаю его ID в поле ReviewIDforLastAddedReview
         WebElement lastAddedReview = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
         int ReviewIDforLastAddedReview = Integer.parseInt(lastAddedReview.getAttribute("id"));
-=======
+
         action.moveToElement(toolsMenu).build();
         action.moveToElement(toolsMenu).perform();
 
@@ -100,7 +100,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         WebElement lastAddedReviewDMS = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
         int ReviewIDforLastAddedReviewDMS = Integer.parseInt(lastAddedReviewDMS.getAttribute("id"));
 
->>>>>>> 9dfd41f8b24b5313ffaaf86c007a617e0ca5c984
+
         //Кликаю на чекбокс последнего добавленного ревью
         WebElement firstReviewsCheckbox = driver.findElement(By.cssSelector("#jqg_reviews-list_"+ReviewIDforLastAddedReviewDMS+""));
         if (!firstReviewsCheckbox.isSelected())
