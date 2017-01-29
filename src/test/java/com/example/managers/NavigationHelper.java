@@ -29,12 +29,20 @@ public class NavigationHelper extends HelperWithWebDriverBase{
         driver.get(manager.getWebDriverHelper().baseUrl + "index");
     }
 
-    public void switchToAnotherWindow() {
-        Set<String> AllWindowHandles= driver.getWindowHandles();
-        String window1 = (String)AllWindowHandles.toArray()[0];
-        String window2 = (String)AllWindowHandles.toArray()[1];
+    /*public void switchToAnotherWindow() {
+        Set<String> allWindowHandles= driver.getWindowHandles();
+        String window1 = (String)allWindowHandles.toArray()[0];
+        String window2 = (String)allWindowHandles.toArray()[1];
         driver.switchTo().window(window2);
+    }*/
+
+    public void switchToAnotherWindow(int winNumber) {
+        Set allWindowHandles= driver.getWindowHandles();// возвращает набор дискрипторов окон
+        String neededWindow= (String)allWindowHandles.toArray()[winNumber -1];
+        driver.switchTo().window(neededWindow);
     }
+
+
 
     public void fromHomePage_toDealerReviewForm() {
         //openHomePage();

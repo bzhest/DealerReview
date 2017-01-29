@@ -109,7 +109,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         boolean b = m.matches();
         Assert.assertFalse(b);
         //перед запуском надо чистить куки!!!!!!
-        //Если результат False - то удаление прошло успешно, test прошел
+        //Если результат False - то удаление прошло успешно, test прошел - в DWS ID из DMS нет
 
 
     }

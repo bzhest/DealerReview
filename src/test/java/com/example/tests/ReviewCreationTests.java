@@ -23,9 +23,12 @@ public class ReviewCreationTests extends TestBase {
     //Ниже указана логика работы теста
     @Test(priority = 1) //Этот тест будет выполняться первым
     public void reviewCanBeCreated() throws Exception {
-        app.getNavigationHelper().fromHomePage_toDealerReviewForm();
-        //app.getNavigationHelper();
-        app.getNavigationHelper().switchToAnotherWindow();
+        app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        //Получения группы Тайтлов до теста
+         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsTitles();
+        //Действия
+        app.getNavigationHelper().onDealerReviewPageClick_AddReview();
+        app.getNavigationHelper().switchToAnotherWindow(2);
         app.getFormHelper().fillAllFormFields(new FormFieldsObject("regdgv ergvset", "test_1@daxloo.com", "aaagaergearg", "Title for test1", "tae4ctergegvywrgsrh"));
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
@@ -33,6 +36,8 @@ public class ReviewCreationTests extends TestBase {
         app.getFormHelper().clickSubmit();
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();
+        //Получения группы Тайтлов после теста
+        app.getFormHelper().getReviewsTitles();
 
         //Проверку пока отключим
         /*Thread.sleep(1000);
@@ -49,10 +54,11 @@ public class ReviewCreationTests extends TestBase {
     @Test(priority = 2) //Этот тест будет выполняться первым
     public void reviewFilledWithEmptyData() throws Exception {
         //Закрываем вторую вкладку браузера и переходим на первую
+        app.getNavigationHelper().switchToAnotherWindow(2);
         app.getNavigationHelper().closeSecondTabAndGoToFirstTab();
         app.getNavigationHelper().fromHomePage_toDealerReviewForm();
         //Переходим с первой вкладки на вторую
-        app.getNavigationHelper().switchToAnotherWindow();
+        app.getNavigationHelper().switchToAnotherWindow(1);
         app.getFormHelper().fillAllFormFields(new FormFieldsObject("", "", "", "", ""));
         app.getFormHelper().clickSubmit();
     }
