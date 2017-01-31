@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by Andrey on 18.01.2017.
  */
@@ -35,7 +37,12 @@ public class HelperWithWebDriverBase {
     public WebElement findElement(By selector) {
         return driver.findElement(selector);
     }
+
+    public List<WebElement> findElements(By selector) {
+        return driver.findElements(selector);
+    }
 }
+
 
 
 //Здесь собраны низкоуровневые элементы typeTextInField, findElement - так делать правильно

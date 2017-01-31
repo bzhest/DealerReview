@@ -29,7 +29,8 @@ public class ReviewCreationTests extends TestBase {
         //Действия
         app.getNavigationHelper().onDealerReviewPageClick_AddReview();
         app.getNavigationHelper().switchToAnotherWindow(2);
-        app.getFormHelper().fillAllFormFields(new FormFieldsObject("regdgv ergvset", "test_1@daxloo.com", "aaagaergearg", "Title for test1", "tae4ctergegvywrgsrh"));
+        FormFieldsObject validForm = new FormFieldsObject("regdgv ergvset", "test_1@daxloo.com", "aaagaergearg", "Title for test1", "tae4ctergegvywrgsrh");
+        app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
         app.getFormHelper().markParametersWithStars("5", "5");
@@ -37,7 +38,8 @@ public class ReviewCreationTests extends TestBase {
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();
         //Получения группы Тайтлов после теста
-        app.getFormHelper().getReviewsTitles();
+        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsTitles();
+        verifyReviewAdded(oldList, validForm, newList);
 
         //Проверку пока отключим
         /*Thread.sleep(1000);
@@ -48,6 +50,11 @@ public class ReviewCreationTests extends TestBase {
             verificationErrors.append(e.toString());
         }*/
         //app.driver.quit();
+    }
+
+    private void verifyReviewAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
+
+
     }
 
 

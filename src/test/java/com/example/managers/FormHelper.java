@@ -11,9 +11,12 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +31,24 @@ public class FormHelper extends HelperWithWebDriverBase {
     super(manager);
     }
 
+    public Set<FormFieldsObject> getReviewsTitles() {
+        manager.getNavigationHelper().openHomePage();
+        manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        //Получаю список всех блков с Ревью
+        List <WebElement> reviewsTitles = driver.findElements(By.cssSelector(".col-lg-12.col-md-12.col-sm-12.col-xs-12>a"));
+        //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewBlock
+        Set <FormFieldsObject> reviews =  new HashSet<FormFieldsObject>();
+        //Переменная reviewBlock будет по очереди принимать значения из reviewsTitles
+        for (WebElement reviewTitle : reviewsTitles)
+              {
+                  String idFromHref = reviewTitle.getAttribute("href");
+                  FormFieldsObject review = new FormFieldsObject(idFromHref,null,null,null,null );
+            reviews.add(review);
+        }
+           // ID = ID.substring("-rid_".length(),"_dealer_".length());
+        } 
+        return null;
+    }
 
     public void click_Return_OnOpenedModalWindow() {
         findElement(By.cssSelector(".btn.btn-default.return")).click();
@@ -120,6 +141,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         driver.findElement(By.id("login2")).click();
 
     }
+
 
 
 }
