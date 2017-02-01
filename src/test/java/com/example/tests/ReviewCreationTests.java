@@ -29,7 +29,8 @@ public class ReviewCreationTests extends TestBase {
         //Действия
         app.getNavigationHelper().onDealerReviewPageClick_AddReview();
         app.getNavigationHelper().switchToAnotherWindow(2);
-        FormFieldsObject validForm = new FormFieldsObject("regdgv ergvset", "test_1@daxloo.com", "aaagaergearg", "Title for test1", "tae4ctergegvywrgsrh");
+        FormFieldsObject validForm = new FormFieldsObject()
+                .setNickname("regdgv ergvset").setEmail("test_1@daxloo.com").setLocation("aaagaergearg").setReviewTitle("Title for test1").setReviewText("tae4ctergegvywrgsrh");
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
@@ -66,7 +67,9 @@ public class ReviewCreationTests extends TestBase {
         app.getNavigationHelper().fromHomePage_toDealerReviewForm();
         //Переходим с первой вкладки на вторую
         app.getNavigationHelper().switchToAnotherWindow(1);
-        app.getFormHelper().fillAllFormFields(new FormFieldsObject("", "", "", "", ""));
+        FormFieldsObject emptyForm = new FormFieldsObject()
+                .setNickname("").setEmail("").setLocation("").setReviewTitle("").setReviewText("");
+        app.getFormHelper().fillAllFormFields(emptyForm);
         app.getFormHelper().clickSubmit();
     }
 
