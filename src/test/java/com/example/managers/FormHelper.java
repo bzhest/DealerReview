@@ -35,28 +35,29 @@ public class FormHelper extends HelperWithWebDriverBase {
         manager.getNavigationHelper().openHomePage();
         manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получаю список всех блков с Ревью
-        List <WebElement> reviewsTitles = driver.findElements(By.cssSelector(".col-lg-12.col-md-12.col-sm-12.col-xs-12>a"));
+        List <WebElement> reviewsTexts = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
         //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewBlock
         Set <FormFieldsObject> reviews =  new HashSet<FormFieldsObject>();
-        //Переменная reviewBlock будет по очереди принимать значения из reviewsTitles
-        for (WebElement reviewTitle : reviewsTitles)
+        //Переменная reviewBlock будет по очереди принимать значения из reviewsTexts
+        for (WebElement reviewText : reviewsTexts)
               {
-                  //String idFromHref = reviewTitle.getAttribute("href");
+                  //String idFromHref = reviewText.getAttribute("href");
                   //Доделать userNickname - обрезать значение
-                  //Получение значение Nickname из ревью
-                  String userNickname = reviewTitle.getCssValue(".col-lg-5.col-md-5.col-sm-7.col-xs-12.pull-left.full-width-in-thin>strong>small");
+                  //Пока скрою получение тега. который вмещает имя Юзера
+                  //String userNickname = reviewText.getCssValue(".col-lg-5.col-md-5.col-sm-7.col-xs-12.pull-left.full-width-in-thin>strong>small");
                   //Получение элемента, в атребуте которого содержится ID ревью
-                  WebElement iDElement = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div")).get(0);
+                  WebElement iDElement = driver.findElement(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
                   //Получение значения самого атрибута
                   String ID = iDElement.getAttribute("id");
-                  ID = ID.replaceAll("\\D+","");
+                  //ID = ID.replaceAll("\\D+","");
+                  ID = ID.substring("rsmall_".length(), ID.length());
                   FormFieldsObject review = new FormFieldsObject()
-                          .setNickname(userNickname).setID(ID);
+                          .setID(ID);
             reviews.add(review);
         }
            // ID = ID.substring("-rid_".length(),"_dealer_".length());
 
-        return null;
+        return reviews;
     }
 
     public void click_Return_OnOpenedModalWindow() {

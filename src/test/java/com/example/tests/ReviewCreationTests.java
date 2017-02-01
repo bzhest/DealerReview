@@ -42,15 +42,7 @@ public class ReviewCreationTests extends TestBase {
         Set <FormFieldsObject> newList = app.getFormHelper().getReviewsTitles();
         verifyReviewAdded(oldList, validForm, newList);
 
-        //Проверку пока отключим
-        /*Thread.sleep(1000);
-        try {
-            //Проверка, что на странице Dealer Review появилось новое ревью с тем названием, что прописывалось в форме
-            assertEquals(driver.findElements(By.cssSelector(".col-lg-12.col-md-12.col-sm-12.col-xs-12>a")).get(0).getText(), "Title for test1");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }*/
-        //app.driver.quit();
+
     }
 
     private void verifyReviewAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
