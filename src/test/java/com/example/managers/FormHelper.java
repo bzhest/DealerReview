@@ -31,28 +31,27 @@ public class FormHelper extends HelperWithWebDriverBase {
     super(manager);
     }
 
-    public Set<FormFieldsObject> getReviewsTitles() {
+    public Set<FormFieldsObject> getReviewsIDs() {
         manager.getNavigationHelper().openHomePage();
         manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
-        //Получаю список всех блков с Ревью
+        //Получаю список всех блоков с текстом ревью
         List <WebElement> reviewsTexts = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
-        //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewBlock
+        //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewText
         Set <FormFieldsObject> reviews =  new HashSet<FormFieldsObject>();
-        //Переменная reviewBlock будет по очереди принимать значения из reviewsTexts
+        //Переменная reviewText будет по очереди принимать значения из reviewsTexts
         for (WebElement reviewText : reviewsTexts)
               {
-                  //String idFromHref = reviewText.getAttribute("href");
-                  //Доделать userNickname - обрезать значение
-                  //Пока скрою получение тега. который вмещает имя Юзера
-                  //String userNickname = reviewText.getCssValue(".col-lg-5.col-md-5.col-sm-7.col-xs-12.pull-left.full-width-in-thin>strong>small");
+
                   //Получение элемента, в атребуте которого содержится ID ревью
-                  WebElement iDElement = driver.findElement(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
-                  //Получение значения самого атрибута
-                  String ID = iDElement.getAttribute("id");
-                  //ID = ID.replaceAll("\\D+","");
-                  ID = ID.substring("rsmall_".length(), ID.length());
+                  String id = reviewText.getAttribute("id");
+                  id = id.substring("rsmall_".length(), id.length());
+
+
+                  //Пример, если бы надо было получить ID с помощью рег. выражения
+                  /*ID = ID.replaceAll("\\D+","");
+                  ID = ID.substring("rsmall_".length(), ID.length());*/
                   FormFieldsObject review = new FormFieldsObject()
-                          .setID(ID);
+                          .setID(id);
             reviews.add(review);
         }
            // ID = ID.substring("-rid_".length(),"_dealer_".length());

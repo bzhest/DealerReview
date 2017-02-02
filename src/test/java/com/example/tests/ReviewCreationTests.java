@@ -1,16 +1,15 @@
 package com.example.tests;
 
 
-import java.util.ArrayList;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.hamcrest.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 
 
 public class ReviewCreationTests extends TestBase {
@@ -25,12 +24,12 @@ public class ReviewCreationTests extends TestBase {
     public void reviewCanBeCreated() throws Exception {
         app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получения группы Тайтлов до теста
-         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsTitles();
+         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsIDs();
         //Действия
         app.getNavigationHelper().onDealerReviewPageClick_AddReview();
         app.getNavigationHelper().switchToAnotherWindow(2);
         FormFieldsObject validForm = new FormFieldsObject()
-                .setNickname("regdgv ergvset").setEmail("test_1@daxloo.com").setLocation("aaagaergearg").setReviewTitle("Title for test1").setReviewText("tae4ctergegvywrgsrh");
+                .setNickname("'rock-n-roll").setEmail("test_1@dxloo.com").setLocation("aaagaergearg").setReviewTitle("Title for test1").setReviewText("tae4ctergegvywrgsrh");
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
@@ -39,14 +38,17 @@ public class ReviewCreationTests extends TestBase {
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();
         //Получения группы Тайтлов после теста
-        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsTitles();
+        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsIDs();
         verifyReviewAdded(oldList, validForm, newList);
 
 
     }
 
     private void verifyReviewAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
-
+        //Проверка при помощи библиотеки TestNG для Assert
+        //Assert.assertEquals(newList.size(),oldList.size()+1);
+        //Это альтернативная проверка - более легкая в понимании
+        MatcherAssert.assertThat(newList.size(),equalTo(oldList.size()+1));
 
     }
 
