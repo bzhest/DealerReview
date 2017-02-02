@@ -84,7 +84,7 @@ public class FormHelper extends HelperWithWebDriverBase {
 
     public void markParametersWithStars(final String parameterNumber, final String starsNumber) {
     /*
-    parameterNumber - это число, указывающее на номер параметра, в котором будут выставлять звезды
+    parameterNumber - Это число, указывающее на номер параметра, в котором будут выставлять звезды
     starsNumber - принимает значения от 1 до 5 - это значит:
     1 - 0,5 звезды
     2 - 1.5 звезды
