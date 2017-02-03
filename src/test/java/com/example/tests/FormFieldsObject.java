@@ -71,7 +71,26 @@ public class FormFieldsObject {
     public String getID() {
         return ID;
     }
+
+    //Благодаря добавлению методов equals и hashCode - сравнение объектов будет происходить по именам, а не по их адресу в памяти
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FormFieldsObject)) return false;
+
+        FormFieldsObject that = (FormFieldsObject) o;
+
+        return ID.equals(that.ID);
+    }
+
+    @Override
+    public int hashCode() {
+        return ID.hashCode();
+    }
 }
+
+
 
 /* public FormFieldsObject(String nickname, String email, String location, String reviewTitle, String reviewText) {
         this.nickname = nickname;

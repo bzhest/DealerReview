@@ -49,7 +49,8 @@ public class ReviewCreationTests extends TestBase {
         //Assert.assertEquals(newList.size(),oldList.size()+1);
         //Это альтернативная проверка - более легкая в понимании
         MatcherAssert.assertThat(newList.size(),equalTo(oldList.size()+1));
-
+        oldList.add(validForm);
+        MatcherAssert.assertThat(newList,equalTo(oldList));
     }
 
 
