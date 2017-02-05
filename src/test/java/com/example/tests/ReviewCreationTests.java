@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.hamcrest.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 
@@ -24,12 +23,12 @@ public class ReviewCreationTests extends TestBase {
     public void reviewCanBeCreated() throws Exception {
         app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получения группы Тайтлов до теста
-         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsIDs();
+         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Действия
         app.getNavigationHelper().onDealerReviewPageClick_AddReview();
         app.getNavigationHelper().switchToAnotherWindow(2);
         FormFieldsObject validForm = new FormFieldsObject()
-                .setNickname("'rock-n-roll").setEmail("test_1@dxloo.com").setLocation("aaagaergearg").setReviewTitle("Title for test1").setReviewText("tae4ctergegvywrgsrh");
+                .setNickname("'rock-n-roll").setEmail("test_1@dxloo.com").setLocation("Dnipro").setReviewTitle("Title for test1").setReviewText("Here is a very long text, just imagine");
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
@@ -38,7 +37,7 @@ public class ReviewCreationTests extends TestBase {
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();
         //Получения группы Тайтлов после теста
-        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsIDs();
+        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsData();
         verifyReviewAdded(oldList, validForm, newList);
 
 
@@ -46,11 +45,12 @@ public class ReviewCreationTests extends TestBase {
 
     private void verifyReviewAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
         //Проверка при помощи библиотеки TestNG для Assert
-        //Assert.assertEquals(newList.size(),oldList.size()+1);
         //Это альтернативная проверка - более легкая в понимании
         MatcherAssert.assertThat(newList.size(),equalTo(oldList.size()+1));
+        /*validForm.setID("!!!");
         oldList.add(validForm);
-        MatcherAssert.assertThat(newList,equalTo(oldList));
+        validForm.setID("null");
+        MatcherAssert.assertThat(newList,equalTo(oldList));*/
     }
 
 

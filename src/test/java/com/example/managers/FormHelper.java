@@ -31,13 +31,13 @@ public class FormHelper extends HelperWithWebDriverBase {
     super(manager);
     }
 
-    public Set<FormFieldsObject> getReviewsIDs() {
+    public Set<FormFieldsObject> getReviewsData() {
         manager.getNavigationHelper().openHomePage();
         manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получаю список всех блоков с текстом ревью
         List <WebElement> reviewsTexts = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
         //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewText
-        Set <FormFieldsObject> reviews =  new HashSet<FormFieldsObject>();
+        Set <FormFieldsObject> reviews =  new HashSet<FormFieldsObject>();//Set - коллекция, элементы которой неупорядоченны и уникальны. Используем ее реализацию HashSet
         //Переменная reviewText будет по очереди принимать значения из reviewsTexts
         for (WebElement reviewText : reviewsTexts)
               {
@@ -45,13 +45,14 @@ public class FormHelper extends HelperWithWebDriverBase {
                   //Получение элемента, в атребуте которого содержится ID ревью
                   String id = reviewText.getAttribute("id");
                   id = id.substring("rsmall_".length(), id.length());
+                  //Получение текста элемента, а именно reviewTextContent
+                  String reviewTextContent = reviewText.getAttribute("textContent");
+                  reviewTextContent = reviewTextContent.trim(); //Удаляет пробелы до и после предложения
+                  //reviewTextContent = reviewTextContent.replaceAll("\\s+","");Удаляет все пробелы
+                  //*ID = ID.replaceAll("\\D+",""); Удаляет все не цифры
 
-
-                  //Пример, если бы надо было получить ID с помощью рег. выражения
-                  /*ID = ID.replaceAll("\\D+","");
-                  ID = ID.substring("rsmall_".length(), ID.length());*/
                   FormFieldsObject review = new FormFieldsObject()
-                          .setID(id);
+                          .setID(id).setReviewText(reviewTextContent);
             reviews.add(review);
         }
            // ID = ID.substring("-rid_".length(),"_dealer_".length());

@@ -17,14 +17,15 @@ public class WebDriverHelper {
     public String baseUrl;
     public WebDriverWait wait;
     private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
-    private ApplicationManager manager;
+    public StringBuffer verificationErrors = new StringBuffer();
+    public ApplicationManager manager;
 
     public WebDriverHelper(ApplicationManager manager){
         this.manager = manager;
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        //Подождать 30 сек появления какого-то элемента
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         baseUrl = "http://www.solomia.andreyb.ixloo.com/";
         wait = new WebDriverWait(driver,15);
