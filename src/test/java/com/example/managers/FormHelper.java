@@ -34,6 +34,7 @@ public class FormHelper extends HelperWithWebDriverBase {
     public Set<FormFieldsObject> getReviewsData() {
         manager.getNavigationHelper().openHomePage();
         manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        //Ниже список элементов List будет перегоняться в множество объектов Set
         //Получаю список всех блоков с текстом ревью
         List <WebElement> reviewsTexts = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div:first-child"));
         //Сюда будет в Сет помещаться объект ГрупОбджект, построенный из reviewText
@@ -55,7 +56,7 @@ public class FormHelper extends HelperWithWebDriverBase {
                           .setID(id).setReviewText(reviewTextContent);
             reviews.add(review);
         }
-           // ID = ID.substring("-rid_".length(),"_dealer_".length());
+
 
         return reviews;
     }

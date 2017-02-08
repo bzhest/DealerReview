@@ -1,7 +1,7 @@
 package com.example.tests;
 
 
-import java.util.Set;
+import java.util.*;
 
 import org.hamcrest.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,17 +18,18 @@ public class ReviewCreationTests extends TestBase {
         app.getWebDriverHelper().driver.quit();
     }
 
+
+
     //Ниже указана логика работы теста
-    @Test(priority = 1) //Этот тест будет выполняться первым
-    public void reviewCanBeCreated() throws Exception {
+    @Test(dataProvider = "randomFormFields") //Этот тест будет выполняться первым
+    public void reviewCanBeCreated(FormFieldsObject validForm) throws Exception {
         app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получения группы Тайтлов до теста
          Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Действия
         app.getNavigationHelper().onDealerReviewPageClick_AddReview();
         app.getNavigationHelper().switchToAnotherWindow(2);
-        FormFieldsObject validForm = new FormFieldsObject()
-                .setNickname("'rock-n-roll").setEmail("test_1@dxloo.com").setLocation("Dnipro").setReviewTitle("Title for test1").setReviewText("Here is a very long text, just imagine");
+
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
         app.getFormHelper().markParametersWithStars("3", "2");
@@ -53,24 +54,54 @@ public class ReviewCreationTests extends TestBase {
         MatcherAssert.assertThat(newList,equalTo(oldList));*/
     }
 
+    private void verifyReviewNotAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
+        //Проверка при помощи библиотеки TestNG для Assert
+        //Это альтернативная проверка - более легкая в понимании
+        MatcherAssert.assertThat(newList.size(),equalTo(oldList.size()));
+        /*validForm.setID("!!!");
+        oldList.add(validForm);
+        validForm.setID("null");
+        MatcherAssert.assertThat(newList,equalTo(oldList));*/
+    }
 
-    @Test(priority = 2) //Этот тест будет выполняться первым
+
+    @Test //Этот тест будет выполняться первым
     public void reviewFilledWithEmptyData() throws Exception {
         //Закрываем вторую вкладку браузера и переходим на первую
+
         app.getNavigationHelper().switchToAnotherWindow(2);
         app.getNavigationHelper().closeSecondTabAndGoToFirstTab();
         app.getNavigationHelper().fromHomePage_toDealerReviewForm();
+        Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Переходим с первой вкладки на вторую
         app.getNavigationHelper().switchToAnotherWindow(1);
         FormFieldsObject emptyForm = new FormFieldsObject()
                 .setNickname("").setEmail("").setLocation("").setReviewTitle("").setReviewText("");
         app.getFormHelper().fillAllFormFields(emptyForm);
         app.getFormHelper().clickSubmit();
+        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsData();
+        verifyReviewNotAdded(oldList, emptyForm, newList);
     }
 
 
 
+    Random rnd = new Random();
 
+    @DataProvider(name = "randomFormFields")
+    public Iterator<Object[]> generateRandomFieldNames(){
+        List<Object[]> list = new ArrayList<Object[]>();
+        for (int i = 0; i<1; i++) {
+            FormFieldsObject form = new FormFieldsObject()
+                    .setNickname("Vasia" + "+" + rnd.nextInt())
+                    .setEmail("test_1@dxloo.com")
+                    .setLocation("Dnipro" + "+" + rnd.nextInt())
+                    .setReviewTitle("some title" + "+" + rnd.toString())
+                    .setReviewText("some text" + "+" + rnd.toString());
+            list.add(new Object[]{form});
+        }
+        return list.iterator();
+
+    }
 
 
 
