@@ -93,7 +93,7 @@ public class ReviewCreationTests extends TestBase {
         for (int i = 0; i<1; i++) {
             FormFieldsObject form = new FormFieldsObject()
                     .setNickname("Vasia" + "+" + rnd.nextInt())
-                    .setEmail("test_1@dxloo.com")
+                    .setEmail("autotest@dxloo.com")
                     .setLocation("Dnipro" + "+" + rnd.nextInt())
                     .setReviewTitle("some title" + "+" + rnd.toString())
                     .setReviewText("some text" + "+" + rnd.toString());

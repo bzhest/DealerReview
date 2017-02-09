@@ -87,6 +87,7 @@ public class FormFieldsObject {
 
     @Override
     public boolean equals(Object obj) {
+        // Проверяем.ю что ссылки ссылаются на один и тот же объект
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;

@@ -51,6 +51,8 @@ public class FormHelper extends HelperWithWebDriverBase {
                   reviewTextContent = reviewTextContent.trim(); //Удаляет пробелы до и после предложения
                   //reviewTextContent = reviewTextContent.replaceAll("\\s+","");Удаляет все пробелы
                   //*ID = ID.replaceAll("\\D+",""); Удаляет все не цифры
+                  // Символы в Java беруться в одинарный ковычки '', а строки в двойные ""
+                  // int index = somestring.indexOf('P'); - получаю индекс символа 'P'
 
                   FormFieldsObject review = new FormFieldsObject()
                           .setID(id).setReviewText(reviewTextContent);
