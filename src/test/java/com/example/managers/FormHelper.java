@@ -101,7 +101,8 @@ public class FormHelper extends HelperWithWebDriverBase {
     public void deleteReview() {
         driver.get("http://www.solomia.andreyb.ixloo.com/" + "/dms/login");
         loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
-        Actions action = new Actions(driver);
+        //Пока закомичу, буду сразу переходить на страницу - http://solomia.andreyb.ixloo.com/dms/tools/reviews#dealer-review
+        /*Actions action = new Actions(driver);
         //Нахожу меню Tools
         WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
 
@@ -113,9 +114,11 @@ public class FormHelper extends HelperWithWebDriverBase {
 
         WebElement toolMenuItemReviews = driver.findElement(By.cssSelector("a[href='/dms/tools/reviews']"));
         manager.getWebDriverHelper().wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='/dms/tools/reviews']")));
-        toolMenuItemReviews.click();
-
-
+        toolMenuItemReviews.click();*/
+        WebElement toolsMenu = driver.findElements(By.cssSelector(".v9-main-item.v9_sub")).get(3);
+        toolsMenu.click();
+        WebElement ReviewImage = driver.findElements(By.cssSelector(".img")).get(11);
+        ReviewImage.click();
         //Нахожу последнее добавленое Review в DMS и получаю его ID в поле ReviewIDforLastAddedReviewDMS
         WebElement lastAddedReviewDMS = driver.findElements(By.cssSelector(".ui-widget-content.jqgrow.ui-row-ltr")).get(0);
         int ReviewIDforLastAddedReviewDMS = Integer.parseInt(lastAddedReviewDMS.getAttribute("id"));

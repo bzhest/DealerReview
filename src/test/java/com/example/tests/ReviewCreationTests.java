@@ -65,7 +65,7 @@ public class ReviewCreationTests extends TestBase {
     }
 
 
-    @Test //Этот тест будет выполняться первым
+    /*@Test //Этот тест будет выполняться первым
     public void reviewFilledWithEmptyData() throws Exception {
         //Закрываем вторую вкладку браузера и переходим на первую
 
@@ -81,7 +81,7 @@ public class ReviewCreationTests extends TestBase {
         app.getFormHelper().clickSubmit();
         Set <FormFieldsObject> newList = app.getFormHelper().getReviewsData();
         verifyReviewNotAdded(oldList, emptyForm, newList);
-    }
+    }*/
 
 
 
