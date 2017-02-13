@@ -54,10 +54,10 @@ public class ReviewCreationTests extends TestBase {
         MatcherAssert.assertThat(newList,equalTo(oldList));*/
     }
 
-    private void verifyReviewNotAdded(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
+    private void verifyReviewDeleted(Set<FormFieldsObject> oldList, FormFieldsObject validForm, Set<FormFieldsObject> newList) {
         //Проверка при помощи библиотеки TestNG для Assert
         //Это альтернативная проверка - более легкая в понимании
-        MatcherAssert.assertThat(newList.size(),equalTo(oldList.size()));
+        MatcherAssert.assertThat(newList.size()+1,equalTo(oldList.size()));
         /*validForm.setID("!!!");
         oldList.add(validForm);
         validForm.setID("null");
@@ -103,33 +103,4 @@ public class ReviewCreationTests extends TestBase {
 
     }
 
-
-
-
-    /*
-    }
-
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
-        }
-    }*/
 }

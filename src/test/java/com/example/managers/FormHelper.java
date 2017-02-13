@@ -135,16 +135,16 @@ public class FormHelper extends HelperWithWebDriverBase {
         deleteButton.click();
 
         //Идем обратно в ДВС на Dealer Review страницу
-        driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review.html");
+        //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review.html");
 
         //Нахожу последнее добавленое Review в DWS и получаю его полный адрес в ссылку hrefValue
-        WebElement lastAddedReviewDWS = driver.findElements(By.cssSelector("a[href*='dealer-review_caption_title']")).get(0);
-        String hrefValue = lastAddedReviewDWS.getAttribute("href");
+        //WebElement lastAddedReviewDWS = driver.findElements(By.cssSelector("a[href*='dealer-review_caption_title']")).get(0);
+        //String hrefValue = lastAddedReviewDWS.getAttribute("href");
         //Проверяю, есть ли в этом адресе ID из ДМС
-        Pattern p = Pattern.compile(String.valueOf(ReviewIDforLastAddedReviewDMS));
-        Matcher m = p.matcher(hrefValue);
-        boolean b = m.matches();
-        Assert.assertFalse(b);
+        //Pattern p = Pattern.compile(String.valueOf(ReviewIDforLastAddedReviewDMS));
+        //Matcher m = p.matcher(hrefValue);
+        //boolean b = m.matches();
+        //Assert.assertFalse(b);
         //перед запуском надо чистить куки!!!!!!
         //Если результат False - то удаление прошло успешно, test прошел - в DWS ID из DMS нет
 

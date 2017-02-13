@@ -2,6 +2,7 @@ package com.example.tests;
 
 import com.example.managers.ApplicationManager;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
@@ -39,4 +40,5 @@ public class TestBase {
         ApplicationManager.getInstance().stop();
 
     }
+
 }
