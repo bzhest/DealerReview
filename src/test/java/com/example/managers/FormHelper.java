@@ -99,7 +99,7 @@ public class FormHelper extends HelperWithWebDriverBase {
     }
 
     public void deleteReview() {
-        driver.get("http://www.solomia.andreyb.ixloo.com/" + "/dms/login");
+        driver.get("http://www.solomia.andreyb.ixloo.com/" + "dms/login");
         loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
         //Пока закомичу, буду сразу переходить на страницу - http://solomia.andreyb.ixloo.com/dms/tools/reviews#dealer-review
         /*Actions action = new Actions(driver);
