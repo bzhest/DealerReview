@@ -11,6 +11,7 @@ public class ApplicationManager {
     public WebDriverHelper webDriverHelper;
     public FormHelper formHelper;
     public NavigationHelper navigationHelper;
+    public LoaderHelper loaderHelper;
 
     public static ApplicationManager getInstance() {
         if (singleton == null) {
@@ -65,5 +66,11 @@ public class ApplicationManager {
         return webDriverHelper;
     }
 
+    public LoaderHelper getLoaderHelper(){
+        if(webDriverHelper == null){
+            webDriverHelper = new WebDriverHelper(this);
+        }
+        return loaderHelper;
+    }
 
 }

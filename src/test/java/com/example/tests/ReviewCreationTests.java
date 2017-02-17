@@ -23,7 +23,7 @@ public class ReviewCreationTests extends TestBase {
     //Ниже указана логика работы теста
     @Test(dataProvider = "randomFormFields") //Этот тест будет выполняться первым
     public void reviewCanBeCreated(FormFieldsObject validForm) throws Exception {
-        app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        //app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         //Получения группы Тайтлов до теста
          Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Действия
