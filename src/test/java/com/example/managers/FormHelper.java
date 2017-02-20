@@ -35,7 +35,8 @@ public class FormHelper extends HelperWithWebDriverBase {
         manager.getNavigationHelper().openHomePage();
         manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
         WebElement paginationButtonAll = driver.findElements(By.cssSelector(".pagination.pagination-sm>li>a")).get(4);
-        //paginationButtonAll.click();
+        paginationButtonAll.click();
+        manager.getLoaderHelper().waitForJSandJQueryToLoad();
         //Ниже список элементов List будет перегоняться в множество объектов Set
         //Получаю список всех блоков с текстом ревью
         List <WebElement> reviewsTexts = driver.findElements(By.cssSelector(".drev-comentB.text-justify>div:first-child"));

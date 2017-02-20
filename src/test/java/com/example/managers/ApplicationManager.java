@@ -67,8 +67,8 @@ public class ApplicationManager {
     }
 
     public LoaderHelper getLoaderHelper(){
-        if(webDriverHelper == null){
-            webDriverHelper = new WebDriverHelper(this);
+        if(loaderHelper == null){
+            loaderHelper = new LoaderHelper(this);
         }
         return loaderHelper;
     }
