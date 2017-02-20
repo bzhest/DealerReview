@@ -12,13 +12,13 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * Created by SYSTEM on 23.01.2017.
  */
 public class ReviewRemovalTests extends TestBase{
-    @Test(priority = 1) //этот тест будет выполняться первым
-    public void reviewCanBeDeleted() {
-        Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
-        app.getFormHelper().deleteReview();
-        Set <FormFieldsObject> newList = app.getFormHelper().getReviewsData();
-        verifyReviewDeleted(oldList, newList);
-    }
+        @Test(priority = 1) //этот тест будет выполняться первым
+        public void reviewCanBeDeleted() {
+            Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
+            app.getFormHelper().deleteReview();
+            Set <FormFieldsObject> newList = app.getFormHelper().getReviewsData();
+            verifyReviewDeleted(oldList, newList);
+        }
 
     @AfterClass
     public void closeAllBrowsers() {
