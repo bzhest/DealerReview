@@ -24,11 +24,11 @@ public class ReviewStarsParameters extends TestBase {
         toolsMenu.click();
         WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
         ReviewImage.click();
-        if(driver.findElement(By.cssSelector("#addon_make_a_page_2")).getAttribute("checked") == null){
-            waitForJSandJQueryToLoad();
-            driver.findElement(By.cssSelector("#addon_make_a_page_2")).click();
+        if(app.getWebDriverHelper().getDriver().findElement(By.cssSelector("#addon_make_a_page_2")).getAttribute("checked") == null){
+            app.getLoaderHelper().waitForJSandJQueryToLoad();
+            app.getWebDriverHelper().getDriver().findElement(By.cssSelector("#addon_make_a_page_2")).click();
         }
     }
 }
 
-
+//Boolean isPresent = driver.findElements(By.yourLocator).size() > 0
