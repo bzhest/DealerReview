@@ -1,7 +1,9 @@
 package com.example.tests;
 
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
@@ -40,8 +42,10 @@ public class ReviewStarsParameters extends TestBase {
         WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
         //Сохраняю настройки
         buttonSave.click();
-
-
+        app.getNavigationHelper().openHomePage();
+        app.getNavigationHelper().fromHomePage_toDealerReviewForm();
+        List<WebElement> starNumberParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
+        Assert.assertEquals(starNumberParameter.size(),0);
     }
 }
 
