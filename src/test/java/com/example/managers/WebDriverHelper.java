@@ -26,7 +26,7 @@ public class WebDriverHelper {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //Подождать 30 сек появления какого-то элемента
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         baseUrl = "http://www.solomia.andreyb.ixloo.com/";
         wait = new WebDriverWait(driver,15);
         driver.get("http://www.solomia.andreyb.ixloo.com/");
