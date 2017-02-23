@@ -7,17 +7,31 @@ import java.util.Random;
  */
 public class Sample {
 
-    public static void main (String [] args){
-        Random rnd = new Random();
-        String x = "" + rnd.nextInt(1);
-        //При сравнивании НЕ ЧИСЕЛ нужно использовать метод equals
-        if ("0".equals(x)){
-            System.out.println("ok");
-        }else{
-            System.out.println("fail");
+    public static void main(String[] args) {
+                double a = 3;
+                double b = 2.5;
+                double c = -0.5;
+                int d;
+                //дискреминант
+                d = (int)((b*b) - (4 *a*c));
+                if(d>0){
+                    double x1;
+                    double x2;
+                    x1 = (-b+Math.sqrt(b*b-4*a*c))/2*a;
+                    x2 = (-b-Math.sqrt(b*b-4*a*c))/2*a;
+                }
+                else if (d==0){
+                    double x1;
+                    double x2;
+                    x1=-b/2*a;
+                    x2=-b/2*a;
+                }
+
+
+
+                //PUT YOUR CODE HERE
+            }
         }
 
 
-    }
 
-}

@@ -55,11 +55,15 @@ public class ReviewStarsParameters extends TestBase {
 
         @Test
         public void addYourOverallRatingParameter() {
+
             app.getNavigationHelper().closeSecondTabAndGoToFirstTab();
             app.getWebDriverHelper().getDriver().get(app.getWebDriverHelper().baseUrl + "dms");
-            /*if(app.getWebDriverHelper().getDriver().getCurrentUrl()) == true)
-            {}*/
-            //app.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+            String url = app.getWebDriverHelper().getDriver().getCurrentUrl();
+            //Если при переходе в DMS оказывается, что я не залогинен - я логинюсь
+            if(url == app.getWebDriverHelper().baseUrl + "dms/login")
+            {
+                app.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+            }
             WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
             // захожу на Landing page в Settings > Review
             toolsMenu.click();
@@ -74,7 +78,7 @@ public class ReviewStarsParameters extends TestBase {
                 YourOverallRatingParameter.click();
             }
             for (int x=0; x<5; x++) {
-                if (checkboxes.get(x).isSelected() || checkboxes.get(x)!=YourOverallRatingParameter) {
+                if (checkboxes.get(x).isSelected() && checkboxes.get(x)!=YourOverallRatingParameter) {
                     checkboxes.get(x).click();
                     app.getLoaderHelper().waitForJSandJQueryToLoad();
                 }
