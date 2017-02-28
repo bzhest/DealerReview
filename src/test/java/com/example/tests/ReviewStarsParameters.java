@@ -83,7 +83,7 @@ public class ReviewStarsParameters extends TestBase {
             //Сохраняю настройки
             buttonSave.click();app.getNavigationHelper().openHomePage();
             app.getNavigationHelper().fromHomePage_toDealerReviewForm();
-            //app.getLoaderHelper().waitForJSandJQueryToLoad();
+            app.getNavigationHelper().switchToAnotherWindow(2);
             WebElement textForYourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
             String text = textForYourOverallRatingParameter.getText().trim();
             Assert.assertEquals("Your Overall Rating", text);
