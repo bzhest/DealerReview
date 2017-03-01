@@ -23,12 +23,12 @@ public class ReviewCreationTests extends TestBase {
     //Ниже указана логика работы теста
     @Test(dataProvider = "randomFormFields") //Этот тест будет выполняться первым
     public void reviewCanBeCreated(FormFieldsObject validForm) throws Exception {
-        //app.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        //app.getNavigationHelperDWS().fromHomePageGoToDealerReviewPage();
         //Получения группы Тайтлов до теста
          Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Действия
-        app.getNavigationHelper().onDealerReviewPageClick_AddReview();
-        app.getNavigationHelper().switchToAnotherWindow(2);
+        app.getNavigationHelperDWS().onDealerReviewPageClick_AddReview();
+        app.getNavigationHelperDWS().switchToAnotherWindow(2);
 
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().markParametersWithStars("1", "4");
@@ -69,12 +69,12 @@ public class ReviewCreationTests extends TestBase {
     public void reviewFilledWithEmptyData() throws Exception {
         //Закрываем вторую вкладку браузера и переходим на первую
 
-        app.getNavigationHelper().switchToAnotherWindow(2);
-        app.getNavigationHelper().closeSecondTabAndGoToFirstTab();
-        app.getNavigationHelper().fromHomePage_toDealerReviewForm();
+        app.getNavigationHelperDWS().switchToAnotherWindow(2);
+        app.getNavigationHelperDWS().closeSecondTabAndGoToFirstTab();
+        app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
         Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Переходим с первой вкладки на вторую
-        app.getNavigationHelper().switchToAnotherWindow(1);
+        app.getNavigationHelperDWS().switchToAnotherWindow(1);
         FormFieldsObject emptyForm = new FormFieldsObject()
                 .setNickname("").setEmail("").setLocation("").setReviewTitle("").setReviewText("");
         app.getFormHelper().fillAllFormFields(emptyForm);

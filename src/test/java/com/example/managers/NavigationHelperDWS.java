@@ -8,9 +8,9 @@ import java.util.Set;
 /**
  * Created by Andrey on 18.01.2017.
  */
-public class NavigationHelper extends HelperWithWebDriverBase{
+public class NavigationHelperDWS extends HelperWithWebDriverBase{
 
-    public NavigationHelper(ApplicationManager manager){
+    public NavigationHelperDWS(ApplicationManager manager){
         //Вызываем конструктор суперкласса и передаем ссылку
         super(manager);
     }

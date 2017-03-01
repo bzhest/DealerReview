@@ -2,23 +2,14 @@ package com.example.managers;
 
 import  com.example.tests.FormFieldsObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 
 //import java.awt.*;
-import java.awt.event.KeyEvent;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 /**
@@ -32,8 +23,8 @@ public class FormHelper extends HelperWithWebDriverBase {
     }
 
     public Set<FormFieldsObject> getReviewsData() {
-        manager.getNavigationHelper().openHomePage();
-        manager.getNavigationHelper().fromHomePageGoToDealerReviewPage();
+        manager.getNavigationHelperDWS().openHomePage();
+        manager.getNavigationHelperDWS().fromHomePageGoToDealerReviewPage();
         WebElement paginationButtonAll = driver.findElements(By.cssSelector(".pagination.pagination-sm>li>a")).get(4);
         paginationButtonAll.click();
         manager.getLoaderHelper().waitForJSandJQueryToLoad();

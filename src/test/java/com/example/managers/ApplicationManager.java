@@ -1,7 +1,5 @@
 package com.example.managers;
 
-import org.openqa.selenium.WebDriver;
-
 /**
  * Created by Andrey on 16.01.2017.
  */
@@ -10,8 +8,9 @@ public class ApplicationManager {
     private static ApplicationManager singleton;
     public WebDriverHelper webDriverHelper;
     public FormHelper formHelper;
-    public NavigationHelper navigationHelper;
+    public NavigationHelperDWS navigationHelperDWS;
     public LoaderHelper loaderHelper;
+    public NavigationHelperDMS navigationHelperDMS;
 
     public static ApplicationManager getInstance() {
         if (singleton == null) {
@@ -52,11 +51,11 @@ public class ApplicationManager {
         return formHelper;
     }
 
-    public NavigationHelper getNavigationHelper(){
-        if (navigationHelper == null){
-            navigationHelper = new NavigationHelper(this);
+    public NavigationHelperDWS getNavigationHelperDWS(){
+        if (navigationHelperDWS == null){
+            navigationHelperDWS = new NavigationHelperDWS(this);
         }
-        return navigationHelper;
+        return navigationHelperDWS;
     }
 
     public WebDriverHelper getWebDriverHelper(){
@@ -73,4 +72,10 @@ public class ApplicationManager {
         return loaderHelper;
     }
 
+    public NavigationHelperDMS getNavigationHelperDMS() {
+        if (navigationHelperDMS == null) {
+            navigationHelperDMS = new NavigationHelperDMS(this);
+        }
+        return navigationHelperDMS;
+    }
 }
