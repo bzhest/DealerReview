@@ -1,8 +1,11 @@
 package com.example.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.*;
 
 import java.util.List;
@@ -18,21 +21,16 @@ public class ReviewStarsParameters extends TestBase {
     }
 
     /**
-     * Проверка, если параметры со звездочками не выставлены, то их нет и в самой форме*/
+     * Проверка, если параметры со звездочками не выставлены, то их нет и в самой форме
+     */
 
     @Test(enabled = false) //этот тест будет пропущен
     public void addNoneStarParameters() {
-        app.getNavigationHelperDMS().openDMS();
-        WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-        // захожу на Landing page в Settings > Review
-        toolsMenu.click();
-        WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-        //кликаю на иконку Review
-        ReviewImage.click();
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
         //Получаю список чекбоксов на странице
         List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
         //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
-        for (int x=0; x<5; x++) {
+        for (int x = 0; x < 5; x++) {
             if (checkboxes.get(x).isSelected()) {
                 checkboxes.get(x).click();
                 app.getLoaderHelper().waitForJSandJQueryToLoad();
@@ -47,66 +45,57 @@ public class ReviewStarsParameters extends TestBase {
         app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
 
         List<WebElement> starNumberParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
-        Assert.assertEquals(starNumberParameter.size(),0);
+        Assert.assertEquals(starNumberParameter.size(), 0);
     }
 
     /**
- * Проверяем, что выставленный параметр Your Overall Rating в DMS отображается и в DWS
- * и имеет 5 пустых звезд*/
+     * Проверяем, что выставленный параметр Your Overall Rating в DMS отображается и в DWS
+     * и имеет 5 пустых звезд
+     */
 
-        @Test (enabled = false)
-        public void addYourOverallRatingParameter() {
+    @Test(enabled = false)
+    public void addYourOverallRatingParameter() {
 
-            app.getNavigationHelperDMS().openDMS();
-            WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-            // захожу на Landing page в Settings > Review
-            toolsMenu.click();
-            WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-            //кликаю на иконку Review
-            ReviewImage.click();
-            WebElement yourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(0);
-            List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
-            //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
+        WebElement yourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(0);
+        List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
+        //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
 
-            for (int x=0; x<5; x++) {
-                if (checkboxes.get(x).isSelected()) {
-                    checkboxes.get(x).click();
-                    app.getLoaderHelper().waitForJSandJQueryToLoad();
-                }
+        for (int x = 0; x < 5; x++) {
+            if (checkboxes.get(x).isSelected()) {
+                checkboxes.get(x).click();
+                app.getLoaderHelper().waitForJSandJQueryToLoad();
             }
-            //после того, как все чекбоксы сняты, выделяю чекбокс yourOverallRatingParameter
-            yourOverallRatingParameter.click();
-            WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
-            //Сохраняю настройки
-            buttonSave.click();app.getNavigationHelperDWS().openHomePage();
-            app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
-            app.getNavigationHelperDWS().switchToAnotherWindow(2);
-            WebElement textForYourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
-            String text = textForYourOverallRatingParameter.getText().trim();
-            Assert.assertEquals("Your Overall Rating", text);
-            List <WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-            Assert.assertEquals(listOfEmptyStars.size(),5);
         }
+        //после того, как все чекбоксы сняты, выделяю чекбокс yourOverallRatingParameter
+        yourOverallRatingParameter.click();
+        WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
+        //Сохраняю настройки
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
+        app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
+        app.getNavigationHelperDWS().switchToAnotherWindow(2);
+        WebElement textForYourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
+        String text = textForYourOverallRatingParameter.getText().trim();
+        Assert.assertEquals("Your Overall Rating", text);
+        List<WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfEmptyStars.size(), 5);
+    }
 
     /**
      * Проверяем, что выставленный параметр Customer Service в DMS
-     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию) */
+     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию)
+     */
 
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void addCustomerServiceParameter() {
 
-        app.getNavigationHelperDMS().openDMS();
-        WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-        // захожу на Landing page в Settings > Review
-        toolsMenu.click();
-        WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-        //кликаю на иконку Review
-        ReviewImage.click();
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
         WebElement customerServiceParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(1);
         List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
         //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
 
-        for (int x=0; x<5; x++) {
+        for (int x = 0; x < 5; x++) {
             if (checkboxes.get(x).isSelected()) {
                 checkboxes.get(x).click();
                 app.getLoaderHelper().waitForJSandJQueryToLoad();
@@ -116,35 +105,31 @@ public class ReviewStarsParameters extends TestBase {
         customerServiceParameter.click();
         WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
         //Сохраняю настройки
-        buttonSave.click();app.getNavigationHelperDWS().openHomePage();
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
         app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         WebElement textCustomerServiceParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
         String text = textCustomerServiceParameter.getText().trim();
         Assert.assertEquals("Customer Service:", text);
-        List <WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-        Assert.assertEquals(listOfEmptyStars.size(),5);
+        List<WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfEmptyStars.size(), 5);
     }
 
     /**
      * Проверяем, что выставленный параметр Buying Process  в DMS
-     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию) */
+     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию)
+     */
 
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void addBuyingProcessParameter() {
 
-        app.getNavigationHelperDMS().openDMS();
-        WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-        // захожу на Landing page в Settings > Review
-        toolsMenu.click();
-        WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-        //кликаю на иконку Review
-        ReviewImage.click();
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
         WebElement buyingProcessParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(2);
         List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
         //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
 
-        for (int x=0; x<5; x++) {
+        for (int x = 0; x < 5; x++) {
             if (checkboxes.get(x).isSelected()) {
                 checkboxes.get(x).click();
                 app.getLoaderHelper().waitForJSandJQueryToLoad();
@@ -154,73 +139,65 @@ public class ReviewStarsParameters extends TestBase {
         buyingProcessParameter.click();
         WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
         //Сохраняю настройки
-        buttonSave.click();app.getNavigationHelperDWS().openHomePage();
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
         app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         WebElement textBuyingProcessParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
         String text = textBuyingProcessParameter.getText().trim();
         Assert.assertEquals("Buying Process:", text);
-        List <WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-        Assert.assertEquals(listOfEmptyStars.size(),5);
+        List<WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfEmptyStars.size(), 5);
     }
 
     /**
      * Проверяем, что выставленный параметр Quality of Repair в DMS
-     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию) */
+     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию)
+     */
 
-    @Test (enabled=false)
+    @Test(enabled = false)
     public void addQualityOfRepairParameter() {
 
-        app.getNavigationHelperDMS().openDMS();
-        WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-        // захожу на Landing page в Settings > Review
-        toolsMenu.click();
-        WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-        //кликаю на иконку Review
-        ReviewImage.click();
-        WebElement customerServiceParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(3);
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
+        WebElement qualityOfRepairParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(3);
         List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
         //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
 
-        for (int x=0; x<5; x++) {
+        for (int x = 0; x < 5; x++) {
             if (checkboxes.get(x).isSelected()) {
                 checkboxes.get(x).click();
                 app.getLoaderHelper().waitForJSandJQueryToLoad();
             }
         }
         //после того, как все чекбоксы сняты, выделяю чекбокс customerServiceParameter
-        customerServiceParameter.click();
+        qualityOfRepairParameter.click();
         WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
         //Сохраняю настройки
-        buttonSave.click();app.getNavigationHelperDWS().openHomePage();
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
         app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         WebElement textQualityOfRepairParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
         String text = textQualityOfRepairParameter.getText().trim();
         Assert.assertEquals("Quality of Repair:", text);
-        List <WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-        Assert.assertEquals(listOfEmptyStars.size(),5);
+        List<WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfEmptyStars.size(), 5);
     }
 
     /**
      * Проверяем, что выставленный параметр Quality of Repair в DMS
-     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию) */
+     * отображается и в DWS (и имеет 5 пустых звезд по умолчанию)
+     */
 
-    @Test
+    @Test(enabled = false)
     public void addOverallFacilitiesParameter() {
 
-        app.getNavigationHelperDMS().openDMS();
-        WebElement toolsMenu = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".v9-main-item.v9_sub")).get(4);
-        // захожу на Landing page в Settings > Review
-        toolsMenu.click();
-        WebElement ReviewImage = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".big-module-item[href*='review-settings']"));
-        //кликаю на иконку Review
-        ReviewImage.click();
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
         WebElement overallFacilitiesParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(4);
         List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
         //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
 
-        for (int x=0; x<5; x++) {
+        for (int x = 0; x < 5; x++) {
             if (checkboxes.get(x).isSelected()) {
                 checkboxes.get(x).click();
                 app.getLoaderHelper().waitForJSandJQueryToLoad();
@@ -230,17 +207,112 @@ public class ReviewStarsParameters extends TestBase {
         overallFacilitiesParameter.click();
         WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
         //Сохраняю настройки
-        buttonSave.click();app.getNavigationHelperDWS().openHomePage();
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
         app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         WebElement textOverallFacilitiesParameter = app.getWebDriverHelper().getDriver().findElement(By.cssSelector(".starLabel"));
         String text = textOverallFacilitiesParameter.getText().trim();
         Assert.assertEquals("Overall Facilities:", text);
-        List <WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-        Assert.assertEquals(listOfEmptyStars.size(),5);
+        List<WebElement> listOfEmptyStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfEmptyStars.size(), 5);
+    }
+
+    @Test (enabled = false)
+    public void addAllFiveParameter() {
+
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
+        WebElement yourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(0);
+        WebElement customerServiceParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(1);
+        WebElement buyingProcessParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(2);
+        WebElement qualityOfRepairParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(3);
+        WebElement overallFacilitiesParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(4);
+        List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
+        //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
+
+        for (int x = 0; x < 5; x++) {
+            if (checkboxes.get(x).isSelected()) {
+                checkboxes.get(x).click();
+                app.getLoaderHelper().waitForJSandJQueryToLoad();
+            }
+        }
+        //после того, как все чекбоксы сняты, выделяю чекбокс overallFacilitiesParameter
+        yourOverallRatingParameter.click();
+        customerServiceParameter.click();
+        buyingProcessParameter.click();
+        qualityOfRepairParameter.click();
+        overallFacilitiesParameter.click();
+        WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
+        //Сохраняю настройки
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
+        app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
+        app.getNavigationHelperDWS().switchToAnotherWindow(2);
+        List <WebElement> parametersArrays = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
+        Assert.assertEquals(parametersArrays.size(), 5);
+        List<WebElement> listOfStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfStars.size(), 25);
+    }
+
+    @Test
+    public void addAllFiveParametersMarkFiveParametersWithFiveStars() {
+
+        app.getNavigationHelperDMS().openDealershipReviewSettingsPage();
+        WebElement yourOverallRatingParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(0);
+        WebElement customerServiceParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(1);
+        WebElement buyingProcessParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(2);
+        WebElement qualityOfRepairParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(3);
+        WebElement overallFacilitiesParameter = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]")).get(4);
+        List<WebElement> checkboxes = app.getWebDriverHelper().getDriver().findElements(By.cssSelector("input[name*=_visible]"));
+        //Прохожу по всем чекбоксам, если чекбокс отмечен - снимаем выделение
+
+        for (int x = 0; x < 5; x++) {
+            if (checkboxes.get(x).isSelected()) {
+                checkboxes.get(x).click();
+                app.getLoaderHelper().waitForJSandJQueryToLoad();
+            }
+        }
+        //после того, как все чекбоксы сняты, выделяю чекбокс overallFacilitiesParameter
+        yourOverallRatingParameter.click();
+        customerServiceParameter.click();
+        buyingProcessParameter.click();
+        qualityOfRepairParameter.click();
+        overallFacilitiesParameter.click();
+        WebElement buttonSave = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".sp")).get(0);
+        //Сохраняю настройки
+        buttonSave.click();
+        app.getNavigationHelperDWS().openHomePage();
+        app.getNavigationHelperDWS().fromHomePage_toDealerReviewForm();
+        app.getNavigationHelperDWS().switchToAnotherWindow(2);
+        FormFieldsObject form = new FormFieldsObject()
+                .setNickname("Vasia")
+                .setEmail("autotest@dxloo.com")
+                .setLocation("Dnipro")
+                .setReviewTitle("some title")
+                .setReviewText("some text");
+        app.getFormHelper().fillAllFormFields(form);
+        //Нахожу звезду по xpath,
+        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][5]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][2]"));
+        JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
+        js.executeScript("arguments[0].classname = 'fa fa-star'", star);
+        /*js.executeScript("document.getElementById('//id of element').setAttribute('attr', '10')");
+        document.getElementById("MyElement").className = "MyClass";*/
+
+
+        app.getFormHelper().markParametersWithStars("1","5");
+        app.getFormHelper().markParametersWithStars("3","5");
+        app.getFormHelper().clickSubmit();
+        app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
+        app.getFormHelper().click_Return_OnOpenedModalWindow();
+        /*List <WebElement> parametersArrays = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
+        Assert.assertEquals(parametersArrays.size(), 5);
+        List<WebElement> listOfStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
+        Assert.assertEquals(listOfStars.size(), 25);*/
     }
 
 }
+
+
 
 
 
