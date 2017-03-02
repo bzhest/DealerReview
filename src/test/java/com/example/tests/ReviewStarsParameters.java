@@ -294,7 +294,7 @@ public class ReviewStarsParameters extends TestBase {
         //Нахожу звезду по xpath,
         WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][5]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][2]"));
         JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
-        js.executeScript("arguments[0].classname = 'fa fa-star'", star);
+        js.executeScript("arguments[0].className = 'fa fa-star'", star);
         /*js.executeScript("document.getElementById('//id of element').setAttribute('attr', '10')");
         document.getElementById("MyElement").className = "MyClass";*/
 
