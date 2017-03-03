@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.testng.annotations.*;
 
 import java.util.List;
@@ -292,9 +291,11 @@ public class ReviewStarsParameters extends TestBase {
                 .setReviewText("some text");
         app.getFormHelper().fillAllFormFields(form);
         //Нахожу звезду по xpath,
-        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][5]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][2]"));
-        JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
-        js.executeScript("arguments[0].className = 'fa fa-star'", star);
+        selectStar("5", "2");
+        /*классы звезд
+        * fa fa-star-o - пустая звезда
+        * fa fa-star-half-o - ползвезды
+        * fa fa-star - целая звезда*/
         /*js.executeScript("document.getElementById('//id of element').setAttribute('attr', '10')");
         document.getElementById("MyElement").className = "MyClass";*/
 
@@ -308,6 +309,15 @@ public class ReviewStarsParameters extends TestBase {
         Assert.assertEquals(parametersArrays.size(), 5);
         List<WebElement> listOfStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
         Assert.assertEquals(listOfStars.size(), 25);*/
+    }
+
+    public void selectStar(final String paramNumber, final String starNumber) {
+        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+        JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
+        js.executeScript("arguments[0].className = 'fa fa-star'", star);
+        for (int i = 0; i< Integer.parseInt(starNumber); i++){
+
+        }
     }
 
 }
