@@ -3,6 +3,7 @@ package com.example.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -291,7 +292,11 @@ public class ReviewStarsParameters extends TestBase {
                 .setReviewText("some text");
         app.getFormHelper().fillAllFormFields(form);
         //Нахожу звезду по xpath,
-        selectStar("5", "2");
+        selectStar("1", "0.5");
+        selectStar("2", "1");
+        selectStar("3", "1.5");
+        selectStar("4", "2");
+        selectStar("5", "2.5");
         /*классы звезд
         * fa fa-star-o - пустая звезда
         * fa fa-star-half-o - ползвезды
@@ -300,8 +305,8 @@ public class ReviewStarsParameters extends TestBase {
         document.getElementById("MyElement").className = "MyClass";*/
 
 
-        app.getFormHelper().markParametersWithStars("1","5");
-        app.getFormHelper().markParametersWithStars("3","5");
+        //app.getFormHelper().markParametersWithStars("1","5");
+        //app.getFormHelper().markParametersWithStars("3","5");
         app.getFormHelper().clickSubmit();
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();
@@ -311,13 +316,41 @@ public class ReviewStarsParameters extends TestBase {
         Assert.assertEquals(listOfStars.size(), 25);*/
     }
 
-    public void selectStar(final String paramNumber, final String starNumber) {
-        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+    public void selectStar(final String paramNumber, String starNumber) {
+
+    /*WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
         JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
         js.executeScript("arguments[0].className = 'fa fa-star'", star);
         for (int i = 0; i< Integer.parseInt(starNumber); i++){
 
+        }*/
+
+        double d= Double.valueOf(starNumber);
+        if (d==(int)d){
+            //Если starNumber - єто Intager, то наведение курсора на звезду со сдвигом право (получение целой звезди)
+            WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star.getSize().getWidth();
+            Actions act = new Actions(app.getWebDriverHelper().getDriver());
+            act.moveToElement(star).moveByOffset((width/2)-2, 0).click().perform();
+        }else{
+            //Если starNumber - єто Double, то наведение курсора на звезду со сдвигом влево (получение половины звезди)
+            starNumber = "" + (int)(Double.parseDouble(starNumber)+0.5);
+            WebElement star1 = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star1.getSize().getWidth();
+            Actions act = new Actions(app.getWebDriverHelper().getDriver());
+            act.moveToElement(star1).moveByOffset((width/2)-8, 0).click().perform();
         }
+    /*//Наведение курсора на звезду со сдвигом влево (получение ползвезды)
+        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+        int width = star.getSize().getWidth();
+        Actions act = new Actions(app.getWebDriverHelper().getDriver());
+        act.moveToElement(star).moveByOffset((width/2)-6, 0).click().perform();*/
+
+        /*//Наведение курсора на звезду со сдвигом право (получение целой звезди)
+        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+        int width = star.getSize().getWidth();
+        Actions act = new Actions(app.getWebDriverHelper().getDriver());
+        act.moveToElement(star).moveByOffset((width/2)+2, 0).click().perform();*/
     }
 
 }
