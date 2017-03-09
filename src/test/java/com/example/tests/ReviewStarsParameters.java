@@ -292,11 +292,11 @@ public class ReviewStarsParameters extends TestBase {
                 .setReviewText("some text");
         app.getFormHelper().fillAllFormFields(form);
         //Нахожу звезду по xpath,
-        selectStar("1", "0.5");
-        selectStar("2", "1");
-        selectStar("3", "1.5");
-        selectStar("4", "2");
-        selectStar("5", "2.5");
+        app.getFormHelper().selectStar("1", "3");
+        app.getFormHelper().selectStar("2", "3.5");
+        app.getFormHelper().selectStar("3", "4");
+        app.getFormHelper().selectStar("4", "4.5");
+        app.getFormHelper().selectStar("5", "5");
         /*классы звезд
         * fa fa-star-o - пустая звезда
         * fa fa-star-half-o - ползвезды
@@ -313,17 +313,14 @@ public class ReviewStarsParameters extends TestBase {
         /*List <WebElement> parametersArrays = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
         Assert.assertEquals(parametersArrays.size(), 5);
         List<WebElement> listOfStars = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".fa.fa-star-o"));
-        Assert.assertEquals(listOfStars.size(), 25);*/
+        */
+        List <WebElement> blackStarNumber = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".modul-r-dealReview.text-left>div:nth-child(3) .drev-stars .fa.fa-star"));
+        Assert.assertEquals(blackStarNumber.size(), 4);
+        app.getNavigationHelperDWS().closeSecondTabAndGoToFirstTab();
+        app.getFormHelper().deleteReview();
     }
 
-    public void selectStar(final String paramNumber, String starNumber) {
-
-    /*WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
-        JavascriptExecutor js = (JavascriptExecutor) app.getWebDriverHelper().getDriver();
-        js.executeScript("arguments[0].className = 'fa fa-star'", star);
-        for (int i = 0; i< Integer.parseInt(starNumber); i++){
-
-        }*/
+    /*public void selectStar(final String paramNumber, String starNumber) {
 
         double d= Double.valueOf(starNumber);
         if (d==(int)d){
@@ -340,18 +337,8 @@ public class ReviewStarsParameters extends TestBase {
             Actions act = new Actions(app.getWebDriverHelper().getDriver());
             act.moveToElement(star1).moveByOffset((width/2)-8, 0).click().perform();
         }
-    /*//Наведение курсора на звезду со сдвигом влево (получение ползвезды)
-        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
-        int width = star.getSize().getWidth();
-        Actions act = new Actions(app.getWebDriverHelper().getDriver());
-        act.moveToElement(star).moveByOffset((width/2)-6, 0).click().perform();*/
 
-        /*//Наведение курсора на звезду со сдвигом право (получение целой звезди)
-        WebElement star = app.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
-        int width = star.getSize().getWidth();
-        Actions act = new Actions(app.getWebDriverHelper().getDriver());
-        act.moveToElement(star).moveByOffset((width/2)+2, 0).click().perform();*/
-    }
+    }*/
 
 }
 

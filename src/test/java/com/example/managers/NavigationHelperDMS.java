@@ -14,7 +14,10 @@ public class NavigationHelperDMS extends HelperWithWebDriverBase{
 
     public void openDMS() {
         if (manager.getWebDriverHelper().getDriver().getCurrentUrl() != manager.getWebDriverHelper().baseUrl + "dms") {
-            manager.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+            manager.getWebDriverHelper().getDriver().get(manager.getWebDriverHelper().baseUrl + "dms");
+                if(driver.findElements( By.cssSelector("#login") ).size() != 0){
+                    manager.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+                }
         }
     }
 

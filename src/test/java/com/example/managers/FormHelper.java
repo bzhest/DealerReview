@@ -3,6 +3,7 @@ package com.example.managers;
 import  com.example.tests.FormFieldsObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 
 //import java.awt.*;
@@ -150,7 +151,25 @@ public class FormHelper extends HelperWithWebDriverBase {
         driver.findElement(By.id("login2")).click();
 
     }
+    public void selectStar(final String paramNumber, String starNumber) {
 
+        double d= Double.valueOf(starNumber);
+        if (d==(int)d){
+            //Если starNumber - єто Intager, то наведение курсора на звезду со сдвигом право (получение целой звезди)
+            WebElement star = manager.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star.getSize().getWidth();
+            Actions act = new Actions(manager.getWebDriverHelper().getDriver());
+            act.moveToElement(star).moveByOffset((width/2)-2, 0).click().perform();
+        }else{
+            //Если starNumber - єто Double, то наведение курсора на звезду со сдвигом влево (получение половины звезди)
+            starNumber = "" + (int)(Double.parseDouble(starNumber)+0.5);
+            WebElement star1 = manager.getWebDriverHelper().getDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star1.getSize().getWidth();
+            Actions act = new Actions(manager.getWebDriverHelper().getDriver());
+            act.moveToElement(star1).moveByOffset((width/2)-8, 0).click().perform();
+        }
+
+    }
 
 
 }
