@@ -29,7 +29,7 @@ public class WebDriverHelper {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         baseUrl = "http://www.solomia.andreyb.ixloo.com/";
         wait = new WebDriverWait(driver,15);
-        driver.get("http://www.solomia.andreyb.ixloo.com/");
+        driver.get(baseUrl);
 
     }
 

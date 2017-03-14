@@ -9,7 +9,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="solomia.andreyb.ixloo.com-tests" target="1.5" />
+      <module name="solomia.andreyb.ixloo.com-tests" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

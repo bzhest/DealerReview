@@ -31,9 +31,9 @@ public class ReviewCreationTests extends TestBase {
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
 
         app.getFormHelper().fillAllFormFields(validForm);
-        app.getFormHelper().markParametersWithStars("1", "4");
-        app.getFormHelper().markParametersWithStars("3", "2");
-        app.getFormHelper().markParametersWithStars("5", "5");
+        app.getFormHelper().selectStar("1", "4");
+        app.getFormHelper().selectStar("3", "2");
+        app.getFormHelper().selectStar("5", "5");
         app.getFormHelper().clickSubmit();
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
         app.getFormHelper().click_Return_OnOpenedModalWindow();

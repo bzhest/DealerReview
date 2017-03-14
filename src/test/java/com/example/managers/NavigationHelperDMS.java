@@ -1,5 +1,7 @@
 package com.example.managers;
 
+import com.example.utilities.PropertyLoader;
+import com.example.utilities.PropertyLoaderCredentials;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -17,6 +19,11 @@ public class NavigationHelperDMS extends HelperWithWebDriverBase{
             manager.getWebDriverHelper().getDriver().get(manager.getWebDriverHelper().baseUrl + "dms");
                 if(driver.findElements( By.cssSelector("#login") ).size() != 0){
                     manager.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
+                    /*manager.getFormHelper().loginToDMS(
+                            PropertyLoaderCredentials.loadProperty("loginValue"),
+                            PropertyLoaderCredentials.loadProperty("loginLocator"),
+                            PropertyLoaderCredentials.loadProperty("passwordValue"),
+                            PropertyLoaderCredentials.loadProperty("passwordLocator") );*/
                 }
         }
     }
