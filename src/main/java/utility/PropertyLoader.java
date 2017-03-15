@@ -1,4 +1,4 @@
-package com.example.utilities;
+package utility;
 
 /*Class for getting values from the property file*/
 

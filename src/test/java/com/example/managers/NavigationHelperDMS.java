@@ -1,7 +1,5 @@
 package com.example.managers;
 
-import com.example.utilities.PropertyLoader;
-import com.example.utilities.PropertyLoaderCredentials;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
