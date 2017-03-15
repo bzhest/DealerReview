@@ -1,9 +1,8 @@
 package com.example.tests;
 
+import com.example.utilities.PropertyLoader;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -286,7 +285,8 @@ public class ReviewStarsParameters extends TestBase {
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         FormFieldsObject form = new FormFieldsObject()
                 .setNickname("Vasia")
-                .setEmail("autotest@dxloo.com")
+                //.setEmail("autotest@dxloo.com")
+                .setEmail(PropertyLoader.loadProperty("testEmail"))
                 .setLocation("Dnipro")
                 .setReviewTitle("some title")
                 .setReviewText("some text");

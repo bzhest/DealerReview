@@ -18,6 +18,7 @@ public class NavigationHelperDMS extends HelperWithWebDriverBase{
         if (manager.getWebDriverHelper().getDriver().getCurrentUrl() != manager.getWebDriverHelper().baseUrl + "dms") {
             manager.getWebDriverHelper().getDriver().get(manager.getWebDriverHelper().baseUrl + "dms");
                 if(driver.findElements( By.cssSelector("#login") ).size() != 0){
+                    //if(driver.findElements( By.cssSelector(PropertyLoaderCredentials.loadProperty("loginLocator")) ).size() != 0){
                     manager.getFormHelper().loginToDMS("andrey.bzhestovskyy@xloo.com", "#login", "andrey87", "#password");
                     /*manager.getFormHelper().loginToDMS(
                             PropertyLoaderCredentials.loadProperty("loginValue"),
