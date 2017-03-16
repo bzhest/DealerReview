@@ -16,6 +16,7 @@ public class TestBase {
     //Чтобы работать с ApplicationManager - в TestBase должна быть ссылка на ApplicationManager
     public ApplicationManager app;
 
+
     // В методе beforeTest у нас иниц. ApplicationManager, поэтому в его конструктор можем перенести содержимое
     @BeforeTest
     public void beforeTest() {
