@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import utility.PropertyLoader;
 
 import java.util.List;
 
@@ -287,6 +288,7 @@ public class ReviewStarsParameters extends TestBase {
         FormFieldsObject form = new FormFieldsObject()
                 .setNickname("Vasia")
                 .setEmail("autotest@dxloo.com")
+                //.setEmail(PropertyLoader.loadProperty("email"))
                 .setLocation("Dnipro")
                 .setReviewTitle("some title")
                 .setReviewText("some text");
@@ -309,6 +311,7 @@ public class ReviewStarsParameters extends TestBase {
         //app.getFormHelper().markParametersWithStars("3","5");
         app.getFormHelper().clickSubmit();
         app.webDriverHelper.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn.btn-default.return")));
+
         app.getFormHelper().click_Return_OnOpenedModalWindow();
         /*List <WebElement> parametersArrays = app.getWebDriverHelper().getDriver().findElements(By.cssSelector(".starLabel"));
         Assert.assertEquals(parametersArrays.size(), 5);

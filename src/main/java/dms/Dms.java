@@ -1,6 +1,6 @@
 package dms;
 
-import dmsReviews.DealerReview;
+import dmsDealerReviews.DealerReviewDMS;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -23,13 +23,13 @@ public class Dms extends Page {
     private WebElement toolsMenuReviewsItem;
 
     /*go to dms Dealers page*/
-    public DealerReview clickOnReviewsMenu() {
+    public DealerReviewDMS clickOnReviewsMenu() {
         /*move mouse on Admin menu item*/
         Actions action = new Actions(driver);
         Action moveToElem = action.moveToElement(toolsMenu).build();
         moveToElem.perform();
         toolsMenuReviewsItem.click();
-        return PageFactory.initElements(driver, DealerReview.class);
+        return PageFactory.initElements(driver, DealerReviewDMS.class);
     }
 
 }
