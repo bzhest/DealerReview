@@ -145,4 +145,132 @@ public class DealerReviewDWS {
         }
     }
 
+    public boolean isRateYourDealerTitleDisplayed() {
+        try{
+            rateYourDealerTitle.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isNicknameTitleDisplayed() {
+        try{
+            nicknameTitle.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isEmailTitleDisplayed() {
+        try{
+            emailTitle.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isLocationTitleDisplayed() {
+        try{
+            locationTitle.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isParameterYourOverallRatingDisplayed() {
+        try{
+            parameterYourOverallRating.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isParameterCustomerServiceDisplayed() {
+        try{
+            parameterCustomerService.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isParameterBuyingProcessDisplayed() {
+        try{
+            parameterBuyingProcess.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isParameterQualityOfRepairDisplayed() {
+        try{
+            parameterQualityOfRepair.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isParameterOverallFacilitiesDisplayed() {
+        try{
+            parameterOverallFacilities.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isReviewTitleDisplayed() {
+        try{
+            reviewTitle.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isReviewTextDisplayed() {
+        try{
+            reviewText.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isRecomendThisDealerOptionDisplayed() {
+        try{
+            recomendThisDealerOption.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isPurchaseAVehicleFromThisDealerOptionDisplayed() {
+        try{
+            purchaseAVehicleFromThisDealerOption.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isStarsDisplayed(int parameterNumber) {
+        try{
+            stars.get(parameterNumber).isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+
+
 }
