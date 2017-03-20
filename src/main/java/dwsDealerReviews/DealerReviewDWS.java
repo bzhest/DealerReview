@@ -74,8 +74,12 @@ public class DealerReviewDWS {
     @FindBy(how = How.XPATH, using = "(//div[@class='panel-body']//div[@class='text-center'])[1]")
     private WebElement postForm;
 
-    @FindBy(how = How.CLASS_NAME, using = "btn-message-ok")
-    private WebElement postFormOkBtn;
+    @FindBy(how = How.CSS, using = "button.btn.btn-default.return")
+    private WebElement postFormReturnBtn;
+
+    @FindBy(how = How.CSS, using = "button.btn.btn-primary.add_one_more")
+    private WebElement postFormAddOneMoreBtn;
+
 
     //Captcha
 
@@ -105,6 +109,8 @@ public class DealerReviewDWS {
 
     @FindBy(how = How.XPATH, using = "//div[@class='motion-captcha col-lg-12']//canvas")
     private WebElement motionCaptchaCanvas;
+
+    .form-group .radio-inline input[name = "param_recomend"]   :first-child
 
     //Asterics
 
@@ -271,6 +277,64 @@ public class DealerReviewDWS {
         }
     }
 
+    public boolean isCheckboxNADisplayed() {
+        try{
+            checkboxNA.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
 
+    public boolean isIconCrossDisplayed(int crossNumber) {
+        try{
+            iconCross.get(crossNumber).isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isSubmitButtonDisplayed() {
+        try{
+            submitButton.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+    }
+
+    public boolean isPostFormDisplayed() {
+        try {
+            postForm.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    public boolean isPostFormReturnBtnDisplayed() {
+        try {
+            postFormReturnBtn.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    public boolean isPostFormAddOneMoreBtnDisplayed() {
+        try {
+            postFormAddOneMoreBtn.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    /*method click on button*/
+
+    public void clickOnSumbitButton(){submitButton.click();}
+    public void clickOnPostFormReturnButton(){postFormReturnBtn.click();}
+    public void clickOnPostFormAddOneMoreButton(){postFormAddOneMoreBtn.click();}
 
 }
