@@ -13,7 +13,7 @@ import utility.LogFactory;
 /**
  * Created by Andrey on 15.03.2017.
  */
-public class Page {
+public class Page{
     private static final Logger LOG = LogFactory.getLogger(Page.class);
 
     protected WebDriver driver;

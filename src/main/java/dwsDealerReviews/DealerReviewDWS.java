@@ -1,10 +1,12 @@
 package dwsDealerReviews;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.slf4j.Logger;
+import page.Page;
 import utility.LogFactory;
 
 import java.util.List;
@@ -12,7 +14,12 @@ import java.util.List;
 /**
  * Created by Andrey on 18.03.2017.
  */
-public class DealerReviewDWS {
+public class DealerReviewDWS extends Page
+
+{public DealerReviewDWS(WebDriver webDriver) {
+    super(webDriver);
+}
+
     private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 
     //Field titles
@@ -80,6 +87,18 @@ public class DealerReviewDWS {
     @FindBy(how = How.CSS, using = "button.btn.btn-primary.add_one_more")
     private WebElement postFormAddOneMoreBtn;
 
+    @FindBy(how = How.CSS, using = ".form-group .radio-inline input[name = 'param_recomend']:nth(0)")
+    private WebElement recommendThisDealerOptionsYes;
+
+    @FindBy(how = How.CSS, using = ".form-group .radio-inline input[name = 'param_recomend']:nth(1)")
+    private WebElement recommendThisDealerOptionsNo;
+
+    @FindBy(how = How.CSS, using = ".form-group .radio-inline input[name = 'param_purchase']:nth(0)")
+    private WebElement purchasedAVehicleFromThisDealerOptionsYes;
+
+    @FindBy(how = How.CSS, using = ".form-group .radio-inline input[name = 'param_purchase']:nth(1)")
+    private WebElement purchasedAVehicleFromThisDealerOptionsNo;
+
 
     //Captcha
 
@@ -110,7 +129,7 @@ public class DealerReviewDWS {
     @FindBy(how = How.XPATH, using = "//div[@class='motion-captcha col-lg-12']//canvas")
     private WebElement motionCaptchaCanvas;
 
-    .form-group .radio-inline input[name = "param_recomend"]   :first-child
+
 
     //Asterics
 
@@ -139,6 +158,8 @@ public class DealerReviewDWS {
 
     @FindBy(how = How.CSS, using = "textarea[name='content']")
     private WebElement contentInput;
+
+
 
     /*methods for check if element exists*/
 
@@ -336,5 +357,38 @@ public class DealerReviewDWS {
     public void clickOnSumbitButton(){submitButton.click();}
     public void clickOnPostFormReturnButton(){postFormReturnBtn.click();}
     public void clickOnPostFormAddOneMoreButton(){postFormAddOneMoreBtn.click();}
+    public void clickRecommendThisDealerOptionsYes() {recommendThisDealerOptionsYes.click();}
+    public void clickRecommendThisDealerOptionsNo() {recommendThisDealerOptionsNo.click();}
+    public void clickPurchasedAVehicleFromThisDealerOptionsYes() {purchasedAVehicleFromThisDealerOptionsYes.click();}
+    public void clickPurchasedAVehicleFromThisDealerOptionsNo() {purchasedAVehicleFromThisDealerOptionsNo.click();}
 
+    /*methods for getting border color of input elements*/
+
+    public String getNicknameTitleColor (){return nicknameTitle.getCssValue("border-color");}
+    public String getNicknameInputColor (){return nicknameInput.getCssValue("border-color");}
+    public String getEmailTitleColor() {return emailTitle.getCssValue("border-color");}
+    public String getUserEmailInputColor() {return userEmailInput.getCssValue("border-color");}
+    public String getLocationTitleColor() {return locationTitle.getCssValue("border-color");}
+    public String getUserLocationInputColor() {return userLocationInput.getCssValue("border-color");}
+    public String getReviewTitleColor() {return reviewTitle.getCssValue("border-color");}
+    public String getTitleInputColor() {return titleInput.getCssValue("border-color");}
+    public String getReviewTextColor() {return reviewText.getCssValue("border-color");}
+    public String getContentInputColor() {return contentInput.getCssValue("border-color");}
+
+    /*methods for check if cursor is in input*/
+
+    public boolean isNicknameInputSelected() {return driver.switchTo().activeElement().equals(nicknameInput);}
+    public boolean isUserEmailInputSelected() {return driver.switchTo().activeElement().equals(userEmailInput);}
+    public boolean isUserLocationInputSelected() {return driver.switchTo().activeElement().equals(userLocationInput);}
+    public boolean isTitleInputSelected() {return driver.switchTo().activeElement().equals(titleInput);}
+    public boolean isContentInputSelected() {return driver.switchTo().activeElement().equals(contentInput);}
+
+    /*methods for getting font-color of labels*/
+
+    public String getNicknameTitleFontColor() {return nicknameTitle.getCssValue("color");}
+    public String getEmailTitleFontColor() {return emailTitle.getCssValue("color");}
+    public String getLocationTitleFontColor() {return locationTitle.getCssValue("color");}
+    public String getReviewTitleFontColor() {return reviewTitle.getCssValue("color");}
+    public String getReviewTextFontColor() {return reviewText.getCssValue("color");}
+    
 }
