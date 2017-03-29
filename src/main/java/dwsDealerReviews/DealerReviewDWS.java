@@ -8,7 +8,6 @@ import org.openqa.selenium.support.How;
 import org.slf4j.Logger;
 import page.Page;
 import utility.LogFactory;
-import utility.PropertyLoader;
 
 import java.util.List;
 
@@ -375,10 +374,6 @@ public class DealerReviewDWS extends Page
     public String getTitleInputColor() {return titleInput.getCssValue("border-color");}
     public String getReviewTextColor() {return reviewText.getCssValue("border-color");}
     public String getContentInputColor() {return contentInput.getCssValue("border-color");}
-    public String getMotionCaptchaCanvasColor() {return motionCaptchaCanvas.getCssValue("border-color");}
-    public String getCaptchaInputColor() {return captchaInput.getCssValue("border-color");}
-
-
 
     /*methods for check if cursor is in input*/
 
@@ -396,32 +391,4 @@ public class DealerReviewDWS extends Page
     public String getReviewTitleFontColor() {return reviewTitle.getCssValue("color");}
     public String getReviewTextFontColor() {return reviewText.getCssValue("color");}
 
-    /*methods for filling inputs with some values*/
-
-    public void fillNickname(){
-    nicknameInput.clear();
-    nicknameInput.sendKeys("Leonel Messi");
-    }
-
-    public void fillEmail(){
-        userEmailInput.clear();
-        userEmailInput.sendKeys(PropertyLoader.loadProperty("Email1"));
-    }
-
-    public void fillLocation(){
-        userLocationInput.clear();
-        userLocationInput.sendKeys("Barcelona, estadio Camp Nou");
-    }
-
-    public void fillTitle(){
-        titleInput.clear();
-        titleInput.sendKeys(PropertyLoader.loadProperty("title"));
-    }
-
-    public void fillContent(){
-        contentInput.clear();
-        contentInput.sendKeys(PropertyLoader.loadProperty("content"));
-    }
-
-    
 }
