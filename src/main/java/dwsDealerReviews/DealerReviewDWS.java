@@ -1,8 +1,10 @@
 package dwsDealerReviews;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.slf4j.Logger;
@@ -24,6 +26,9 @@ public class DealerReviewDWS extends Page
     private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 
     //Field titles
+
+    @FindBy(how = How.CSS, using = "modul-r-reviewForm")
+    private WebElement widget;
 
     @FindBy(how = How.XPATH, using = "//div[@class='panel-title']")
     private WebElement widgetTitle;
@@ -163,6 +168,15 @@ public class DealerReviewDWS extends Page
 
 
     /*methods for check if element exists*/
+
+    public boolean isWidgetExists() {
+        try {
+            widget.isDisplayed();
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
 
     public boolean isWidgetTitleDisplayed() {
         try {
@@ -399,9 +413,9 @@ public class DealerReviewDWS extends Page
         nicknameInput.sendKeys("Leo Messi");
     }
 
-    public void fillUserEmail() {
+    public void fillUserEmail(String email) {
         userEmailInput.clear();
-        userEmailInput.sendKeys(PropertyLoaderCredentials.loadProperty("correctEmail1"));
+        userEmailInput.sendKeys(PropertyLoaderCredentials.loadProperty(email));
     }
 
     public void fillLocation() {
@@ -409,14 +423,36 @@ public class DealerReviewDWS extends Page
         userLocationInput.sendKeys("Espania, Barcelone, Nou Camp");
     }
 
-    public void fillTitle() {
+    public void fillReviewTitle() {
         titleInput.clear();
-        titleInput.sendKeys("John");
+        titleInput.sendKeys(PropertyLoaderCredentials.loadProperty("titleText"));
     }
 
-    public void fillContent() {
+    public void fillReviewContent() {
         contentInput.clear();
-        contentInput.sendKeys("John");
+        contentInput.sendKeys(PropertyLoaderCredentials.loadProperty("contentText"));
+    }
+
+    //method for selecting stars on "Rate Your Dealer" block
+    public void selectStar(final String paramNumber, String starNumber) {
+            //paramNumber - take values from 1 to 5 (step 1)
+            //starNumber - take values from 0.5 to 5.0 (step 0.5)
+        double d= Double.valueOf(starNumber);
+        if (d==(int)d){
+            //Если starNumber - єто Integer, то наведение курсора на звезду со сдвигом право (получение целой звезди)
+            WebElement star = getWebDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star.getSize().getWidth();
+            Actions act = new Actions(getWebDriver());
+            act.moveToElement(star).moveByOffset((width/2)-2, 0).click().perform();
+        }else{
+            //Если starNumber - єто Double, то наведение курсора на звезду со сдвигом влево (получение половины звезди)
+            starNumber = "" + (int)(Double.parseDouble(starNumber)+0.5);
+            WebElement star1 = getWebDriver().findElement(By.xpath("//div[@class=\"col-lg-6 col-md-6 col-sm-12 col-xs-12 full-width-in-thin\"]/div[@class=\"form-control-static row\"][" + paramNumber + "]//span[@class=\"stars\"]/i[@class=\"fa fa-star-o\"][" + starNumber + "]"));
+            int width = star1.getSize().getWidth();
+            Actions act = new Actions(getWebDriver());
+            act.moveToElement(star1).moveByOffset((width/2)-8, 0).click().perform();
+        }
+
     }
 
 }
