@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 import org.slf4j.Logger;
 import page.Page;
 import utility.LogFactory;
+import utility.PropertyLoaderCredentials;
 
 import java.util.List;
 
@@ -390,5 +391,32 @@ public class DealerReviewDWS extends Page
     public String getLocationTitleFontColor() {return locationTitle.getCssValue("color");}
     public String getReviewTitleFontColor() {return reviewTitle.getCssValue("color");}
     public String getReviewTextFontColor() {return reviewText.getCssValue("color");}
+
+    /*methods for filling inputs with some values*/
+
+    public void fillNickname() {
+        nicknameInput.clear();
+        nicknameInput.sendKeys("Leo Messi");
+    }
+
+    public void fillUserEmail() {
+        userEmailInput.clear();
+        userEmailInput.sendKeys(PropertyLoaderCredentials.loadProperty("correctEmail1"));
+    }
+
+    public void fillLocation() {
+        userLocationInput.clear();
+        userLocationInput.sendKeys("Espania, Barcelone, Nou Camp");
+    }
+
+    public void fillTitle() {
+        titleInput.clear();
+        titleInput.sendKeys("John");
+    }
+
+    public void fillContent() {
+        contentInput.clear();
+        contentInput.sendKeys("John");
+    }
 
 }
