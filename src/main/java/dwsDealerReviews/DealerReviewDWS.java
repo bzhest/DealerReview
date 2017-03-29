@@ -455,4 +455,22 @@ public class DealerReviewDWS extends Page
 
     }
 
+    /*Methods for getting text from input*/
+
+    public String nickNameGetValue() {
+        return nicknameInput.getAttribute("value");
+    }
+    public String locationGetValue() {
+        return userLocationInput.getAttribute("value");
+    }
+    public String emailGetValue() {
+        return userEmailInput.getAttribute("value");
+    }
+    public String titleGetValue() {
+        return titleInput.getAttribute("value");
+    }
+    public String contentGetValue() {
+        return contentInput.getAttribute("value");
+    }
+
 }
