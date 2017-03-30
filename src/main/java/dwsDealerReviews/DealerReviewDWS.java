@@ -10,6 +10,7 @@ import org.openqa.selenium.support.How;
 import org.slf4j.Logger;
 import page.Page;
 import utility.LogFactory;
+import utility.Logger_lesson8;
 import utility.PropertyLoaderCredentials;
 
 import java.util.List;
@@ -472,5 +473,6 @@ public class DealerReviewDWS extends Page
     public String contentGetValue() {
         return contentInput.getAttribute("value");
     }
+
 
 }
