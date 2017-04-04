@@ -1,6 +1,5 @@
 package dms;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,23 +27,23 @@ public class DmsLoginForm extends Page {
 
     /*method of logging to dms under supervisor*/
 
-    public Dms loginToDMSUnderSupervisor(){
+    public DmsMainPage loginToDMSUnderSupervisor(){
         loginInput.clear();
         loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"));
         passwordInput.clear();
         passwordInput.sendKeys(PropertyLoaderCredentials.loadProperty("passwordValueSupervisor"));
         signInButton.click();
-        return PageFactory.initElements(driver, Dms.class);
+        return PageFactory.initElements(driver, DmsMainPage.class);
     }
 
     /*method of logging to dms under manager*/
-    public Dms loginToDMSUnderManager() {
+    public DmsMainPage loginToDMSUnderManager() {
         loginInput.clear();
         loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueManager")); //login is taken from credentials.properties file
         passwordInput.clear();
         passwordInput.sendKeys(PropertyLoaderCredentials.loadProperty("passwordValueManager")); //password is taken from credentials.properties file
         signInButton.click();
-        return PageFactory.initElements(driver, Dms.class);
+        return PageFactory.initElements(driver, DmsMainPage.class);
     }
 
 }

@@ -12,15 +12,15 @@ import java.util.List;
 /**
  * Created by SYSTEM on 16.03.2017.
  */
-public class DealerReviewDMS extends Page {
-    public DealerReviewDMS(WebDriver webDriver) {super(webDriver);}
+public class ToolsReviewsDealerReviewsPage extends Page {
+    public ToolsReviewsDealerReviewsPage(WebDriver webDriver) {super(webDriver);}
 
+    //Получаю список всех Ревью
     @FindBy(how = How.CSS, using = ".ui-widget-content.jqgrow.ui-row-ltr")
     private List<WebElement> listOfReviews;
 
-
     @FindBy(how = How.CSS, using = "td[title='Delete review']")
-            private WebElement deleteButton;
+    private WebElement deleteButton;
 
     //ID-шник последнего добавленного ревью
     int ReviewIDforLastAddedReviewDMS = Integer.parseInt(getItemFromReviewsList(0).getAttribute("id"));

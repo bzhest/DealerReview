@@ -1,6 +1,6 @@
 package dms;
 
-import dmsDealerReviews.DealerReviewDMS;
+import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -13,8 +13,8 @@ import page.Page;
 /**
  * Created by SYSTEM on 16.03.2017.
  */
-public class Dms extends Page {
-    public Dms(WebDriver webDriver){super(webDriver);}
+public class DmsMainPage extends Page {
+    public DmsMainPage(WebDriver webDriver){super(webDriver);}
 
     @FindBy(how = How.CSS, using = "a[href='/dms/tools']")
     private WebElement toolsMenu;
@@ -23,13 +23,13 @@ public class Dms extends Page {
     private WebElement toolsMenuReviewsItem;
 
     /*go to dms Dealers page*/
-    public DealerReviewDMS clickOnReviewsMenu() {
+    public ToolsReviewsDealerReviewsPage clickOnReviewsMenu() {
         /*move mouse on Admin menu item*/
         Actions action = new Actions(driver);
         Action moveToElem = action.moveToElement(toolsMenu).build();
         moveToElem.perform();
         toolsMenuReviewsItem.click();
-        return PageFactory.initElements(driver, DealerReviewDMS.class);
+        return PageFactory.initElements(driver, ToolsReviewsDealerReviewsPage.class);
     }
 
 }
