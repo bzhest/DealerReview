@@ -96,42 +96,20 @@ public class AreDealerFormElementsDisplayed extends Base1 {
         logger.log("Check if number of empty stars on a page is 25");
         Assert.assertEquals(app.getDealerReviewDWS().countStarsNumber(),25);}
 
+    @Test
+    public void isCheckboxNADisplayed(){
+        logger.log("Check if checkbox \"NA\" is displayed");
+        Assert.assertTrue(app.getDealerReviewDWS().isCheckboxNADisplayed());}
+
+    @Test
+    public void countCrossIconsNumber(){
+        logger.log("Check if number of icons \"Cross\" to clean stars is 5");
+        Assert.assertEquals(app.getDealerReviewDWS().countCrossIconsNumber(),5);}
+
+    @Test
+    public void isSubmitButtonDisplayed(){
+        logger.log("Check if button \"Submit\" is displayed");
+        Assert.assertTrue(app.getDealerReviewDWS().isSubmitButtonDisplayed());}
+
 }
 
-
-
-    public boolean isStarsDisplayed(int parameterNumber) {
-        try{
-            stars.get(parameterNumber).isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }
-
-    public boolean isCheckboxNADisplayed() {
-        try{
-            checkboxNA.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }
-
-    public boolean isIconCrossDisplayed(int crossNumber) {
-        try{
-            iconCross.get(crossNumber).isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }
-
-    public boolean isSubmitButtonDisplayed() {
-        try{
-            submitButton.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }

@@ -10,20 +10,36 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by SYSTEM on 04.04.2017.
  */
-public class ApplicationMan {
-    private static ApplicationMan singleton;
+public class ConfigurationManager {
+
     private ToolsReviewsDealerReviewsPage toolsReviewsDealerReviewsPage;
     private WebDriver driver;
     private SettingsReviewDealershipReviewSettings settingsReviewDealershipReviewSettings;
     private DmsMainPage dmsMainPage;
     private DmsLoginForm dmsLoginForm;
     private DealerReviewDWS dealerReviewDWS;
+    private static ConfigurationManager instance = null;
 
-    public static ApplicationMan getInstance() {
-        if (singleton == null) {
-            singleton = new ApplicationMan();
-        }
-        return singleton;
+    public static ConfigurationManager getInstance(){
+        if (instance ==null)
+            instance = new ConfigurationManager();
+        return instance;
+    }
+
+    private ConfigurationManager(){
+
+    }
+
+    public String getTestBrowser(){
+        return getEnvironmentVariableOrDefault("testBrowser", "chrome");
+    }
+
+    public String getTestEnv(){
+        return getEnvironmentVariableOrDefault("testEnv", "production");
+    }
+
+    private String getEnvironmentVariableOrDefault(String envVar, String defaultValue){
+        return System.getenv(envVar) != null ? System.getenv(envVar) : defaultValue;
     }
 
     public ToolsReviewsDealerReviewsPage getToolsReviewsDealerReviewsPage() {
@@ -80,7 +96,7 @@ public class ApplicationMan {
 
     @Override
     public String toString() {
-        return "ApplicationMan{" +
+        return "ConfigurationManager{" +
                 "toolsReviewsDealerReviewsPage=" + toolsReviewsDealerReviewsPage +
                 ", driver=" + driver +
                 ", settingsReviewDealershipReviewSettings=" + settingsReviewDealershipReviewSettings +

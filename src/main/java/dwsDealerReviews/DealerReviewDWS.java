@@ -370,6 +370,7 @@ public class DealerReviewDWS extends Page
     }
 
     public int countStarsNumber(){return emptyStar.size();}
+    public int countCrossIconsNumber(){return iconCross.size();}
 
     /*method click on button*/
 
