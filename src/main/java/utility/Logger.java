@@ -6,8 +6,8 @@ import java.util.Date;
 /**
  * Created by Andrey on 30.03.2017.
  */
-public class Logger_lesson8 {
-    int counter = 1;
+public class Logger {
+    private int counter = 1;
 
     public void log(String msg){
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");

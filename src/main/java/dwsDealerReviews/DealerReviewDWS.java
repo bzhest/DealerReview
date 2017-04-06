@@ -7,10 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.slf4j.Logger;
 import page.Page;
 import utility.LogFactory;
-import utility.Logger_lesson8;
 import utility.PropertyLoaderCredentials;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class DealerReviewDWS extends Page
     super(webDriver);
 }
 
-    private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
+    //private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 
     //Field titles
 
@@ -165,6 +163,9 @@ public class DealerReviewDWS extends Page
 
     @FindBy(how = How.CSS, using = "textarea[name='content']")
     private WebElement contentInput;
+
+    @FindBy(how = How.CSS, using = ".fa-star-o")
+    private List <WebElement> emptyStar;
 
 
 
@@ -368,6 +369,8 @@ public class DealerReviewDWS extends Page
         }
     }
 
+    public int countStarsNumber(){return emptyStar.size();}
+
     /*method click on button*/
 
     public void clickOnSumbitButton(){submitButton.click();}
@@ -473,6 +476,7 @@ public class DealerReviewDWS extends Page
     public String contentGetValue() {
         return contentInput.getAttribute("value");
     }
+
 
 
 }

@@ -15,6 +15,7 @@ import utility.LogFactory;
  */
 public class Page{
     private static final Logger LOG = LogFactory.getLogger(Page.class);
+    public Logger logger;
 
     protected WebDriver driver;
 
