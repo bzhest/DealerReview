@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -57,7 +58,7 @@ public class Page{
         };
 
         // wait for jQuery to load
-        ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+            ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
                 try {
@@ -70,5 +71,10 @@ public class Page{
             }
         };
         return wait.until(jQueryLoad) && wait.until(jsLoad);
+    }
+
+    public void inputText(WebElement webElement, String value){
+        webElement.clear();
+        webElement.sendKeys(value);
     }
 }
