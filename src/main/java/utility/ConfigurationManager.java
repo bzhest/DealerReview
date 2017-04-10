@@ -93,6 +93,11 @@ public class ConfigurationManager {
         this.dealerReviewDWS = dealerReviewDWS;
     }
 
+    public Users getUsers() {
+        return users;
+    }
 
-
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 }

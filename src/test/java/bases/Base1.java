@@ -3,14 +3,16 @@ package bases;
 
 import com.example.managers.ApplicationManager;
 import dms.DmsLoginForm;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import utility.ConfigurationManager;
-import utility.Logger;
-import utility.TestBrowser;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.*;
+import page.Page;
+import utility.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
@@ -25,6 +27,20 @@ public class Base1 {
     public StringBuffer verificationErrors = new StringBuffer();
     protected DmsLoginForm dmsLoginForm;
     protected TestBrowser testBrowser;
+
+    @BeforeSuite
+    public void turnOnMap2() throws InterruptedException {
+        logger.log("Navigating to test url");
+        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        app.getDmsLoginForm().loginToDMSUnderSupervisor();
+        app.getDmsMainPage().clickOnUsersMenu();
+        app.getUsers().openUserEditor();
+
+
+    }
 
     @BeforeClass
     public void setUp() {
@@ -51,5 +67,30 @@ public class Base1 {
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
+    }
+
+    public boolean waitForJSandJQueryToLoad() {
+        WebDriverWait wait = new WebDriverWait(driver, 35);
+    /*method for execute Java Script: page should be loaded*/
+        ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
+        // wait for jQuery to load
+        ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                try {
+                    return ((Long)((JavascriptExecutor)driver).executeScript("return jQuery.active") == 0);
+                }
+                catch (Exception e) {
+                    // no jQuery present
+                    return true;
+                }
+            }
+        };
+        return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import page.Page;
+import settings.Users;
 
 /**
  * Created by SYSTEM on 16.03.2017.
@@ -32,4 +33,7 @@ public class DmsMainPage extends Page {
         return PageFactory.initElements(driver, ToolsReviewsDealerReviewsPage.class);
     }
 
+    public void clickOnUsersMenu() {
+        driver.get("http://www.solomia.andreyb.ixloo.com/dms/settings/users");
+    }
 }
