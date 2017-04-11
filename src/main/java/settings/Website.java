@@ -8,13 +8,17 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import page.Page;
+import utility.ConfigurationManager;
 
 /**
  * Created by Julia on 04.01.2017.
  */
 public class Website extends Page {
-    public Website(WebDriver webDriver) {
+    /*public Website(WebDriver webDriver) {
         super(webDriver);
+    }*/
+    public Website(ConfigurationManager app) {
+        super(app);
     }
 
     /*declare elements on the page*/
@@ -130,7 +134,8 @@ public class Website extends Page {
 
     /*set jQuery version - 1.11.2 (if it is not equal to that)*/
     public void setjQueryVersion() {
-        if (jQueryValue.getText() != "1.11.2") {
+            waitForJSandJQueryToLoad();
+        if (!jQueryValue.getText().equals("1.11.2")) {
             jQueryEditBtn.click();
             jQueryInput.clear();
             jQueryInput.sendKeys("1.11.2");
@@ -138,10 +143,15 @@ public class Website extends Page {
         }
     }
 
-    public void set404Redir(String value404){
+    public void set404Redir(String value404) {
         the404EditBtn.click();
         WebElement select = the404Select;
         Select options = new Select(select);
         options.selectByVisibleText(value404);
+    }
+
+    public void clickOnWebsiteMenu() {
+        waitForJSandJQueryToLoad();
+        driver.get("http://www.solomia.andreyb.ixloo.com/dms/settings/website#general");
     }
 }

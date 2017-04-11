@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import page.Page;
+import utility.ConfigurationManager;
 
 import java.util.List;
 
@@ -17,9 +18,11 @@ import java.util.List;
  */
 public class Users extends Page {
 
-    public  Users (WebDriver webDriver){
+    /*public  Users (WebDriver webDriver){
         super(webDriver);
-    }
+    }*/
+    public Users (ConfigurationManager app)
+    {super(app);}
 
     @FindBy(how = How.CSS, using = ".rootUserBranch.jstree-open.jstree-last>a")
     private WebElement rootUser;

@@ -10,12 +10,15 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import page.Page;
 import settings.Users;
+import utility.ConfigurationManager;
 
 /**
  * Created by SYSTEM on 16.03.2017.
  */
 public class DmsMainPage extends Page {
-    public DmsMainPage(WebDriver webDriver){super(webDriver);}
+    /*public DmsMainPage(WebDriver webDriver){super(webDriver);}*/
+    public DmsMainPage (ConfigurationManager manager)
+    {super(manager);}
 
     @FindBy(how = How.CSS, using = "a[href='/dms/tools']")
     private WebElement toolsMenu;

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import page.Page;
+import settings.Website;
 import utility.*;
 
 import java.util.concurrent.TimeUnit;
@@ -28,17 +29,25 @@ public class Base1 {
     protected DmsLoginForm dmsLoginForm;
     protected TestBrowser testBrowser;
 
+
     @BeforeSuite
     public void turnOnMap2() throws InterruptedException {
-        logger.log("Navigating to test url");
+        //logger.log("Navigating to test url");
+        app = ConfigurationManager.getInstance();
+        app = new ConfigurationManager();
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-        driver.get(PropertyLoader.loadProperty("dms.url"));
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        //driver.get(PropertyLoader.loadProperty("dms.url"));
+        driver.get("http://www.solomia.andreyb.ixloo.com/dms");
         app.getDmsLoginForm().loginToDMSUnderSupervisor();
         app.getDmsMainPage().clickOnUsersMenu();
         app.getUsers().openUserEditor();
-
+        app.getUserEditor().turnOnMAP2();
+        app.getWebsite().clickOnWebsiteMenu();
+        app.getWebsite().disableCaptcha();
+        app.getWebsite().setjQueryVersion();
 
     }
 

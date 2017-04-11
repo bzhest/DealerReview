@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
+import utility.ConfigurationManager;
 import utility.LogFactory;
 
 
@@ -17,7 +18,7 @@ import utility.LogFactory;
 public class Page{
     private static final Logger LOG = LogFactory.getLogger(Page.class);
     public Logger logger;
-
+    private ConfigurationManager manager;
     protected WebDriver driver;
 
 
@@ -27,9 +28,13 @@ public class Page{
          * @param webDriver
          */
 
-    public Page(WebDriver webDriver) {
+    /*public Page(WebDriver webDriver) {
         this.driver = webDriver;
         //PageFactory.InitElements(driver, this);
+    }*/
+    public Page(ConfigurationManager manager){
+        this.manager = manager;
+        //driver = manager.getPage().getWebDriver();
     }
 
     public WebDriver getWebDriver() {

@@ -7,15 +7,18 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import page.Page;
+import utility.ConfigurationManager;
 import utility.PropertyLoaderCredentials;
 
 /**
  * Created by SYSTEM on 07.04.2017.
  */
 public class UserEditor extends Page {
-    public UserEditor (WebDriver webDriver){
+    /*public UserEditor (WebDriver webDriver){
         super(webDriver);
-    }
+    }*/
+    public UserEditor (ConfigurationManager app)
+    {super(app);}
 
     /*declare elements on the page*/
     @FindBy(how = How.ID, using = "user_editor_tab4")

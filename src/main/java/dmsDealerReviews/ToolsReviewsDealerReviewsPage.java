@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import page.Page;
+import utility.ConfigurationManager;
 
 import java.util.List;
 
@@ -13,7 +14,9 @@ import java.util.List;
  * Created by SYSTEM on 16.03.2017.
  */
 public class ToolsReviewsDealerReviewsPage extends Page {
-    public ToolsReviewsDealerReviewsPage(WebDriver webDriver) {super(webDriver);}
+    /*public ToolsReviewsDealerReviewsPage(WebDriver webDriver) {super(webDriver);}*/
+    public ToolsReviewsDealerReviewsPage (ConfigurationManager manager)
+    {super(manager);}
 
     //Получаю список всех Ревью
     @FindBy(how = How.CSS, using = ".ui-widget-content.jqgrow.ui-row-ltr")

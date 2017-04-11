@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import page.Page;
+import utility.ConfigurationManager;
 import utility.LogFactory;
 import utility.PropertyLoaderCredentials;
 
@@ -16,11 +17,12 @@ import java.util.List;
 /**
  * Created by Andrey on 18.03.2017.
  */
-public class DealerReviewDWS extends Page
-
-{public DealerReviewDWS(WebDriver webDriver) {
+public class DealerReviewDWS extends Page {
+    /*public DealerReviewDWS(WebDriver webDriver) {
     super(webDriver);
-}
+}*/
+    public DealerReviewDWS (ConfigurationManager app)
+    {super(app);}
 
     //private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 
