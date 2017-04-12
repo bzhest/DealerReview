@@ -4,7 +4,7 @@ package utility;
  * Created by SYSTEM on 07.04.2017.
  */
 public class TestBrowser {
-    public String create(){
+    /*public String create(){
         String testBrowser= ConfigurationManager.getInstance().getTestBrowser();
         switch(testBrowser){
             case "chrome":
@@ -19,5 +19,5 @@ public class TestBrowser {
         }
     }
 
-    public void destroy(String browser){System.out.println("Browser" + browser + "closed");}
+    public void destroy(String browser){System.out.println("Browser" + browser + "closed");}*/
 }

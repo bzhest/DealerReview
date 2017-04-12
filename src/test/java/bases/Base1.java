@@ -3,6 +3,7 @@ package bases;
 
 import com.example.managers.ApplicationManager;
 import dms.DmsLoginForm;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +23,7 @@ import static org.testng.Assert.fail;
  */
 public class Base1 {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
-    public ConfigurationManager app;
+    public ConfigurationManager manager;
     public Logger logger;
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
@@ -33,21 +34,23 @@ public class Base1 {
     @BeforeSuite
     public void turnOnMap2() throws InterruptedException {
         //logger.log("Navigating to test url");
-        app = ConfigurationManager.getInstance();
-        app = new ConfigurationManager();
+        manager = ConfigurationManager.getInstance();
+        //app = new ConfigurationManager();
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //driver.get(PropertyLoader.loadProperty("dms.url"));
         driver.get("http://www.solomia.andreyb.ixloo.com/dms");
-        app.getDmsLoginForm().loginToDMSUnderSupervisor();
-        app.getDmsMainPage().clickOnUsersMenu();
-        app.getUsers().openUserEditor();
-        app.getUserEditor().turnOnMAP2();
-        app.getWebsite().clickOnWebsiteMenu();
-        app.getWebsite().disableCaptcha();
-        app.getWebsite().setjQueryVersion();
+        //driver.findElement(By.cssSelector("#login")).clear();
+        //driver.findElement(By.cssSelector("#login")).sendKeys("Hello");
+        manager.getDmsLoginForm().loginToDMSUnderSupervisor();
+        manager.getDmsMainPage().clickOnUsersMenu();
+        manager.getUsers().openUserEditor();
+        manager.getUserEditor().turnOnMAP2();
+        manager.getWebsite().clickOnWebsiteMenu();
+        manager.getWebsite().disableCaptcha();
+        manager.getWebsite().setjQueryVersion();
 
     }
 
@@ -59,7 +62,7 @@ public class Base1 {
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver.get("http://www.google.com");
         logger.log("Create singleton");
-        app = ConfigurationManager.getInstance();
+        manager = ConfigurationManager.getInstance();
 
     }
 

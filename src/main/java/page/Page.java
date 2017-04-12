@@ -18,7 +18,7 @@ import utility.LogFactory;
 public class Page{
     private static final Logger LOG = LogFactory.getLogger(Page.class);
     public Logger logger;
-    private ConfigurationManager manager;
+    public ConfigurationManager manager;
     protected WebDriver driver;
 
 
@@ -32,6 +32,7 @@ public class Page{
         this.driver = webDriver;
         //PageFactory.InitElements(driver, this);
     }*/
+
     public Page(ConfigurationManager manager){
         this.manager = manager;
         //driver = manager.getPage().getWebDriver();

@@ -27,7 +27,7 @@ public class ConfigurationManager {
     private Website website;
     private Page page;
     //From my curses --------------------------------------------------------------------------------------------
-    private static ConfigurationManager instance=null;
+    private static ConfigurationManager instance;
 
 
     public static ConfigurationManager getInstance(){
@@ -36,7 +36,7 @@ public class ConfigurationManager {
         return instance;
     }
 
-    public ConfigurationManager(){}
+    //public ConfigurationManager(){}
 
     public String getTestBrowser(){
         return getEnvironmentVariableOrDefault("testBrowser", "chrome");
@@ -50,6 +50,13 @@ public class ConfigurationManager {
         return System.getenv(envVar) != null ? System.getenv(envVar) : defaultValue;
     }
 //-------------------------------------------------------------------------------------------------------------------------
+    public DmsLoginForm getDmsLoginForm(){
+    if(dmsLoginForm == null){
+        dmsLoginForm = new DmsLoginForm(this);
+    }
+    return dmsLoginForm;
+}
+
     public ToolsReviewsDealerReviewsPage getToolsReviewsDealerReviewsPage() {
         if(toolsReviewsDealerReviewsPage == null){
             toolsReviewsDealerReviewsPage = new ToolsReviewsDealerReviewsPage(this);
@@ -107,9 +114,7 @@ public class ConfigurationManager {
         if(page == null){
             page = new Page(this);}return page;}
 
-    public DmsLoginForm getDmsLoginForm(){
-        if(dmsLoginForm == null){
-            dmsLoginForm = new DmsLoginForm(this);}return dmsLoginForm;}
+
 
 
 }

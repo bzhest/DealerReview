@@ -17,8 +17,8 @@ public class Website extends Page {
     /*public Website(WebDriver webDriver) {
         super(webDriver);
     }*/
-    public Website(ConfigurationManager app) {
-        super(app);
+    public Website(ConfigurationManager manager) {
+        super(manager);
     }
 
     /*declare elements on the page*/

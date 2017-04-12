@@ -21,8 +21,8 @@ public class DealerReviewDWS extends Page {
     /*public DealerReviewDWS(WebDriver webDriver) {
     super(webDriver);
 }*/
-    public DealerReviewDWS (ConfigurationManager app)
-    {super(app);}
+    public DealerReviewDWS (ConfigurationManager manager)
+    {super(manager);}
 
     //private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 

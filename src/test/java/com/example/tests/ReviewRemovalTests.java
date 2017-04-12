@@ -1,5 +1,6 @@
 package com.example.tests;
 
+import com.example.managers.ApplicationManager;
 import org.hamcrest.MatcherAssert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;

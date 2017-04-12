@@ -17,8 +17,8 @@ public class UserEditor extends Page {
     /*public UserEditor (WebDriver webDriver){
         super(webDriver);
     }*/
-    public UserEditor (ConfigurationManager app)
-    {super(app);}
+    public UserEditor (ConfigurationManager manager)
+    {super(manager);}
 
     /*declare elements on the page*/
     @FindBy(how = How.ID, using = "user_editor_tab4")

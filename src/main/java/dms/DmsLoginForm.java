@@ -14,9 +14,12 @@ import utility.PropertyLoaderCredentials;
  * Created by SYSTEM on 16.03.2017.
  */
 public class DmsLoginForm extends Page {
+
     //public DmsLoginForm (WebDriver webDriver){super(webDriver);}
     public DmsLoginForm (ConfigurationManager manager)
     {super(manager);}
+
+
 
     //Declare elements on a page
     @FindBy(how = How.CSS, using = "#login")
@@ -35,7 +38,7 @@ public class DmsLoginForm extends Page {
             webElement.clear();
             webElement.sendKeys(value);
         }*/
-        waitForJSandJQueryToLoad();
+        //waitForJSandJQueryToLoad();
         loginInput.clear();
         //loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"));
         loginInput.sendKeys("andrey.bzhestovskyy@xloo.com");
