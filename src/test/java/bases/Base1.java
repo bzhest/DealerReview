@@ -27,7 +27,7 @@ public class Base1 {
     public Logger logger;
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
-    protected DmsLoginForm dmsLoginForm;
+    public DmsLoginForm dmsLoginForm;
     protected TestBrowser testBrowser;
 
 
@@ -35,7 +35,7 @@ public class Base1 {
     public void turnOnMap2() throws InterruptedException {
         //logger.log("Navigating to test url");
         manager = ConfigurationManager.getInstance();
-        //app = new ConfigurationManager();
+
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -69,7 +69,7 @@ public class Base1 {
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
         logger.log("Close browser");
-        ApplicationManager.getInstance().stop();
+        //ApplicationManager.getInstance().stop();
 
     }
 

@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 /**
  * Created by SYSTEM on 12.04.2017.
  */
-public class testBase {
-   /* protected Logger logger;
+public class TestBase {
+    protected Logger logger;
     protected TestBrowser testBrowser;
 
     public void setUp() {
@@ -23,6 +23,6 @@ public class testBase {
         testBrowser.destroy("");
     }
     protected void beforeTest(){};
-    protected void afterTest(){};*/
+    protected void afterTest(){};
     }
 

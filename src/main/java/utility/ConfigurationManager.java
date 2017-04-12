@@ -17,7 +17,7 @@ import settings.Website;
 public class ConfigurationManager {
 
     private ToolsReviewsDealerReviewsPage toolsReviewsDealerReviewsPage;
-    //private WebDriver driver;
+    private WebDriver driver;
     private SettingsReviewDealershipReviewSettings settingsReviewDealershipReviewSettings;
     private DmsMainPage dmsMainPage;
     private DmsLoginForm dmsLoginForm;
@@ -52,7 +52,7 @@ public class ConfigurationManager {
 //-------------------------------------------------------------------------------------------------------------------------
     public DmsLoginForm getDmsLoginForm(){
     if(dmsLoginForm == null){
-        dmsLoginForm = new DmsLoginForm(this);
+        dmsLoginForm = new DmsLoginForm(getInstance());
     }
     return dmsLoginForm;
 }
