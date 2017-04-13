@@ -24,7 +24,9 @@ public class FormHelper extends HelperWithWebDriverBase {
     }
 
     public Set<FormFieldsObject> getReviewsData() {
+        logger.log("Open home page");
         manager.getNavigationHelperDWS().openHomePage();
+        logger.log("On home page click on Dealer Review link");
         manager.getNavigationHelperDWS().fromHomePageGoToDealerReviewPage();
         WebElement paginationButtonAll = driver.findElements(By.cssSelector(".pagination.pagination-sm>li>a")).get(4);
         paginationButtonAll.click();

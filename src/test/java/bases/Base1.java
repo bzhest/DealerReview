@@ -23,7 +23,7 @@ import static org.testng.Assert.fail;
  */
 public class Base1 {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
-    public ConfigurationManager manager;
+    public ConfigurationManager manager = ConfigurationManager.getInstance();
     public Logger logger;
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
@@ -34,7 +34,8 @@ public class Base1 {
     @BeforeSuite
     public void turnOnMap2() throws InterruptedException {
         //logger.log("Navigating to test url");
-        manager = ConfigurationManager.getInstance();
+
+        //manager = ConfigurationManager.getInstance();
 
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -56,15 +57,16 @@ public class Base1 {
 
     @BeforeClass
     public void setUp() {
-        logger = new Logger();
+        /*logger = new Logger();
 
         driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver.get("http://www.google.com");
         logger.log("Create singleton");
-        manager = ConfigurationManager.getInstance();
-
+        manager = ConfigurationManager.getInstance();*/
     }
+
+
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {

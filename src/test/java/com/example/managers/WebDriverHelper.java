@@ -1,5 +1,6 @@
 package com.example.managers;
 
+import com.example.logHelper.LogBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,9 +21,11 @@ public class WebDriverHelper {
     public StringBuffer verificationErrors = new StringBuffer();
     public ApplicationManager manager;
 
+
     public WebDriverHelper(ApplicationManager manager){
         this.manager = manager;
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //Подождать 30 сек появления какого-то элемента

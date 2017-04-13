@@ -1,5 +1,8 @@
 package com.example.tests;
 
+import com.example.logHelper.FileLogger;
+import com.example.logHelper.LogBase;
+import com.example.logHelper.StdLogger;
 import com.example.managers.ApplicationManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -15,6 +18,11 @@ public class TestBase {
 
     //Чтобы работать с ApplicationManager - в TestBase должна быть ссылка на ApplicationManager
     public ApplicationManager app;
+    LogBase logger = getLogger("File");
+
+    public static LogBase getLogger(String type){
+        return type.equals("File") ? new FileLogger() : new StdLogger();
+    }
 
 
     // В методе beforeTest у нас иниц. ApplicationManager, поэтому в его конструктор можем перенести содержимое
@@ -41,5 +49,6 @@ public class TestBase {
         ApplicationManager.getInstance().stop();
 
     }
+
 
 }

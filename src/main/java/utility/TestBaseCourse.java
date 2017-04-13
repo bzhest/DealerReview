@@ -3,9 +3,9 @@ package utility;
 import org.testng.annotations.Test;
 
 /**
- * Created by SYSTEM on 12.04.2017.
+ * Created by SYSTEM on 13.04.2017.
  */
-public class TestBase {
+public class TestBaseCourse {
     protected Logger logger;
     protected TestBrowser testBrowser;
 
@@ -18,11 +18,10 @@ public class TestBase {
 
         beforeTest();
     }
-        public void tearDown(){
+    public void tearDown(){
         afterTest();
         testBrowser.destroy("");
     }
-    protected void beforeTest(){};
-    protected void afterTest(){};
-    }
-
+    protected void beforeTest(){}
+    protected void afterTest(){}
+}

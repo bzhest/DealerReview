@@ -29,7 +29,6 @@ public class ReviewCreationTests extends TestBase {
         //Действия
         app.getNavigationHelperDWS().onDealerReviewPageClick_AddReview();
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
-
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().selectStar("1", "4");
         app.getFormHelper().selectStar("3", "2");

@@ -52,7 +52,7 @@ public class ConfigurationManager {
 //-------------------------------------------------------------------------------------------------------------------------
     public DmsLoginForm getDmsLoginForm(){
     if(dmsLoginForm == null){
-        dmsLoginForm = new DmsLoginForm(getInstance());
+        dmsLoginForm = new DmsLoginForm(this);
     }
     return dmsLoginForm;
 }

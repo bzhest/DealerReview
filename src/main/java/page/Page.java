@@ -35,7 +35,7 @@ public class Page{
 
     public Page(ConfigurationManager manager){
         this.manager = manager;
-        //driver = manager.getPage().getWebDriver();
+        driver = getWebDriver();
     }
 
     public WebDriver getWebDriver() {
