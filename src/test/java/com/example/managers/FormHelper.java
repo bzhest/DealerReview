@@ -29,6 +29,7 @@ public class FormHelper extends HelperWithWebDriverBase {
         logger.log("On home page click on Dealer Review link");
         manager.getNavigationHelperDWS().fromHomePageGoToDealerReviewPage();
         WebElement paginationButtonAll = driver.findElements(By.cssSelector(".pagination.pagination-sm>li>a")).get(4);
+        logger.log("Click pagination button 'All'");
         paginationButtonAll.click();
         manager.getLoaderHelper().waitForJSandJQueryToLoad();
         //Ниже список элементов List будет перегоняться в множество объектов Set

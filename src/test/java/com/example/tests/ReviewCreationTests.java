@@ -27,7 +27,9 @@ public class ReviewCreationTests extends TestBase {
         //Получения группы Тайтлов до теста
          Set <FormFieldsObject> oldList = app.getFormHelper().getReviewsData();
         //Действия
+        logger.log("Click 'Add Review' button");
         app.getNavigationHelperDWS().onDealerReviewPageClick_AddReview();
+        logger.log("Switch to another window");
         app.getNavigationHelperDWS().switchToAnotherWindow(2);
         app.getFormHelper().fillAllFormFields(validForm);
         app.getFormHelper().selectStar("1", "4");

@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import utility.ConfigurationManager;
 import page.Page;
 import settings.Website;
 import utility.*;
@@ -23,7 +24,7 @@ import static org.testng.Assert.fail;
  */
 public class Base1 {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
-    public ConfigurationManager manager = ConfigurationManager.getInstance();
+    public ConfigurationManager manager;
     public Logger logger;
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
@@ -35,7 +36,7 @@ public class Base1 {
     public void turnOnMap2() throws InterruptedException {
         //logger.log("Navigating to test url");
 
-        //manager = ConfigurationManager.getInstance();
+        manager = ConfigurationManager.getInstance();
 
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();

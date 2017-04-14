@@ -4,10 +4,7 @@ import com.example.logHelper.FileLogger;
 import com.example.logHelper.LogBase;
 import com.example.logHelper.StdLogger;
 import com.example.managers.ApplicationManager;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import static org.testng.Assert.fail;
 
@@ -19,6 +16,7 @@ public class TestBase {
     //Чтобы работать с ApplicationManager - в TestBase должна быть ссылка на ApplicationManager
     public ApplicationManager app;
     LogBase logger = getLogger("File");
+
 
     public static LogBase getLogger(String type){
         return type.equals("File") ? new FileLogger() : new StdLogger();
@@ -32,7 +30,7 @@ public class TestBase {
         app = new ApplicationManager();
     }
 
-    @BeforeClass(alwaysRun = true)
+    /*@BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
 
         //System.setProperty("webdriver.chrome.driver", "E://Selenium_Jars/chromedriver.exe");
@@ -41,10 +39,10 @@ public class TestBase {
         //driver.manage().window().maximize();
         //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-    }
+    }*/
 
     //Ниже указаны реализационные детали (низкоуровневая часть)
-    @AfterClass(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown() throws Exception {
         ApplicationManager.getInstance().stop();
 

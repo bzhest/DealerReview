@@ -29,6 +29,10 @@ public class ConfigurationManager {
     //From my curses --------------------------------------------------------------------------------------------
     private static ConfigurationManager instance;
 
+ public ConfigurationManager(){
+     dmsLoginForm = new DmsLoginForm(getInstance());
+ }
+
 
     public static ConfigurationManager getInstance(){
         if (instance ==null)
