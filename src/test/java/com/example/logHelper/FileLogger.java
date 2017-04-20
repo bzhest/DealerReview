@@ -1,11 +1,14 @@
 package com.example.logHelper;
 
+import utility.ConfigurationManager;
+
 import java.io.FileWriter;
 
 /**
  * Created by Andrey on 13.04.2017.
  */
 public  class FileLogger extends LogBase {
+
 
     @Override
     public void log(String msg) {

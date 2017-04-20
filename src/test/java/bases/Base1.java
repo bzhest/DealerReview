@@ -1,6 +1,7 @@
 package bases;
 
 
+import com.example.logHelper.LogBase;
 import com.example.managers.ApplicationManager;
 import dms.DmsLoginForm;
 import org.openqa.selenium.By;
@@ -15,6 +16,7 @@ import utility.ConfigurationManager;
 import page.Page;
 import settings.Website;
 import utility.*;
+import utility.logger.LogBaseNew;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +33,7 @@ public class Base1 {
     public StringBuffer verificationErrors = new StringBuffer();
     public DmsLoginForm dmsLoginForm;
     protected TestBrowser testBrowser;
+    //protected LogBaseNew logger = manager.getLogger(manager.getLoggerFromEnv());
 
 
 
@@ -41,7 +44,6 @@ public class Base1 {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.get(PropertyLoader.loadProperty("dms.url"));
         driver.get("http://www.solomia.andreyb.ixloo.com/dms");
         manager = ConfigurationManager.getInstance(driver);
 

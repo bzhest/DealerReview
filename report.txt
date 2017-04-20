@@ -7,3 +7,4 @@
 6)пт, 14 квіт. 2017 11:35:27 +0300 [main] Open home page
 7)пт, 14 квіт. 2017 11:35:27 +0300 [main] On home page click on Dealer Review link
 1)пт, 14 квіт. 2017 16:16:25 +0300 [main] Open home page
+1)чт, 20 квіт. 2017 16:00:04 +0300 [main] Open something

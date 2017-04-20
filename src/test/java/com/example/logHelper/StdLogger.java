@@ -1,9 +1,13 @@
 package com.example.logHelper;
 
+import utility.ConfigurationManager;
+
 /**
  * Created by Andrey on 13.04.2017.
  */
 public class StdLogger extends LogBase{
+
+
     static int stepCounter = 1;
     @Override
     public void log(String msg) {

@@ -21,6 +21,7 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     public void isWidgetDisplayed(){
         driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
         waitForJSandJQueryToLoad();
+        manager.getLogger(manager.getLoggerFromEnv()).log("Open something");
         //logger.log("Check if widget is displayed");
         Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetExists());}
 
