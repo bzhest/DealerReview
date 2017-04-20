@@ -2,6 +2,7 @@ package map2;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -15,9 +16,11 @@ import utility.ConfigurationManager;
  * Created by Andrey on 13.04.2017.
  */
 public class PageEditor extends Page {
-    public PageEditor(ConfigurationManager manager){
-        super(manager);
+
+    public PageEditor(WebDriver driver){
+        super(driver);
     }
+
     /*declare elements on the page*/
     @FindBy(how= How.XPATH, using ="//input[@data-param='name']")
     private WebElement nameInput;

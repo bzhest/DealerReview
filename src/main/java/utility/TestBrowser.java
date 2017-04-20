@@ -1,11 +1,14 @@
 package utility;
 
+import org.openqa.selenium.WebDriver;
+
 /**
  * Created by SYSTEM on 07.04.2017.
  */
 public class TestBrowser {
+    private WebDriver driver;
     public String create(){
-        String testBrowser= ConfigurationManager.getInstance().getTestBrowser();
+        String testBrowser= ConfigurationManager.getInstance(driver).getTestBrowser();
         switch(testBrowser){
             case "chrome":
                 return "Google Chrome";

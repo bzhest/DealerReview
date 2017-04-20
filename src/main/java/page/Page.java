@@ -1,8 +1,10 @@
 package page;
 
+import dms.DmsLoginForm;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,24 +24,18 @@ public class Page{
     protected WebDriver driver;
 
 
-        /*
-         * Constructor injecting the WebDriver interface
-         *
-         * @param webDriver
-         */
 
-    /*public Page(WebDriver webDriver) {
-        this.driver = webDriver;
-        //PageFactory.InitElements(driver, this);
-    }*/
+    public Page(WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
 
-    public Page(ConfigurationManager manager){
-        this.manager = manager;
-        driver = getWebDriver();
+
     }
 
+
+
     public WebDriver getWebDriver() {
-        return driver;
+        return driver = new ChromeDriver();
     }
 
     public String getTitle() {

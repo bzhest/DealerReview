@@ -17,9 +17,11 @@ public class Website extends Page {
     /*public Website(WebDriver webDriver) {
         super(webDriver);
     }*/
-    public Website(ConfigurationManager manager) {
-        super(manager);
+    public Website(WebDriver driver) {
+        super(driver);
     }
+
+
 
     /*declare elements on the page*/
     @FindBy(how = How.ID, using = "tab2")

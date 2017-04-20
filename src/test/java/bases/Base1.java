@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -32,27 +33,25 @@ public class Base1 {
     protected TestBrowser testBrowser;
 
 
+
     @BeforeSuite
     public void turnOnMap2() throws InterruptedException {
         //logger.log("Navigating to test url");
-
-        manager = ConfigurationManager.getInstance();
-
         System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //driver.get(PropertyLoader.loadProperty("dms.url"));
         driver.get("http://www.solomia.andreyb.ixloo.com/dms");
-        //driver.findElement(By.cssSelector("#login")).clear();
-        //driver.findElement(By.cssSelector("#login")).sendKeys("Hello");
-        manager.getDmsLoginForm().loginToDMSUnderSupervisor();
-        manager.getDmsMainPage().clickOnUsersMenu();
-        manager.getUsers().openUserEditor();
-        manager.getUserEditor().turnOnMAP2();
-        manager.getWebsite().clickOnWebsiteMenu();
-        manager.getWebsite().disableCaptcha();
-        manager.getWebsite().setjQueryVersion();
+        manager = ConfigurationManager.getInstance(driver);
+
+        manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
+        manager.getDmsMainPage(driver).clickOnUsersMenu();
+        manager.getUsers(driver).openUserEditor();
+        manager.getUserEditor(driver).turnOnMAP2();
+        manager.getWebsite(driver).clickOnWebsiteMenu();
+        manager.getWebsite(driver).disableCaptcha();
+        manager.getWebsite(driver).setjQueryVersion();
 
     }
 
@@ -69,20 +68,14 @@ public class Base1 {
 
 
 
-    @AfterClass(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown() throws Exception {
-        logger.log("Close browser");
-        //ApplicationManager.getInstance().stop();
+        //ConfigurationManager.getInstance(driver).stop();
 
     }
 
-    public void stop(){
-        driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
-    }
+
+
 
     public boolean waitForJSandJQueryToLoad() {
         WebDriverWait wait = new WebDriverWait(driver, 35);
@@ -108,4 +101,5 @@ public class Base1 {
         };
         return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
+
 }

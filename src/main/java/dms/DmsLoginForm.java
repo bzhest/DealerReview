@@ -1,5 +1,6 @@
 package dms;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,15 +16,13 @@ import utility.PropertyLoaderCredentials;
  */
 public class DmsLoginForm extends Page {
 
-    //public DmsLoginForm (WebDriver webDriver){super(webDriver);}
-    public DmsLoginForm (ConfigurationManager manager)
-    {super(manager);}
-
-
+    public DmsLoginForm (WebDriver driver){super(driver);}
 
     //Declare elements on a page
     @FindBy(how = How.CSS, using = "#login")
     private WebElement loginInput;
+
+    //WebElement login = driver.findElement( By.cssSelector("#login") );
 
     @FindBy(how = How.CSS, using = "#password")
     private  WebElement passwordInput;
@@ -39,14 +38,18 @@ public class DmsLoginForm extends Page {
             webElement.sendKeys(value);
         }*/
         //waitForJSandJQueryToLoad();
-        loginInput.clear();
-        //loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"));
-        loginInput.sendKeys("andrey.bzhestovskyy@xloo.com");
-        passwordInput.clear();
-        //passwordInput.sendKeys(PropertyLoaderCredentials.loadProperty("passwordValueSupervisor"));
-        passwordInput.sendKeys("andrey87");
+        inputLoginPassword("andrey.bzhestovskyy@xloo.com", "andrey87");
         signInButton.click();
         //return PageFactory.initElements(driver, DmsMainPage.class);
+    }
+
+    public void inputLoginPassword(String login, String password) {
+        loginInput.clear();
+        //loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"));
+        loginInput.sendKeys(login);
+        passwordInput.clear();
+        //passwordInput.sendKeys(PropertyLoaderCredentials.loadProperty("passwordValueSupervisor"));
+        passwordInput.sendKeys(password);
     }
 
     /*method of logging to dms under manager*/

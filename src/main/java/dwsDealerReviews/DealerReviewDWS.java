@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import page.Page;
 import utility.ConfigurationManager;
 import utility.LogFactory;
@@ -18,17 +19,16 @@ import java.util.List;
  * Created by Andrey on 18.03.2017.
  */
 public class DealerReviewDWS extends Page {
-    /*public DealerReviewDWS(WebDriver webDriver) {
-    super(webDriver);
-}*/
-    public DealerReviewDWS (ConfigurationManager manager)
-    {super(manager);}
+
+    public DealerReviewDWS(WebDriver driver) {
+    super(driver);
+}
 
     //private static final Logger LOG = LogFactory.getLogger(DealerReviewDWS.class);
 
     //Field titles
 
-    @FindBy(how = How.CSS, using = "modul-r-reviewForm")
+    @FindBy(how = How.CSS, using = ".modul-r-reviewForm")
     private WebElement widget;
 
     @FindBy(how = How.XPATH, using = "//div[@class='panel-title']")

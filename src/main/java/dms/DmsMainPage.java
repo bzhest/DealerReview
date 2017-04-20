@@ -17,8 +17,11 @@ import utility.ConfigurationManager;
  */
 public class DmsMainPage extends Page {
     /*public DmsMainPage(WebDriver webDriver){super(webDriver);}*/
-    public DmsMainPage (ConfigurationManager manager)
-    {super(manager);}
+
+    public DmsMainPage (WebDriver driver)
+    {super(driver);}
+
+
 
     @FindBy(how = How.CSS, using = "a[href='/dms/tools']")
     private WebElement toolsMenu;

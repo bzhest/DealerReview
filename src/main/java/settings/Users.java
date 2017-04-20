@@ -21,8 +21,10 @@ public class Users extends Page {
     /*public  Users (WebDriver webDriver){
         super(webDriver);
     }*/
-    public Users (ConfigurationManager manager)
-    {super(manager);}
+    public Users (WebDriver driver)
+    {super(driver);}
+
+
 
     @FindBy(how = How.CSS, using = ".rootUserBranch.jstree-open.jstree-last>a")
     private WebElement rootUser;

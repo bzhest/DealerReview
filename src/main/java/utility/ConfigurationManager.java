@@ -6,10 +6,13 @@ import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import dwsDealerReviews.DealerReviewDWS;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import page.Page;
 import settings.UserEditor;
 import settings.Users;
 import settings.Website;
+
+import static org.testng.Assert.fail;
 
 /**
  * Created by SYSTEM on 04.04.2017.
@@ -28,15 +31,25 @@ public class ConfigurationManager {
     private Page page;
     //From my curses --------------------------------------------------------------------------------------------
     private static ConfigurationManager instance;
+    public StringBuffer verificationErrors = new StringBuffer();
 
- public ConfigurationManager(){
-     dmsLoginForm = new DmsLoginForm(getInstance());
+public ConfigurationManager(WebDriver driver){
+     dmsLoginForm = new DmsLoginForm(driver);
+     page = new Page(driver);
+    dmsMainPage = new DmsMainPage(driver);
+    dealerReviewDWS = new DealerReviewDWS(driver);
+    users = new Users (driver);
+    userEditor = new UserEditor(driver);
+    website = new Website(driver);
+
+
+
  }
 
 
-    public static ConfigurationManager getInstance(){
+    public static ConfigurationManager getInstance(WebDriver driver){
         if (instance ==null)
-            instance = new ConfigurationManager();
+            instance = new ConfigurationManager(driver);
         return instance;
     }
 
@@ -54,71 +67,72 @@ public class ConfigurationManager {
         return System.getenv(envVar) != null ? System.getenv(envVar) : defaultValue;
     }
 //-------------------------------------------------------------------------------------------------------------------------
-    public DmsLoginForm getDmsLoginForm(){
+    public DmsLoginForm getDmsLoginForm(WebDriver driver){
     if(dmsLoginForm == null){
-        dmsLoginForm = new DmsLoginForm(this);
+        dmsLoginForm = new DmsLoginForm(driver);
+
     }
     return dmsLoginForm;
 }
 
-    public ToolsReviewsDealerReviewsPage getToolsReviewsDealerReviewsPage() {
+    public ToolsReviewsDealerReviewsPage getToolsReviewsDealerReviewsPage(WebDriver driver) {
         if(toolsReviewsDealerReviewsPage == null){
-            toolsReviewsDealerReviewsPage = new ToolsReviewsDealerReviewsPage(this);
+            toolsReviewsDealerReviewsPage = new ToolsReviewsDealerReviewsPage(driver);
         }
         return toolsReviewsDealerReviewsPage;
     }
 
-    public SettingsReviewDealershipReviewSettings getSettingsReviewDealershipReviewSettings() {
+    public SettingsReviewDealershipReviewSettings getSettingsReviewDealershipReviewSettings(WebDriver driver) {
         if (settingsReviewDealershipReviewSettings ==null){
-            settingsReviewDealershipReviewSettings = new SettingsReviewDealershipReviewSettings(this);
+            settingsReviewDealershipReviewSettings = new SettingsReviewDealershipReviewSettings(driver);
         }
         return settingsReviewDealershipReviewSettings;
     }
 
-    /*public WebDriver getDriver() {
-        return driver;
-    }
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
-    }*/
-    public DmsMainPage getDmsMainPage() {
+
+    public DmsMainPage getDmsMainPage(WebDriver driver) {
         if(dmsMainPage == null){
-            dmsMainPage = new DmsMainPage(this);
+            dmsMainPage = new DmsMainPage(driver);
         }
         return dmsMainPage;
     }
     /*public DmsLoginForm getDmsLoginForm() {
         return dmsLoginForm;
     }*/
-    public DealerReviewDWS getDealerReviewDWS() {
+    public DealerReviewDWS getDealerReviewDWS(WebDriver driver) {
         if(dealerReviewDWS == null){
-            dealerReviewDWS = new DealerReviewDWS(this);
+            dealerReviewDWS = new DealerReviewDWS(driver);
         }
         return dealerReviewDWS;
     }
 
 
-    public Users getUsers() {
+    public Users getUsers(WebDriver driver) {
         if(users ==null){
-            users = new Users(this);
+            users = new Users(driver);
         }
         return users;
     }
 
 
-    public UserEditor getUserEditor() {
+    public UserEditor getUserEditor(WebDriver driver) {
         if(userEditor == null){
-            userEditor = new UserEditor(this);
+            userEditor = new UserEditor(driver);
         }
         return userEditor;
     }
 
-    public Website getWebsite() {return website;}
-    public Page getPage() {
+    public Website getWebsite(WebDriver driver){
+        if (website == null)
+            website = new Website(driver);
+        return website;
+    }
+
+    public Page getPage(WebDriver driver) {
         if(page == null){
-            page = new Page(this);}return page;}
+            page = new Page(driver);
+        }return page;}
 
-
-
+        //stop driver
 
 }
