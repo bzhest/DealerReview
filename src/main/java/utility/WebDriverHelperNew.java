@@ -13,16 +13,16 @@ import static org.testng.Assert.fail;
  */
 public class WebDriverHelperNew {
     private ConfigurationManager manager;
-    private WebDriver driver;
+    private static WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
+
+    //non-static init (perform BEFORE constructor)
+    {   driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);}
 
     public WebDriverHelperNew(ConfigurationManager manager){
         this.manager = manager;
-
-        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void stop(){

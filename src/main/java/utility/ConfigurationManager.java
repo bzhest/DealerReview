@@ -38,70 +38,79 @@ public class ConfigurationManager {
     private StdLogger stdlogger;
     //From my curses --------------------------------------------------------------------------------------------
 
+    public ConfigurationManager() {}
 
+    public ConfigurationManager(WebDriver driver) {
+        dmsLoginForm = new DmsLoginForm(driver);
+        page = new Page(driver);
+        dmsMainPage = new DmsMainPage(driver);
+        dealerReviewDWS = new DealerReviewDWS(driver);
+        users = new Users(driver);
+        userEditor = new UserEditor(driver);
+        website = new Website(driver);
+    }
 
-public ConfigurationManager(WebDriver driver){
-     dmsLoginForm = new DmsLoginForm(driver);
-     page = new Page(driver);
-    dmsMainPage = new DmsMainPage(driver);
-    dealerReviewDWS = new DealerReviewDWS(driver);
-    users = new Users (driver);
-    userEditor = new UserEditor(driver);
-    website = new Website(driver);
- }
-
-    public static ConfigurationManager getInstance(WebDriver driver){
-        if (instance ==null)
+    public static ConfigurationManager getInstance(WebDriver driver) {
+        if (instance == null)
             instance = new ConfigurationManager(driver);
+        return instance;
+    }
+
+    public static ConfigurationManager getInstance() {
+        if (instance == null)
+            instance = new ConfigurationManager();
         return instance;
     }
 
     //public ConfigurationManager(){}
 
-    public String getTestBrowser(){
+    public String getTestBrowser() {
         return getEnvironmentVariableOrDefault("testBrowser", "chrome");
     }
 
-    public String getTestEnv(){
+    public String getTestEnv() {
         return getEnvironmentVariableOrDefault("testEnv", "production");
     }
 
-    public String getLoggerFromEnv() {return getEnvironmentVariableOrDefault("testLogger","console");}
+    public String getLoggerFromEnv() {
+        return getEnvironmentVariableOrDefault("testLogger", "console");
+    }
 
     private String getEnvironmentVariableOrDefault(String envVar, String defaultValue) {
         return System.getenv(envVar) != null ? System.getenv(envVar) : defaultValue;
     }
-        public LogBaseNew getLogger(String type){
-            return type.equals("console") ? new StdLogger(this) : new FileLogger(this);
-        }
+
+    public LogBaseNew getLogger(String type) {
+        return type.equals("console") ? new StdLogger(this) : new FileLogger(this);
+    }
 
 //-------------------------------------------------------------------------------------------------------------------------
 
     //PageObjects initialization
 
-    public WebDriverHelperNew getWebDriverHelperNew(){
-    if(webDriverHelperNew == null){
-        webDriverHelperNew = new WebDriverHelperNew(this);
+    public WebDriverHelperNew getWebDriverHelperNew() {
+        if (webDriverHelperNew == null) {
+            webDriverHelperNew = new WebDriverHelperNew(this);
+        }
+        return webDriverHelperNew;
     }
-    return webDriverHelperNew;
-}
 
-    public DmsLoginForm getDmsLoginForm(WebDriver driver){
-    if(dmsLoginForm == null){
-        dmsLoginForm = new DmsLoginForm(driver);
+    public DmsLoginForm getDmsLoginForm(WebDriver driver) {
+        if (dmsLoginForm == null) {
+            dmsLoginForm = new DmsLoginForm(driver);
+        }
+        return dmsLoginForm;
     }
-    return dmsLoginForm;
-}
 
     public ToolsReviewsDealerReviewsPage getToolsReviewsDealerReviewsPage(WebDriver driver) {
-        if(toolsReviewsDealerReviewsPage == null){
+        if (toolsReviewsDealerReviewsPage == null) {
             toolsReviewsDealerReviewsPage = new ToolsReviewsDealerReviewsPage(driver);
         }
         return toolsReviewsDealerReviewsPage;
     }
 
     public SettingsReviewDealershipReviewSettings getSettingsReviewDealershipReviewSettings(WebDriver driver) {
-        if (settingsReviewDealershipReviewSettings ==null){
+        if (settingsReviewDealershipReviewSettings == null) {
             settingsReviewDealershipReviewSettings = new SettingsReviewDealershipReviewSettings(driver);
         }
         return settingsReviewDealershipReviewSettings;
@@ -109,14 +118,14 @@ public ConfigurationManager(WebDriver driver){
 
 
     public DmsMainPage getDmsMainPage(WebDriver driver) {
-        if(dmsMainPage == null){
+        if (dmsMainPage == null) {
             dmsMainPage = new DmsMainPage(driver);
         }
         return dmsMainPage;
     }
 
     public DealerReviewDWS getDealerReviewDWS(WebDriver driver) {
-        if(dealerReviewDWS == null){
+        if (dealerReviewDWS == null) {
             dealerReviewDWS = new DealerReviewDWS(driver);
         }
         return dealerReviewDWS;
@@ -124,7 +133,7 @@ public ConfigurationManager(WebDriver driver){
 
 
     public Users getUsers(WebDriver driver) {
-        if(users ==null){
+        if (users == null) {
             users = new Users(driver);
         }
         return users;
@@ -132,28 +141,30 @@ public ConfigurationManager(WebDriver driver){
 
 
     public UserEditor getUserEditor(WebDriver driver) {
-        if(userEditor == null){
+        if (userEditor == null) {
             userEditor = new UserEditor(driver);
         }
         return userEditor;
     }
 
-    public Website getWebsite(WebDriver driver){
+    public Website getWebsite(WebDriver driver) {
         if (website == null)
             website = new Website(driver);
         return website;
     }
 
     public Page getPage(WebDriver driver) {
-        if(page == null){
+        if (page == null) {
             page = new Page(driver);
-        }return page;}
-
-        //stop driver
-        public void stop() {
-            if (webDriverHelperNew != null) {
-                webDriverHelperNew.stop();
-            }
         }
+        return page;
+    }
+
+    //stop driver
+    public void stop() {
+        if (webDriverHelperNew != null) {
+            webDriverHelperNew.stop();
+        }
+    }
 
 }

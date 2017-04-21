@@ -28,25 +28,24 @@ import static org.testng.Assert.fail;
 public class Base1 {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
-    public Logger logger;
+    //public Logger logger;
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
     public DmsLoginForm dmsLoginForm;
     protected TestBrowser testBrowser;
-    //protected LogBaseNew logger = manager.getLogger(manager.getLoggerFromEnv());
+    protected LogBaseNew logger;
 
-
+    //non-static init (perform BEFORE constructor)
+    {manager = ConfigurationManager.getInstance();
+    logger = manager.getLogger(manager.getLoggerFromEnv());}
 
     @BeforeSuite
     public void turnOnMap2() throws InterruptedException {
-        //logger.log("Navigating to test url");
-        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get("http://www.solomia.andreyb.ixloo.com/dms");
+        logger.log("Navigating to test url");
+        driver = manager.getWebDriverHelperNew().getDriver();
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        //driver.get("http://www.solomia.andreyb.ixloo.com/dms");
         manager = ConfigurationManager.getInstance(driver);
-
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
         manager.getDmsMainPage(driver).clickOnUsersMenu();
         manager.getUsers(driver).openUserEditor();
