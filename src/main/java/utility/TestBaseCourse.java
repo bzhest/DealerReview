@@ -9,7 +9,6 @@ import utility.browser.WebDriverManager;
  */
 public class TestBaseCourse {
     protected Logger logger;
-    protected TestBrowser testBrowser;
     protected WebDriverManager wdm;
 
     public void setUp() {
@@ -17,13 +16,13 @@ public class TestBaseCourse {
         wdm = new DefaultWebDriverManager();
 
         logger.log("Start browser" + wdm.getWebDriver());
-        String browser = testBrowser.create();
+        String browser = wdm.getWebDriver();
 
         beforeTest();
     }
     public void tearDown(){
         afterTest();
-        testBrowser.destroy("");
+        wdm.destroyWebDriver("");
     }
     protected void beforeTest(){}
     protected void afterTest(){}
