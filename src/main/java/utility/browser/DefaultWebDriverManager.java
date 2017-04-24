@@ -8,7 +8,7 @@ import utility.ConfigurationManager;
 public class DefaultWebDriverManager implements WebDriverManager {
     @Override
     public String getWebDriver() {
-        String runOn = ConfigurationManager.getInstance().getghjRunOn().toUpperCase();
+        String runOn = ConfigurationManager.getInstance().getRunOn().toUpperCase();
         WebDriverFactory factory;
 
         switch(runOn){
