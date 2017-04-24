@@ -14,8 +14,6 @@ import utility.logger.FileLogger;
 import utility.logger.LogBaseNew;
 import utility.logger.StdLogger;
 
-import static org.testng.Assert.fail;
-
 /**
  * Created by SYSTEM on 04.04.2017.
  */
@@ -37,8 +35,11 @@ public class ConfigurationManager {
     private FileLogger fileLogger;
     private StdLogger stdlogger;
     //From my curses --------------------------------------------------------------------------------------------
+    private static final String TEST_BROWSER = "testBrowser";
+    private static final String RUN_ON = "runOn";
 
-    public ConfigurationManager() {}
+    public ConfigurationManager() {
+    }
 
     public ConfigurationManager(WebDriver driver) {
         dmsLoginForm = new DmsLoginForm(driver);
@@ -65,7 +66,7 @@ public class ConfigurationManager {
     //public ConfigurationManager(){}
 
     public String getTestBrowser() {
-        return getEnvironmentVariableOrDefault("testBrowser", "chrome");
+        return getEnvironmentVariableOrDefault(TEST_BROWSER, "chrome");
     }
 
     public String getTestEnv() {
@@ -74,6 +75,10 @@ public class ConfigurationManager {
 
     public String getLoggerFromEnv() {
         return getEnvironmentVariableOrDefault("testLogger", "console");
+    }
+
+    public String getRunOn() {
+        return getEnvironmentVariableOrDefault(RUN_ON, "Local");
     }
 
     private String getEnvironmentVariableOrDefault(String envVar, String defaultValue) {

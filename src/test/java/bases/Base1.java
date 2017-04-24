@@ -16,6 +16,7 @@ import utility.ConfigurationManager;
 import page.Page;
 import settings.Website;
 import utility.*;
+import utility.browser.WebDriverManager;
 import utility.logger.LogBaseNew;
 
 import java.util.concurrent.TimeUnit;
@@ -32,8 +33,8 @@ public class Base1 {
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
     public DmsLoginForm dmsLoginForm;
-    protected TestBrowser testBrowser;
     protected LogBaseNew logger;
+    protected WebDriverManager wdm;
 
     //non-static init (perform BEFORE constructor)
     {manager = ConfigurationManager.getInstance();

@@ -1,6 +1,8 @@
 package utility;
 
 import org.testng.annotations.Test;
+import utility.browser.DefaultWebDriverManager;
+import utility.browser.WebDriverManager;
 
 /**
  * Created by SYSTEM on 13.04.2017.
@@ -8,12 +10,13 @@ import org.testng.annotations.Test;
 public class TestBaseCourse {
     protected Logger logger;
     protected TestBrowser testBrowser;
+    protected WebDriverManager wdm;
 
     public void setUp() {
         logger = new Logger();
-        testBrowser = new TestBrowser();
+        wdm = new DefaultWebDriverManager();
 
-        logger.log("Start browser" + testBrowser.create());
+        logger.log("Start browser" + wdm.getWebDriver());
         String browser = testBrowser.create();
 
         beforeTest();
