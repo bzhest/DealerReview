@@ -1,6 +1,7 @@
 package dms;
 
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -8,15 +9,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page.Page;
 import settings.Users;
 import utility.ConfigurationManager;
+import utility.PropertyLoader;
 
 /**
  * Created by SYSTEM on 16.03.2017.
  */
 public class DmsMainPage extends Page {
-    /*public DmsMainPage(WebDriver webDriver){super(webDriver);}*/
 
     public DmsMainPage (WebDriver driver)
     {super(driver);}
@@ -35,15 +38,38 @@ public class DmsMainPage extends Page {
     @FindBy(how = How.CSS, using = "a[href='/dms/tools/make_a_page']")
     private WebElement toolsMenuMAP1;
 
+    @FindBy(how = How.CSS, using = "a[href='/dms/settings']")
+    private WebElement settingsMenu;
 
-    /*go to dms Dealers page*/
-    public ToolsReviewsDealerReviewsPage clickOnSubmenuReviews() {
-        /*move mouse on Admin menu item*/
+    @FindBy(how = How.CSS, using = "a[href='/dms/settings/review-settings']")
+    private WebElement settingsMenuReviewItem;
+
+
+
+    public void clickToolsSubmenuReviewsItem() {
+        /*move mouse on Tools menu item*/
         Actions action = new Actions(driver);
         Action moveToElem = action.moveToElement(toolsMenu).build();
         moveToElem.perform();
         toolsMenuReviewsItem.click();
-        return PageFactory.initElements(driver, ToolsReviewsDealerReviewsPage.class);
+    }
+
+    public void clickToolsSubmenuMAP2Item() {
+        /*move mouse on Tools menu item*/
+        Actions action = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOf(toolsMenu));
+        action.moveToElement(toolsMenu).perform();
+        toolsMenuMAP2.click();
+    }
+
+    public void clickOnSettingsSubmenuReviewItem() {
+        /*move mouse on Settings menu item*/
+        Actions action = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOf(settingsMenu));
+        action.moveToElement(settingsMenu).perform();
+        settingsMenuReviewItem.click();
+
+
     }
 
     public void clickOnSubmenuMAP2() {
@@ -67,4 +93,6 @@ public class DmsMainPage extends Page {
     public void clickOnUsersMenu() {
         driver.get("http://www.solomia.andreyb.ixloo.com/dms/settings/users");
     }
+
+
 }

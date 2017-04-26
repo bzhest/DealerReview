@@ -5,6 +5,7 @@ import dms.DmsMainPage;
 import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import dwsDealerReviews.DealerReviewDWS;
+import map2.Map2MainPage;
 import org.openqa.selenium.WebDriver;
 import page.Page;
 import settings.UserEditor;
@@ -34,6 +35,7 @@ public class ConfigurationManager {
     private WebDriverHelperNew webDriverHelperNew;
     private FileLogger fileLogger;
     private StdLogger stdlogger;
+    private Map2MainPage map2MainPage;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -91,13 +93,20 @@ public class ConfigurationManager {
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-    //PageObjects initialization
+    //Helpers initialization
 
     public WebDriverHelperNew getWebDriverHelperNew() {
         if (webDriverHelperNew == null) {
             webDriverHelperNew = new WebDriverHelperNew(this);
         }
         return webDriverHelperNew;
+    }
+    //PageObjects initialization
+
+    public Map2MainPage getMap2MainPage(WebDriver driver){
+        if(map2MainPage ==null)
+            map2MainPage = new Map2MainPage(driver);
+        return map2MainPage;
     }
 
     public DmsLoginForm getDmsLoginForm(WebDriver driver) {

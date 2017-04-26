@@ -52,9 +52,9 @@ public class LogFactory {
         }
         StatusPrinter.printIfErrorsOccured(factory);
         logger = getLogger(LogFactory.class);
-        logger.info("-------------------------Initializing logger-------------------------");
+        /*logger.info("-------------------------Initializing logger-------------------------");
         logger.info("Logging (re-)initalized");
-        logger.info("JVM timezone: {}", TimeZone.getDefault().getID());
+        logger.info("JVM timezone: {}", TimeZone.getDefault().getID());*/
     }
 
     /**

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import utility.ConfigurationManager;
@@ -22,11 +23,15 @@ public class Page{
     public Logger logger;
     public ConfigurationManager manager;
     protected WebDriver driver;
+    protected final Wait<WebDriver> wait;
+
+
 
 
 
     public Page(WebDriver driver){
         this.driver = driver;
+        wait= new WebDriverWait(driver, 10, 500);
         PageFactory.initElements(driver, this);
 
 

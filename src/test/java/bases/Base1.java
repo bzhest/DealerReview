@@ -45,20 +45,38 @@ public class Base1 {
         logger.log("Navigating to test url");
         driver = manager.getWebDriverHelperNew().getDriver();
         driver.get(PropertyLoader.loadProperty("dms.url"));
-        //driver.get("http://www.solomia.andreyb.ixloo.com/dms");
         manager = ConfigurationManager.getInstance(driver);
+        logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
+        logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
+        logger.log("Open User editor");
         manager.getUsers(driver).openUserEditor();
+        logger.log("Turn on MAP2");
         manager.getUserEditor(driver).turnOnMAP2();
+        logger.log("Go to WebsiteMenu");
         manager.getWebsite(driver).clickOnWebsiteMenu();
+        logger.log("Disable captcha");
         manager.getWebsite(driver).disableCaptcha();
+        logger.log("Set JQuery 1.11.2");
         manager.getWebsite(driver).setjQueryVersion();
+        logger.log("Open Settings - Review - select all 5 parameters");
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        manager.getDmsMainPage(driver).clickOnSettingsSubmenuReviewItem();
+        manager.getSettingsReviewDealershipReviewSettings(driver).selectAllCheckbox();
+        manager.getSettingsReviewDealershipReviewSettings(driver).clickSave();
+        logger.log("Back to DMS main page");
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        logger.log("Go to MAP2");
+        manager.getDmsMainPage(driver).clickToolsSubmenuMAP2Item();
+        logger.log("Click on Dealer List tab");
+        manager.getMap2MainPage(driver).openDealerListTab();
 
     }
 
     @BeforeClass
     public void setUp() {
+
         /*logger = new Logger();
 
         driver = new ChromeDriver();

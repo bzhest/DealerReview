@@ -7,6 +7,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import page.Page;
 import utility.ConfigurationManager;
+import utility.PropertyLoader;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class SettingsReviewDealershipReviewSettings extends Page {
             }
         }
     }
+
 
     public void clickSave(){
         saveButtons.get(0).click();

@@ -24,96 +24,95 @@ public class AreDealerFormElementsDisplayed extends Base1 {
         logger.log("Check, if widget is displayed");
         Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetExists());}
 
-   /* @Test
+    @Test
      public void isWidgetTitleDisplayed(){
         logger.log("Check if widget title is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isWidgetTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetTitleDisplayed());}
 
     @Test
     public void isRateYourDealerTitleDisplayed(){
         logger.log("Check if sign \"Rate Your Dealer\" title is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isRateYourDealerTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRateYourDealerTitleDisplayed());}
 
     @Test
     public void isNicknameTitleDisplayed(){
         logger.log("Check if title \"Nickname\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isNicknameTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isNicknameTitleDisplayed());}
 
     @Test
     public void isEmailTitleDisplayed(){
         logger.log("Check if title \"Email\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isEmailTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isEmailTitleDisplayed());}
 
     @Test
     public void isLocationTitleDisplayed(){
         logger.log("Check if title \"Location\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isLocationTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isLocationTitleDisplayed());}
 
     @Test
     public void isParameterYourOverallRatingDisplayed(){
         logger.log("Check if title \"Your Overall Rating \" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isParameterYourOverallRatingDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterYourOverallRatingDisplayed());}
 
     @Test
     public void isParameterCustomerServiceDisplayed(){
         logger.log("Check if title \"Customer Service\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isParameterCustomerServiceDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterCustomerServiceDisplayed());}
 
     @Test
     public void isParameterBuyingProcessDisplayed(){
         logger.log("Check if title \"Buying Process\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isParameterBuyingProcessDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterBuyingProcessDisplayed());}
 
     @Test
     public void isParameterQualityOfRepairDisplayed(){
         logger.log("Check if title \"Quality of Repair\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isParameterQualityOfRepairDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterQualityOfRepairDisplayed());}
 
     @Test
     public void isParameterOverallFacilitiesDisplayed(){
         logger.log("Check if title \"Overall Facilities\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isParameterOverallFacilitiesDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterOverallFacilitiesDisplayed());}
 
     @Test
     public void isReviewTitleDisplayed(){
         logger.log("Check if title \"Review Title\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isReviewTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTitleDisplayed());}
 
     @Test
     public void isReviewTextDisplayed(){
         logger.log("Check if title \"Review Text\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isReviewTextDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTextDisplayed());}
 
     @Test
     public void isRecomendThisDealerOptionDisplayed(){
         logger.log("Check if title \"Recommend this dealer\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isRecomendThisDealerOptionDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRecomendThisDealerOptionDisplayed());}
 
     @Test
     public void isPurchaseAVehicleFromThisDealerOptionDisplayed(){
         logger.log("Check if title \"Purchased a vehicle from this dealer\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isPurchaseAVehicleFromThisDealerOptionDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isPurchaseAVehicleFromThisDealerOptionDisplayed());}
 
     @Test
     public void countStarsNumber(){
         logger.log("Check if number of empty stars on a page is 25");
-        Assert.assertEquals(manager.getDealerReviewDWS().countStarsNumber(),25);}
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).countStarsNumber(),25);}
 
     @Test
     public void isCheckboxNADisplayed(){
         logger.log("Check if checkbox \"NA\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isCheckboxNADisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isCheckboxNADisplayed());}
 
     @Test
     public void countCrossIconsNumber(){
         logger.log("Check if number of icons \"Cross\" to clean stars is 5");
-        Assert.assertEquals(manager.getDealerReviewDWS().countCrossIconsNumber(),5);}
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).countCrossIconsNumber(),5);}
 
     @Test
     public void isSubmitButtonDisplayed(){
         logger.log("Check if button \"Submit\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS().isSubmitButtonDisplayed());}*/
-
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isSubmitButtonDisplayed());}
 
 }
 
