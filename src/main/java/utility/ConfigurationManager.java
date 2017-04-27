@@ -6,11 +6,13 @@ import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import dwsDealerReviews.DealerReviewDWS;
 import map2.Map2MainPage;
+import map2.PageEditor;
 import org.openqa.selenium.WebDriver;
 import page.Page;
 import settings.UserEditor;
 import settings.Users;
 import settings.Website;
+import utility.helpers.WebDriverHelperNew;
 import utility.logger.FileLogger;
 import utility.logger.LogBaseNew;
 import utility.logger.StdLogger;
@@ -36,6 +38,7 @@ public class ConfigurationManager {
     private FileLogger fileLogger;
     private StdLogger stdlogger;
     private Map2MainPage map2MainPage;
+    private PageEditor pageEditor;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -102,6 +105,13 @@ public class ConfigurationManager {
         return webDriverHelperNew;
     }
     //PageObjects initialization
+
+    public PageEditor getPageEditor(WebDriver driver){
+        if (pageEditor ==null){
+            pageEditor = new PageEditor(driver);
+        }
+        return pageEditor;
+    }
 
     public Map2MainPage getMap2MainPage(WebDriver driver){
         if(map2MainPage ==null)

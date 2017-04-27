@@ -50,7 +50,9 @@ public class Map2MainPage extends Page {
     public void setUpDealerListWidget(){
         openDealerListTab();
         addNewPage();
-
+        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getNameInput(),"Dealer List");
+        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getTitleInput(),"Dealer List");
+        manager.getPageEditor(driver).clickOnLibrary();
     }
     //------------------------------------------------------
 }

@@ -22,7 +22,6 @@ public class PageEditor extends Page {
     }
 
     /*declare elements on the page*/
-    
 
     @FindBy(how= How.XPATH, using ="//input[@data-param='name']")
     private WebElement nameInput;
@@ -35,6 +34,12 @@ public class PageEditor extends Page {
 
     @FindBy(how= How.CSS, using ="div.tab[data-tab='page-settings'][title='Page Settings']")
     private WebElement pageSettingsTab;
+
+    @FindBy(how= How.CSS, using =".ico-widget.widget-list_dealer")
+    private WebElement iconDealerList;
+
+    @FindBy(how= How.CSS, using =".ax-container.empty")
+    private WebElement emptyContainer;
 
     @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-contact_us']")
     private WebElement contactIconTree;
@@ -70,6 +75,20 @@ public class PageEditor extends Page {
     private WebElement pageActivatedTooltip;
 
 
+
+    //Getter
+    public WebElement getNameInput() {
+        return nameInput;
+    }
+
+    public WebElement getIconDealerList() {
+        return iconDealerList;
+    }
+
+    public WebElement getTitleInput() {
+        return titleInput;
+    }
+
     //Click on Library tab
     public void clickOnLibrary(){
         libraryTab.click();
@@ -86,6 +105,11 @@ public class PageEditor extends Page {
         nameInput.sendKeys("contactauto");
     }
 
+    //add widget
+    public void addAnWidget(WebElement source, WebElement target){
+        Actions builder = new Actions(driver);
+        builder.dragAndDrop(source,target).perform();
+    }
     /*add a particular widget, using Java Script*/
     public void addWidget(){
         libraryTab.click();
