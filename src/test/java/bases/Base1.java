@@ -71,6 +71,8 @@ public class Base1 {
         manager.getDmsMainPage(driver).clickToolsSubmenuMAP2Item();
         logger.log("Click on Dealer List tab");
         manager.getMap2MainPage(driver).openDealerListTab();
+        logger.log("Add new Page");
+        manager.getMap2MainPage(driver).addNewPage();
 
     }
 

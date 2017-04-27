@@ -4,20 +4,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import page.Page;
-import utility.ConfigurationManager;
 
-/**
- * Created by Andrey on 13.04.2017.
- */
+
 public class Map2MainPage extends Page {
-    public Map2MainPage(WebDriver driver){
+    public Map2MainPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(how = How.CSS, using = "div.map-link.pull-right")
     public WebElement addNewPageButton;
+
+    @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Edit page']")
+    public WebElement editPageButton;
+
+    @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Remove page']")
+    public WebElement deletePageButton;
 
     @FindBy(how = How.CSS, using = "div.page-item[data-page='dealerlist']")
     public WebElement tabDealerList;
@@ -28,15 +30,27 @@ public class Map2MainPage extends Page {
     @FindBy(how = How.CSS, using = "div.page-item[data-page='dealerreviewform']")
     public WebElement tabDealerReviewForm;
 
-    public void openDealerListTab(){
+    public void openDealerListTab() {
         tabDealerList.click();
     }
 
-    public void openDealerReviewTab(){
+    public void openDealerReviewTab() {
         tabDealerReview.click();
     }
 
-    public void openDealerReviewDetailsTab(){
+    public void openDealerReviewDetailsTab() {
         tabDealerReviewForm.click();
     }
+
+    public void addNewPage() {
+        addNewPageButton.click();
+    }
+
+    //------------------------------------------------------
+    public void setUpDealerListWidget(){
+        openDealerListTab();
+        addNewPage();
+
+    }
+    //------------------------------------------------------
 }

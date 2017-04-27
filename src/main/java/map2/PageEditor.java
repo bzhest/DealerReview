@@ -22,11 +22,19 @@ public class PageEditor extends Page {
     }
 
     /*declare elements on the page*/
+    
+
     @FindBy(how= How.XPATH, using ="//input[@data-param='name']")
     private WebElement nameInput;
 
-    @FindBy(how= How.XPATH, using ="//div[@data-tab='library']")
+    @FindBy(how= How.XPATH, using ="//input[@data-param='title']")
+    private WebElement titleInput;
+
+    @FindBy(how= How.CSS, using ="div.tab[data-tab='library'][title='Library']")
     private WebElement libraryTab;
+
+    @FindBy(how= How.CSS, using ="div.tab[data-tab='page-settings'][title='Page Settings']")
+    private WebElement pageSettingsTab;
 
     @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-contact_us']")
     private WebElement contactIconTree;
@@ -60,6 +68,17 @@ public class PageEditor extends Page {
 
     @FindBy(how= How.XPATH, using ="//div[@class='jGrowl-notification ui-state-highlight ui-corner-all jgrowl_default_alert']/div[@class='message'][contains(text(), 'Page activated')]")
     private WebElement pageActivatedTooltip;
+
+
+    //Click on Library tab
+    public void clickOnLibrary(){
+        libraryTab.click();
+    }
+
+    //Click on Page Settings tab
+    public void clickOnPageSettings(){
+        pageSettingsTab.click();
+    }
 
     /*fill page name*/
     public void setPageName(){
