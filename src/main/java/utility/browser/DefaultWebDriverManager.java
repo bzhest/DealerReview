@@ -1,6 +1,7 @@
 package utility.browser;
 
 import utility.ConfigurationManager;
+import utility.browser.enums.RunOn;
 
 /**
  * Created by SYSTEM on 24.04.2017.
@@ -8,17 +9,18 @@ import utility.ConfigurationManager;
 public class DefaultWebDriverManager implements WebDriverManager {
     @Override
     public String getWebDriver() {
-        String runOn = ConfigurationManager.getInstance().getRunOn().toUpperCase();
+        //String runOn = ConfigurationManager.getInstance().getRunOn().toUpperCase();
+        RunOn runOn = RunOn.fromString(ConfigurationManager.getInstance().getRunOn().toUpperCase());
         WebDriverFactory factory;
 
         switch(runOn){
-            case "LOCAL":
+            case LOCAL:
                 factory = new LocalWebDriverFactory();
                 break;
-            case "BUILDSERVER":
+            case BUILDSERVER:
                 factory = new BuildServerWebDriverFactoryFactory();
                 break;
-            case "CLOUD":
+            case CLOUD:
                 factory = new CloudWebDriverFactory();
                 break;
             default:
