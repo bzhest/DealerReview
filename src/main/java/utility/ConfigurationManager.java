@@ -185,10 +185,10 @@ public class ConfigurationManager {
     }
 
     //stop driver
-    public void stop() {
+   /* public void stop() {
         if (webDriverHelperNew != null) {
             webDriverHelperNew.stop();
         }
-    }
+    }*/
 
 }

@@ -12,7 +12,7 @@ public class Map2MainPage extends Page {
         super(driver);
     }
 
-    @FindBy(how = How.CSS, using = "div.map-link.pull-right")
+    @FindBy(how = How.CSS, using = "div.map-link.pull-right[data-action='page_create']")
     public WebElement addNewPageButton;
 
     @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Edit page']")
@@ -46,9 +46,14 @@ public class Map2MainPage extends Page {
         addNewPageButton.click();
     }
 
+    public void deleteCurrentWidget(){
+        deletePageButton.click();
+    }
+
     //------------------------------------------------------
     public void setUpDealerListWidget(){
         openDealerListTab();
+
         addNewPage();
         manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getNameInput(),"Dealer List");
         manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getTitleInput(),"Dealer List");

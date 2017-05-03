@@ -2,7 +2,6 @@ package utility.helpers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.ConfigurationManager;
 
 import java.util.concurrent.TimeUnit;
@@ -10,20 +9,26 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.fail;
 
 /**
- * Created by SYSTEM on 20.04.2017.
+ * Created by SYSTEM on 03.05.2017.
  */
 public class WebDriverHelperNew {
     private ConfigurationManager manager;
-    private static WebDriver driver;
+    public WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
 
-    //non-static init (perform BEFORE constructor)
-    {   driver = new ChromeDriver();
+    {
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);}
+        //Подождать 20 сек появления какого-то элемента
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
 
     public WebDriverHelperNew(ConfigurationManager manager){
         this.manager = manager;
+    }
+
+    public WebDriver getDriver(){
+        return driver;
     }
 
     public void stop(){
@@ -32,9 +37,5 @@ public class WebDriverHelperNew {
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
-    }
-
-    public WebDriver getDriver(){
-        return driver;
     }
 }

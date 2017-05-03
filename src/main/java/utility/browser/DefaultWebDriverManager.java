@@ -18,7 +18,7 @@ public class DefaultWebDriverManager implements WebDriverManager {
                 factory = new LocalWebDriverFactory();
                 break;
             case BUILDSERVER:
-                factory = new BuildServerWebDriverFactoryFactory();
+                factory = new BuildServerWebDriverFactory();
                 break;
             case CLOUD:
                 factory = new CloudWebDriverFactory();

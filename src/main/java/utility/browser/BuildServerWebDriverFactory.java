@@ -6,7 +6,7 @@ import utility.browser.enums.BrowserType;
 /**
  * Created by SYSTEM on 24.04.2017.
  */
-public class BuildServerWebDriverFactoryFactory implements WebDriverFactory {
+public class BuildServerWebDriverFactory implements WebDriverFactory {
     @Override
     public String create() {
         //String browserType = ConfigurationManager.getInstance().getTestBrowser().toUpperCase();
