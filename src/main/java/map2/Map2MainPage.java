@@ -43,7 +43,12 @@ public class Map2MainPage extends Page {
     }
 
     public void addNewPage() {
-        addNewPageButton.click();
+        if(deletePageButton.isDisplayed()) {
+            deletePageButton.click();
+            addNewPageButton.click();
+        }else {
+            addNewPageButton.click();
+        }
     }
 
     public void deleteCurrentWidget(){
