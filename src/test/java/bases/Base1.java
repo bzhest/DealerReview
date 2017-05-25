@@ -73,6 +73,9 @@ public class Base1 {
         manager.getMap2MainPage(driver).openDealerListTab();
         logger.log("Add new Page");
         manager.getMap2MainPage(driver).addNewPage();
+        logger.log("Fill widget title");
+        manager.getPageEditor(driver).inputText();
+
 
     }
 
