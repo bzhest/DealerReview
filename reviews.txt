@@ -1,5 +1,5 @@
-Andrey,test_1@dxloo.com,New York,Some review title,Some review text
-Lena,test_2@dxloo.com,Volnogorsk,Some review titlee,Some review textt
-Sveta,test_3@dxloo.com,Dnipro,Some review titleeee,Some review texttt
-Ilia,test_4@dxloo.com,Sankt-petersburg,Some review titleeee,Some review textttt
-Lesha,test_5@dxloo.com,Ivanovo,Some review titleeeee,Some review texttttt
+Andrey,test_1@dxloo.com,Dnipro,Title1,Text1
+Lena,test_2@dxloo.com,Lvov,Title2,Text2
+Sveta,test_3@dxloo.com,Kiev,Title3,Text3
+Ilia,test_4@dxloo.com,Kharkiv,Title4,Text4
+Lesha,test_5@dxloo.com,Donetsk,Title5,Text5

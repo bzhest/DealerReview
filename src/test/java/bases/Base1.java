@@ -73,6 +73,10 @@ public class Base1 {
         manager.getMap2MainPage(driver).openDealerListTab();
         logger.log("Add new Page");
         manager.getMap2MainPage(driver).addNewPage();
+        logger.log("Click 'Edit' button");
+        manager.getMap2MainPage(driver).clickEditButton();
+        manager.getPageEditor(driver).addAnWidget();
+
 
     }
 

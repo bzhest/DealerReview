@@ -42,6 +42,8 @@ public class Map2MainPage extends Page {
         tabDealerReviewForm.click();
     }
 
+    public void clickEditButton(){editPageButton.click();}
+
     public void addNewPage() {
         if(deletePageButton.isDisplayed()) {
             deletePageButton.click();
