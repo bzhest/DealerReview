@@ -110,6 +110,10 @@ public class PageEditor extends Page {
         libraryTab.click();
     }
 
+
+    public void fillWidgetNameTitle(){
+
+    }
     //Click on Page Settings tab
     public void clickOnPageSettings(){
         pageSettingsTab.click();

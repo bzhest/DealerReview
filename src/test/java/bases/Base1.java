@@ -85,6 +85,7 @@ public class Base1 {
         manager.getMap2MainPage(driver).openDealerListTab();
         logger.log("Add new Page");
         manager.getMap2MainPage(driver).addNewPage();
+
         logger.log("Add widget name");
         manager.getPage(driver).inputText(manager.getPageEditor(driver).getNameInput(), "dealerlist");
         logger.log("Add widget title");
@@ -119,6 +120,7 @@ public class Base1 {
         manager.getPageEditor(driver).getMapButton().click();
         /*logger.log("click on Dealer List widget");
         action.moveToElement(manager.getPageEditor(driver).getDealerListWidget()).doubleClick().perform();*/
+
 
 
     }
