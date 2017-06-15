@@ -1,5 +1,6 @@
 package utility.browser;
 
+import org.openqa.selenium.WebDriver;
 import utility.ConfigurationManager;
 import utility.browser.enums.RunOn;
 
@@ -8,7 +9,7 @@ import utility.browser.enums.RunOn;
  */
 public class DefaultWebDriverManager implements WebDriverManager {
     @Override
-    public String getWebDriver() {
+    public WebDriver getWebDriver() {
         //String runOn = ConfigurationManager.getInstance().getRunOn().toUpperCase();
         RunOn runOn = RunOn.fromString(ConfigurationManager.getInstance().getRunOn().toUpperCase());
         WebDriverFactory factory;

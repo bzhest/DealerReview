@@ -32,14 +32,23 @@ public class PageEditor extends Page {
     @FindBy(how= How.CSS, using ="div.tab[data-tab='library'][title='Library']")
     private WebElement libraryTab;
 
+    @FindBy(how= How.CSS, using =".menu-launcher")
+    private WebElement mapButton;
+
     @FindBy(how= How.CSS, using ="div.tab[data-tab='page-settings'][title='Page Settings']")
     private WebElement pageSettingsTab;
 
     @FindBy(how= How.CSS, using =".ico-widget.widget-list_dealer")
     private WebElement iconDealerList;
 
+    @FindBy(how= How.CSS, using =".ico-widget.widget-dealer_review")
+    private WebElement iconDealerReview;
+
     @FindBy(how= How.CSS, using =".ax-container.empty")
     private WebElement emptyContainer;
+
+    @FindBy(how= How.CSS, using ="div[data-widget=\'list_dealer\']")
+    private WebElement widgetDealerList;
 
     @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-contact_us']")
     private WebElement contactIconTree;
@@ -52,15 +61,6 @@ public class PageEditor extends Page {
 
     @FindBy(how= How.XPATH, using ="//div[@class='menu-launcher']")
     private WebElement menuLauncher;
-
-    @FindBy(how= How.XPATH, using ="//div[@class='mapx-button-ico globe']")
-    private WebElement previewBtn;
-
-    @FindBy(how= How.XPATH, using ="//div[@class='layout-container container']//div[@data-widget='contact_us']")
-    private WebElement contactUsWidget;
-
-    @FindBy(how= How.XPATH, using ="//div[@class='layout-container container']//div[@data-widget='form_trade_in']")
-    private WebElement tradeInWidget;
 
     @FindBy(how= How.XPATH, using ="//div[@class='layout-container container']//div[@class='ax-widget panel panel-default']")
     private WebElement widget;
@@ -84,10 +84,26 @@ public class PageEditor extends Page {
     public WebElement getIconDealerList() {
         return iconDealerList;
     }
+    public WebElement getIconDealerReview() {return iconDealerReview;}
+
+    public WebElement getEmptyContainer() {
+        return emptyContainer;
+    }
 
     public WebElement getTitleInput() {
         return titleInput;
     }
+
+    public WebElement getActivateButton() {
+        return activateBtn;
+    }
+
+    public WebElement getMapButton() {return mapButton;}
+
+    public WebElement getDealerListWidget() {
+        return widgetDealerList;
+    }
+
 
     //Click on Library tab
     public void clickOnLibrary(){
@@ -166,11 +182,6 @@ public class PageEditor extends Page {
         }
     }
 
-    /*click on Preview Page button*/
-    public void clickOnPreview(){
-        previewBtn.click();
-
-    }
 
     /*open widget settings*/
     public void openWidgetSettings(){
@@ -182,12 +193,5 @@ public class PageEditor extends Page {
 
     }
 
-    public void openTradeInWidgetSettings(){
-        Actions action = new Actions(driver);
-        Action moveToElem = action.moveToElement(tradeInWidget).build();
-        moveToElem.perform();
-        widgetEditBtn.click();
-
-    }
 
 }

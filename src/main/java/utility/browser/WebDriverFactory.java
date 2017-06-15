@@ -1,8 +1,10 @@
 package utility.browser;
 
+import org.openqa.selenium.WebDriver;
+
 /**
  * Created by SYSTEM on 03.05.2017.
  */
 public interface WebDriverFactory {
-    String create();
+     WebDriver create();
 }

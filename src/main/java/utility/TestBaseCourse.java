@@ -16,7 +16,7 @@ public class TestBaseCourse {
         wdm = new DefaultWebDriverManager();
 
         logger.log("Start browser" + wdm.getWebDriver());
-        String browser = wdm.getWebDriver();
+        //String browser = wdm.getWebDriver();
 
         beforeTest();
     }

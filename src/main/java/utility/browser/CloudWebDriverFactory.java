@@ -1,28 +1,30 @@
 package utility.browser;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import utility.ConfigurationManager;
 import utility.browser.enums.BrowserType;
+import utility.capabilities.DriverCapabilities;
 
 /**
  * Created by SYSTEM on 24.04.2017.
  */
 public class CloudWebDriverFactory implements WebDriverFactory {
     @Override
-    public String create() {
-        //String browserType = ConfigurationManager.getInstance().getTestBrowser().toUpperCase();
+    public WebDriver create() {
         BrowserType browserType = BrowserType.valueOf(ConfigurationManager.getInstance().getTestBrowser().toUpperCase());
 
         switch(browserType){
             case CHROME:
-                return "Cloud Google Chrome";
+                return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             case MOZILLA:
-                return "Cloud Mozilla FireFox";
+                return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             case SAFARI:
-                return "Cloud Safari";
+                return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             case IE:
-                return "Local IE";
+                return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             default:
-                return "Such browser is not supported";
+                throw  new RuntimeException();
         }
     }
 }

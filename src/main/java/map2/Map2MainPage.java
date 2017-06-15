@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import page.Page;
 
+import java.util.List;
+
 
 public class Map2MainPage extends Page {
     public Map2MainPage(WebDriver driver) {
@@ -19,7 +21,7 @@ public class Map2MainPage extends Page {
     public WebElement editPageButton;
 
     @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Remove page']")
-    public WebElement deletePageButton;
+    public List<WebElement> deletePageButton;
 
     @FindBy(how = How.CSS, using = "div.page-item[data-page='dealerlist']")
     public WebElement tabDealerList;
@@ -45,8 +47,8 @@ public class Map2MainPage extends Page {
     public void clickEditButton(){editPageButton.click();}
 
     public void addNewPage() {
-        if(deletePageButton.isDisplayed()) {
-            deletePageButton.click();
+        if(deletePageButton.size()>0) {
+            deletePageButton.get(0).click();
             addNewPageButton.click();
         }else {
             addNewPageButton.click();
@@ -54,7 +56,7 @@ public class Map2MainPage extends Page {
     }
 
     public void deleteCurrentWidget(){
-        deletePageButton.click();
+        deletePageButton.get(0).click();
     }
 
     //------------------------------------------------------

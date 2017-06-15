@@ -1,29 +1,35 @@
 package utility.browser;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import utility.ConfigurationManager;
 import utility.browser.enums.BrowserType;
+import utility.capabilities.DriverCapabilities;
 
 /**
  * Created by SYSTEM on 24.04.2017.
  */
 public class LocalWebDriverFactory implements WebDriverFactory{
     @Override
-    public String create() {
+    public WebDriver create() {
         //String browserType= ConfigurationManager.getInstance().getTestBrowser().toUpperCase();
         BrowserType browserType = BrowserType.valueOf(ConfigurationManager.getInstance().getTestBrowser().toUpperCase());
         switch(browserType){
             case CHROME:
-                return "Local Google Chrome";
+                return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             case MOZILLA:
-                return "Local Mozilla FireFox";
+                return new FirefoxDriver(DriverCapabilities.applyBrowserCapabilities());
             case SAFARI:
-                return "Local Safari";
+                return new SafariDriver(DriverCapabilities.applyBrowserCapabilities());
             case IE:
-                return "Local IE";
+                return new InternetExplorerDriver(DriverCapabilities.applyBrowserCapabilities());
             default:
-                return "Such browser is not supported";
+                throw new RuntimeException();
         }
+
     }
 }
 

@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,9 +17,11 @@ import utility.ConfigurationManager;
 import page.Page;
 import settings.Website;
 import utility.*;
+import utility.browser.LocalWebDriverFactory;
 import utility.browser.WebDriverManager;
 import utility.logger.LogBaseNew;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
@@ -35,13 +38,22 @@ public class Base1 {
     public DmsLoginForm dmsLoginForm;
     protected LogBaseNew logger;
     protected WebDriverManager wdm;
+    protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
 
     //non-static init (perform BEFORE constructor)
-    {manager = ConfigurationManager.getInstance();
-    logger = manager.getLogger(manager.getLoggerFromEnv());}
+    {
+        manager = ConfigurationManager.getInstance();
+        logger = manager.getLogger(manager.getLoggerFromEnv());
+    }
 
-    @BeforeSuite
+
+    @BeforeClass
     public void turnOnMap2() throws InterruptedException {
+        logger.log("Navigating to test url");
+        driver = lwf.create();
+        //driver = manager.getWebDriverHelperNew().getDriver();
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        manager = ConfigurationManager.getInstance(driver);
         logger.log("Navigating to test url");
         driver = manager.getWebDriverHelperNew().getDriver();
         driver.get(PropertyLoader.loadProperty("dms.url"));
@@ -73,34 +85,50 @@ public class Base1 {
         manager.getMap2MainPage(driver).openDealerListTab();
         logger.log("Add new Page");
         manager.getMap2MainPage(driver).addNewPage();
-        logger.log("Click 'Edit' button");
-        manager.getMap2MainPage(driver).clickEditButton();
-        manager.getPageEditor(driver).addAnWidget();
+        logger.log("Add widget name");
+        manager.getPage(driver).inputText(manager.getPageEditor(driver).getNameInput(), "dealerlist");
+        logger.log("Add widget title");
+        manager.getPage(driver).inputText(manager.getPageEditor(driver).getTitleInput(), "dealerlist");
+        logger.log("Click on 'Library tab'");
+        manager.getPageEditor(driver).clickOnLibrary();
+        logger.log("drag and drop Dealer List icon");
+        manager.getPageEditor(driver).addAnWidget(
+                manager.getPageEditor(driver).getIconDealerList(),
+                manager.getPageEditor(driver).getEmptyContainer());
+        logger.log("Click on activation button");
+        manager.getPageEditor(driver).getActivateButton().click();
+        logger.log("Click on MAP button");
+        manager.getPageEditor(driver).getMapButton().click();
+        logger.log("Click on Dealer Review tab");
+        manager.getMap2MainPage(driver).openDealerReviewTab();
+        logger.log("Add new Page");
+        manager.getMap2MainPage(driver).addNewPage();
+        logger.log("Add widget name");
+        manager.getPage(driver).inputText(manager.getPageEditor(driver).getNameInput(), "dealerreview");
+        logger.log("Add widget title");
+        manager.getPage(driver).inputText(manager.getPageEditor(driver).getTitleInput(), "dealerreview");
+        logger.log("Click on 'Library tab'");
+        manager.getPageEditor(driver).clickOnLibrary();
+        logger.log("drag and drop Dealer Review icon");
+        manager.getPageEditor(driver).addAnWidget(
+                manager.getPageEditor(driver).getIconDealerReview(),
+                manager.getPageEditor(driver).getEmptyContainer());
+        logger.log("Click on activation button");
+        manager.getPageEditor(driver).getActivateButton().click();
+        logger.log("Click on MAP button");
+        manager.getPageEditor(driver).getMapButton().click();
+        /*logger.log("click on Dealer List widget");
+        action.moveToElement(manager.getPageEditor(driver).getDealerListWidget()).doubleClick().perform();*/
 
 
     }
 
-    @BeforeClass
-    public void setUp() {
 
-        /*logger = new Logger();
-
-        driver = new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver", "E://Selenium_Drivers/chromedriver.exe");
-        driver.get("http://www.google.com");
-        logger.log("Create singleton");
-        manager = ConfigurationManager.getInstance();*/
-    }
-
-
-
-    @AfterTest(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
-        //ConfigurationManager.getInstance(driver).stop();
+        driver.quit();
 
     }
-
-
 
 
     public boolean waitForJSandJQueryToLoad() {
@@ -117,9 +145,8 @@ public class Base1 {
             @Override
             public Boolean apply(WebDriver driver) {
                 try {
-                    return ((Long)((JavascriptExecutor)driver).executeScript("return jQuery.active") == 0);
-                }
-                catch (Exception e) {
+                    return ((Long) ((JavascriptExecutor) driver).executeScript("return jQuery.active") == 0);
+                } catch (Exception e) {
                     // no jQuery present
                     return true;
                 }
