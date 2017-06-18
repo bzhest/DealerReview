@@ -1,6 +1,5 @@
 package page;
 
-import dms.DmsLoginForm;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 import utility.LogFactory;
 
 

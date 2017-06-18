@@ -1,5 +1,7 @@
 package utility.data;
 
+import utility.data.api.UserDataMapper;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;

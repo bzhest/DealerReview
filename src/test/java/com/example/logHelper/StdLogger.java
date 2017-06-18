@@ -1,7 +1,5 @@
 package com.example.logHelper;
 
-import utility.ConfigurationManager;
-
 /**
  * Created by Andrey on 13.04.2017.
  */

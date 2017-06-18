@@ -8,9 +8,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import page.Page;
-import utility.ConfigurationManager;
 
 /**
  * Created by Andrey on 13.04.2017.

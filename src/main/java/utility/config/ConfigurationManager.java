@@ -1,4 +1,4 @@
-package utility;
+package utility.config;
 
 import dms.DmsLoginForm;
 import dms.DmsMainPage;
@@ -14,7 +14,7 @@ import settings.Users;
 import settings.Website;
 import utility.helpers.WebDriverHelperNew;
 import utility.logger.FileLogger;
-import utility.logger.LogBaseNew;
+import utility.logger.api.LogBaseNew;
 import utility.logger.StdLogger;
 
 /**

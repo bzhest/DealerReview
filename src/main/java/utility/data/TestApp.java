@@ -1,5 +1,7 @@
 package utility.data;
 
+import utility.data.api.UserDataMapper;
+
 /**
  * Created by SYSTEM on 04.05.2017.
  */

@@ -1,7 +1,5 @@
 package com.example.logHelper;
 
-import utility.ConfigurationManager;
-
 import java.io.FileWriter;
 
 /**

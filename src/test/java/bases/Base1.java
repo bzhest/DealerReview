@@ -1,28 +1,17 @@
 package bases;
 
 
-import com.example.logHelper.LogBase;
-import com.example.managers.ApplicationManager;
 import dms.DmsLoginForm;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-import utility.ConfigurationManager;
-import page.Page;
-import settings.Website;
-import utility.*;
-import utility.browser.LocalWebDriverFactory;
-import utility.browser.WebDriverManager;
-import utility.logger.LogBaseNew;
-
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
+import utility.config.ConfigurationManager;
+import utility.browser.users.LocalWebDriverFactory;
+import utility.browser.api.WebDriverManager;
+import utility.logger.api.LogBaseNew;
+import utility.properties.PropertyLoader;
 
 import static org.testng.Assert.fail;
 

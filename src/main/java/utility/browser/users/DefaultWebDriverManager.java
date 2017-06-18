@@ -1,7 +1,9 @@
-package utility.browser;
+package utility.browser.users;
 
 import org.openqa.selenium.WebDriver;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
+import utility.browser.api.WebDriverFactory;
+import utility.browser.api.WebDriverManager;
 import utility.browser.enums.RunOn;
 
 /**

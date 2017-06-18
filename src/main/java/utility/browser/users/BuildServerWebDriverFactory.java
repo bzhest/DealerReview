@@ -1,20 +1,21 @@
-package utility.browser;
+package utility.browser.users;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
+import utility.browser.api.WebDriverFactory;
 import utility.browser.enums.BrowserType;
 import utility.capabilities.DriverCapabilities;
 
 /**
  * Created by SYSTEM on 24.04.2017.
  */
-public class CloudWebDriverFactory implements WebDriverFactory {
+public class BuildServerWebDriverFactory implements WebDriverFactory {
     @Override
     public WebDriver create() {
         BrowserType browserType = BrowserType.valueOf(ConfigurationManager.getInstance().getTestBrowser().toUpperCase());
 
-        switch(browserType){
+        switch (browserType) {
             case CHROME:
                 return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             case MOZILLA:
@@ -24,7 +25,7 @@ public class CloudWebDriverFactory implements WebDriverFactory {
             case IE:
                 return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
             default:
-                throw  new RuntimeException();
+                throw new RuntimeException();
         }
     }
 }
