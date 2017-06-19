@@ -1,7 +1,12 @@
-package utility.browser;
+package utility.browser.users;
 
 import org.openqa.selenium.WebDriver;
 import utility.config.ConfigurationManager;
+<<<<<<< HEAD:src/main/java/utility/browser/DefaultWebDriverManager.java
+=======
+import utility.browser.api.WebDriverFactory;
+import utility.browser.api.WebDriverManager;
+>>>>>>> d31912660906abf51d621e5561c99843aa6c168d:src/main/java/utility/browser/users/DefaultWebDriverManager.java
 import utility.browser.enums.RunOn;
 
 /**

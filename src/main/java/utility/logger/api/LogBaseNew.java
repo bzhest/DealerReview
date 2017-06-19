@@ -1,4 +1,4 @@
-package utility.logger;
+package utility.logger.api;
 
 /**
  * Created by SYSTEM on 20.04.2017.

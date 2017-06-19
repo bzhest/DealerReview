@@ -10,6 +10,11 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import utility.config.ConfigurationManager;
+<<<<<<< HEAD
+=======
+import utility.LogFactory;
+
+>>>>>>> d31912660906abf51d621e5561c99843aa6c168d
 
 
 /**

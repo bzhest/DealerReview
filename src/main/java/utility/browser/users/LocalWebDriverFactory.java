@@ -1,4 +1,4 @@
-package utility.browser;
+package utility.browser.users;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,13 +6,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import utility.config.ConfigurationManager;
+<<<<<<< HEAD:src/main/java/utility/browser/LocalWebDriverFactory.java
+=======
+import utility.browser.api.WebDriverFactory;
+>>>>>>> d31912660906abf51d621e5561c99843aa6c168d:src/main/java/utility/browser/users/LocalWebDriverFactory.java
 import utility.browser.enums.BrowserType;
 import utility.capabilities.DriverCapabilities;
 
 /**
  * Created by SYSTEM on 24.04.2017.
  */
-public class LocalWebDriverFactory implements WebDriverFactory{
+public class LocalWebDriverFactory implements WebDriverFactory {
     @Override
     public WebDriver create() {
         //String browserType= ConfigurationManager.getInstance().getTestBrowser().toUpperCase();

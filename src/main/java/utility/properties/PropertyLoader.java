@@ -1,3 +1,4 @@
+
 package utility.properties;
 
 /*Class for getting values from the property file*/
@@ -43,3 +44,4 @@ public class PropertyLoader {
         }
     }
 }
+

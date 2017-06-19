@@ -8,10 +8,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import utility.config.ConfigurationManager;
-import utility.browser.LocalWebDriverFactory;
-import utility.browser.WebDriverManager;
-import utility.logger.LogBaseNew;
+import utility.browser.users.LocalWebDriverFactory;
+import utility.browser.api.WebDriverManager;
+import utility.logger.api.LogBaseNew;
 import utility.properties.PropertyLoader;
+
 
 import static org.testng.Assert.fail;
 
