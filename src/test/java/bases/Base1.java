@@ -1,28 +1,17 @@
 package bases;
 
 
-import com.example.logHelper.LogBase;
-import com.example.managers.ApplicationManager;
 import dms.DmsLoginForm;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-import utility.ConfigurationManager;
-import page.Page;
-import settings.Website;
-import utility.*;
+import utility.config.ConfigurationManager;
 import utility.browser.LocalWebDriverFactory;
 import utility.browser.WebDriverManager;
 import utility.logger.LogBaseNew;
-
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
+import utility.properties.PropertyLoader;
 
 import static org.testng.Assert.fail;
 
@@ -32,7 +21,7 @@ import static org.testng.Assert.fail;
 public class Base1 {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
-    //public Logger logger;
+
     protected WebDriver driver;
     public StringBuffer verificationErrors = new StringBuffer();
     public DmsLoginForm dmsLoginForm;
@@ -128,6 +117,7 @@ public class Base1 {
 
     @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
+        if (driver != null)
         driver.quit();
 
     }

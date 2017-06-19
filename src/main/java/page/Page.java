@@ -1,6 +1,5 @@
 package page;
 
-import dms.DmsLoginForm;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,16 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
-import utility.ConfigurationManager;
-import utility.LogFactory;
-
+import utility.config.ConfigurationManager;
 
 
 /**
  * Created by Andrey on 15.03.2017.
  */
 public class Page{
-    private static final Logger LOG = LogFactory.getLogger(Page.class);
     public Logger logger;
     public ConfigurationManager manager;
     protected WebDriver driver;
@@ -45,12 +41,6 @@ public class Page{
 
     public String getTitle() {
         return driver.getTitle();
-    }
-
-    public String getPageUrl() {
-        String pageUrl = driver.getCurrentUrl();
-        LOG.info("Current page url is: " + pageUrl);
-        return pageUrl;
     }
 
     public boolean waitForJSandJQueryToLoad() {

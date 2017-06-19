@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 import utility.browser.enums.BrowserType;
 import utility.capabilities.DriverCapabilities;
 

@@ -1,6 +1,6 @@
 package utility.logger;
 
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

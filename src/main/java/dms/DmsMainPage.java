@@ -1,20 +1,13 @@
 package dms;
 
-import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.Page;
-import settings.Users;
-import utility.ConfigurationManager;
-import utility.PropertyLoader;
 
 /**
  * Created by SYSTEM on 16.03.2017.

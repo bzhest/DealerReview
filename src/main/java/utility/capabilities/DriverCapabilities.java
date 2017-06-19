@@ -2,7 +2,7 @@ package utility.capabilities;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 import utility.browser.enums.BrowserType;
 
 /**

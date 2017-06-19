@@ -2,7 +2,7 @@ package utility.browser;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 import utility.browser.enums.BrowserType;
 import utility.capabilities.DriverCapabilities;
 

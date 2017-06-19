@@ -2,7 +2,7 @@ package utility.helpers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utility.ConfigurationManager;
+import utility.config.ConfigurationManager;
 
 import java.util.concurrent.TimeUnit;
 
