@@ -13,8 +13,7 @@ public class WindowHandlers {
     private WebDriver driver;
     private String parentWindowHandel;
 
-    public WindowHandlers(WebDriver
-                                  driver) {
+    public WindowHandlers(WebDriver driver) {
         this.driver = driver;
         parentWindowHandel = driver.getWindowHandle();
     }
@@ -71,5 +70,11 @@ public class WindowHandlers {
     }
 
     //----------------------------------------------------------------------------------------------------
+
+    public void switchToAnotherWindow(int winNumber) {
+        Set allWindowHandles= driver.getWindowHandles();// возвращает набор дискрипторов окон
+        String neededWindow= (String)allWindowHandles.toArray()[winNumber -1];
+        driver.switchTo().window(neededWindow);
+    }
 }
 
