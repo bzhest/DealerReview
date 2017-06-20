@@ -1,10 +1,14 @@
 package map2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
+import utility.utils.javascript.Javascript;
+import utility.utils.windowHandlers.WindowHandlers;
 
 import java.util.List;
 
@@ -37,6 +41,8 @@ public class Map2MainPage extends Page {
     }
 
     public void openDealerReviewTab() {
+        Javascript.scrollToElement(driver,tabDealerReview);
+        wait.until(ExpectedConditions.visibilityOf(tabDealerReview));
         tabDealerReview.click();
     }
 
@@ -44,28 +50,41 @@ public class Map2MainPage extends Page {
         tabDealerReviewForm.click();
     }
 
-    public void clickEditButton(){editPageButton.click();}
-
-    public void addNewPage() {
-        if(deletePageButton.size()>0) {
-            deletePageButton.get(0).click();
-            addNewPageButton.click();
-        }else {
-            addNewPageButton.click();
-        }
+    public WebElement getDeletePageButton() {
+        return deletePageButton.get(0);
     }
 
-    public void deleteCurrentWidget(){
+    public void clickEditButton() {
+        editPageButton.click();
+    }
+
+    public void addNewPage() {
+        if (deletePageButton.size() > 0) {
+            for (WebElement e : deletePageButton) {
+                //wait.until(ExpectedConditions.visibilityOf(getDeletePageButton()));
+                try{
+                    getDeletePageButton().click();
+                }catch(Exception ex){}
+                WindowHandlers.acceptAlert(driver);
+            }
+        }
+        wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
+        try{
+            addNewPageButton.click();
+        }catch(Exception ex){}
+    }
+
+    public void deleteCurrentWidget() {
         deletePageButton.get(0).click();
     }
 
     //------------------------------------------------------
-    public void setUpDealerListWidget(){
+    public void setUpDealerListWidget() {
         openDealerListTab();
 
         addNewPage();
-        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getNameInput(),"Dealer List");
-        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getTitleInput(),"Dealer List");
+        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getNameInput(), "Dealer List");
+        manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getTitleInput(), "Dealer List");
         manager.getPageEditor(driver).clickOnLibrary();
     }
     //------------------------------------------------------

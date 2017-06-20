@@ -17,10 +17,10 @@ public class WebDriverHelperNew {
     public StringBuffer verificationErrors = new StringBuffer();
 
     {
-        driver = new ChromeDriver();
+        /*driver = new ChromeDriver();
         driver.manage().window().maximize();
         //Подождать 20 сек появления какого-то элемента
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);*/
     }
 
     public WebDriverHelperNew(ConfigurationManager manager){

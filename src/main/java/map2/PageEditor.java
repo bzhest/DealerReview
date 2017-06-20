@@ -1,13 +1,11 @@
 package map2;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
 
 /**
@@ -15,63 +13,68 @@ import page.Page;
  */
 public class PageEditor extends Page {
 
-    public PageEditor(WebDriver driver){
+    public PageEditor(WebDriver driver) {
         super(driver);
     }
 
     /*declare elements on the page*/
 
-    @FindBy(how= How.XPATH, using ="//input[@data-param='name']")
+    @FindBy(how = How.XPATH, using = "//input[@data-param='name']")
     private WebElement nameInput;
 
-    @FindBy(how= How.XPATH, using ="//input[@data-param='title']")
+    @FindBy(how = How.XPATH, using = "//input[@data-param='title']")
     private WebElement titleInput;
 
-    @FindBy(how= How.CSS, using ="div.tab[data-tab='library'][title='Library']")
+    @FindBy(how = How.CSS, using = "div.tab[data-tab='library'][title='Library']")
     private WebElement libraryTab;
 
-    @FindBy(how= How.CSS, using =".menu-launcher")
+    @FindBy(css = ".mapx-button-ico.globe")
+    WebElement previewPage;
+
+    @FindBy(how = How.CSS, using = ".menu-launcher")
     private WebElement mapButton;
 
-    @FindBy(how= How.CSS, using ="div.tab[data-tab='page-settings'][title='Page Settings']")
+    @FindBy(how = How.CSS, using = "div.tab[data-tab='page-settings'][title='Page Settings']")
     private WebElement pageSettingsTab;
 
-    @FindBy(how= How.CSS, using =".ico-widget.widget-list_dealer")
+    @FindBy(how = How.CSS, using = ".ico-widget.widget-list_dealer")
     private WebElement iconDealerList;
 
-    @FindBy(how= How.CSS, using =".ico-widget.widget-dealer_review")
+    @FindBy(how = How.CSS, using = ".ico-widget.widget-dealer_review")
     private WebElement iconDealerReview;
 
-    @FindBy(how= How.CSS, using =".ax-container.empty")
+    @FindBy(how = How.CSS, using = ".ico-widget.widget-dealer_reviewform")
+    private WebElement iconDealerReviewForm;
+
+    @FindBy(how = How.CSS, using = ".ax-container.empty")
     private WebElement emptyContainer;
 
-    @FindBy(how= How.CSS, using ="div[data-widget=\'list_dealer\']")
+    @FindBy(how = How.CSS, using = "div[data-widget=\'list_dealer\']")
     private WebElement widgetDealerList;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-contact_us']")
+    @FindBy(how = How.XPATH, using = "//div[@class='ico-widget widget-contact_us']")
     private WebElement contactIconTree;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='ico-widget widget-form_trade_in']")
+    @FindBy(how = How.XPATH, using = "//div[@class='ico-widget widget-form_trade_in']")
     private WebElement tradeInIconTree;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='mapx-button-ico activate']")
+    @FindBy(how = How.XPATH, using = "//div[@class='mapx-button-ico activate']")
     private WebElement activateBtn;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='menu-launcher']")
+    @FindBy(how = How.XPATH, using = "//div[@class='menu-launcher']")
     private WebElement menuLauncher;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='layout-container container']//div[@class='ax-widget panel panel-default']")
+    @FindBy(how = How.XPATH, using = "//div[@class='layout-container container']//div[@class='ax-widget panel panel-default']")
     private WebElement widget;
 
-    @FindBy(how= How.XPATH, using ="//div[@data-widget='form_trade_in'][contains(@class, 'ax-widget')]")
+    @FindBy(how = How.XPATH, using = "//div[@data-widget='form_trade_in'][contains(@class, 'ax-widget')]")
     private WebElement tradeInWidgetInEditor;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='ax-btn btn-edit']")
+    @FindBy(how = How.XPATH, using = "//div[@class='ax-btn btn-edit']")
     private WebElement widgetEditBtn;
 
-    @FindBy(how= How.XPATH, using ="//div[@class='jGrowl-notification ui-state-highlight ui-corner-all jgrowl_default_alert']/div[@class='message'][contains(text(), 'Page activated')]")
+    @FindBy(how = How.XPATH, using = "//div[@class='jGrowl-notification ui-state-highlight ui-corner-all jgrowl_default_alert']/div[@class='message'][contains(text(), 'Page activated')]")
     private WebElement pageActivatedTooltip;
-
 
 
     //Getter
@@ -82,7 +85,18 @@ public class PageEditor extends Page {
     public WebElement getIconDealerList() {
         return iconDealerList;
     }
-    public WebElement getIconDealerReview() {return iconDealerReview;}
+
+    public WebElement getIconDealerReview() {
+        return iconDealerReview;
+    }
+
+    public WebElement getIconDealerReviewForm() {
+        return iconDealerReviewForm;
+    }
+
+    public WebElement getPageSettingsTab() {
+        return pageSettingsTab;
+    }
 
     public WebElement getEmptyContainer() {
         return emptyContainer;
@@ -96,7 +110,16 @@ public class PageEditor extends Page {
         return activateBtn;
     }
 
-    public WebElement getMapButton() {return mapButton;}
+    public void clickOnMapButton() {
+        wait.until(ExpectedConditions.visibilityOf(mapButton));
+        try{
+            mapButton.click();
+        }catch(Exception e){}
+    }
+
+    public WebElement getPreviewPage() {
+        return previewPage;
+    }
 
     public WebElement getDealerListWidget() {
         return widgetDealerList;
@@ -104,89 +127,88 @@ public class PageEditor extends Page {
 
 
     //Click on Library tab
-    public void clickOnLibrary(){
+    public void clickOnLibrary() {
         libraryTab.click();
     }
 
 
-    public void fillWidgetNameTitle(){
+    public void fillWidgetNameTitle() {
 
     }
+
     //Click on Page Settings tab
-    public void clickOnPageSettings(){
+    public void clickOnPageSettings() {
         pageSettingsTab.click();
     }
 
     /*fill page name*/
-    public void setPageName(){
+    public void setPageName() {
         nameInput.clear();
         nameInput.sendKeys("contactauto");
     }
 
     //add widget
-    public void addAnWidget(WebElement source, WebElement target){
+    public void addAnWidget(WebElement source, WebElement target) {
         Actions builder = new Actions(driver);
-        builder.dragAndDrop(source,target).perform();
-    }
-    /*add a particular widget, using Java Script*/
-    public void addWidget(){
-        libraryTab.click();
-        ((JavascriptExecutor)driver).executeScript("map.pg.addWidget(\"contact_us\", {destination: \"body_0_0\"});");
+        builder.dragAndDrop(source, target).perform();
     }
 
-    public void addTradeInWidget(){
+    /*add a particular widget, using Java Script*/
+    public void addWidget() {
         libraryTab.click();
-        ((JavascriptExecutor)driver).executeScript("map.pg.addWidget(\"form_trade_in\", {destination: \"body_0_0\"});");
+        ((JavascriptExecutor) driver).executeScript("map.pg.addWidget(\"contact_us\", {destination: \"body_0_0\"});");
+    }
+
+    public void addTradeInWidget() {
+        libraryTab.click();
+        ((JavascriptExecutor) driver).executeScript("map.pg.addWidget(\"form_trade_in\", {destination: \"body_0_0\"});");
     }
 
     /*click on Activate page button*/
-    public void activatePage(){
+    public void activatePage() {
         activateBtn.click();
     }
 
     /*back to pages tree*/
-    public void backToMap(){
+    public void backToMap() {
         menuLauncher.click();
 
     }
 
     /*check if a particular widget exists in the widgets library*/
-    public boolean isContactWidgetExists(){
+    public boolean isContactWidgetExists() {
         libraryTab.click();
-        try{
+        try {
             contactIconTree.isDisplayed();
             return true; // return true, if element exists
-        }
-        catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             return false; //return false, if element doesn't exist
         }
     }
 
     /*check if a particular widget exists in the widgets library*/
-    public boolean isTradeInWidgetExistsInEditor(){
-        try{
+    public boolean isTradeInWidgetExistsInEditor() {
+        try {
             tradeInWidgetInEditor.isDisplayed();
             return true; // return true, if element exists
-        }
-        catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             return false; //return false, if element doesn't exist
         }
     }
 
-    public boolean isTradeInWidgetExists(){
+    public boolean isTradeInWidgetExists() {
         libraryTab.click();
-        try{
+        try {
             tradeInIconTree.isDisplayed();
             return true; // return true, if element exists
-        }
-        catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             return false; //return false, if element doesn't exist
         }
     }
 
 
     /*open widget settings*/
-    public void openWidgetSettings(){
+    public void openWidgetSettings() {
         Actions action = new Actions(driver);
         //Action moveToElem = action.moveToElement(contactUsWidget).build();
         Action moveToElem = action.moveToElement(widget).build();

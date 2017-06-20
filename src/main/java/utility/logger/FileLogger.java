@@ -1,10 +1,9 @@
 package utility.logger;
 
+
 import utility.config.ConfigurationManager;
-<<<<<<< HEAD
-=======
 import utility.logger.api.LogBaseNew;
->>>>>>> d31912660906abf51d621e5561c99843aa6c168d
+
 
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;

@@ -8,11 +8,13 @@ import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import dwsDealerReviews.DealerReviewDWS;
 import map2.Map2MainPage;
 import map2.PageEditor;
+import map2.PreviewPage;
 import org.openqa.selenium.WebDriver;
 import page.Page;
 import settings.UserEditor;
 import settings.Users;
 import settings.Website;
+import utility.browser.users.DefaultWebDriverManager;
 import utility.helpers.WebDriverHelperNew;
 import utility.logger.FileLogger;
 import utility.logger.api.LogBaseNew;
@@ -21,7 +23,7 @@ import utility.logger.StdLogger;
 /**
  * Created by SYSTEM on 04.04.2017.
  */
-public class ConfigurationManager {
+public class  ConfigurationManager {
 
     private ToolsReviewsDealerReviewsPage toolsReviewsDealerReviewsPage;
     private WebDriver driver;
@@ -40,11 +42,13 @@ public class ConfigurationManager {
     private StdLogger stdlogger;
     private Map2MainPage map2MainPage;
     private PageEditor pageEditor;
+    private PreviewPage previewPage;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
 
     public ConfigurationManager() {
+        DefaultWebDriverManager defaultWebDriverManager = new DefaultWebDriverManager();
     }
 
     public ConfigurationManager(WebDriver driver) {
@@ -184,6 +188,13 @@ public class ConfigurationManager {
             page = new Page(driver);
         }
         return page;
+    }
+
+    public PreviewPage getPreviewPage(WebDriver driver){
+        if (previewPage ==null){
+            previewPage = new PreviewPage(driver);
+        }
+        return previewPage;
     }
 
     //stop driver

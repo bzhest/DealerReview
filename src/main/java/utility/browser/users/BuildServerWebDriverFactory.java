@@ -2,11 +2,9 @@ package utility.browser.users;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import utility.config.ConfigurationManager;
-<<<<<<< HEAD:src/main/java/utility/browser/BuildServerWebDriverFactory.java
-=======
 import utility.browser.api.WebDriverFactory;
->>>>>>> d31912660906abf51d621e5561c99843aa6c168d:src/main/java/utility/browser/users/BuildServerWebDriverFactory.java
+import utility.config.ConfigurationManager;
+
 import utility.browser.enums.BrowserType;
 import utility.capabilities.DriverCapabilities;
 

@@ -10,11 +10,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import utility.config.ConfigurationManager;
-<<<<<<< HEAD
-=======
-import utility.LogFactory;
 
->>>>>>> d31912660906abf51d621e5561c99843aa6c168d
 
 
 /**
@@ -26,19 +22,11 @@ public class Page{
     protected WebDriver driver;
     protected final Wait<WebDriver> wait;
 
-
-
-
-
     public Page(WebDriver driver){
         this.driver = driver;
-        wait= new WebDriverWait(driver, 10, 500);
+        wait= new WebDriverWait(driver, 20, 500);
         PageFactory.initElements(driver, this);
-
-
     }
-
-
 
     public WebDriver getWebDriver() {
         return driver = new ChromeDriver();

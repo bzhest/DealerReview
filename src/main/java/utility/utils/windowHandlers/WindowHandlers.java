@@ -1,7 +1,11 @@
 package utility.utils.windowHandlers;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
 
@@ -64,7 +68,7 @@ public class WindowHandlers {
     }
     //----------------------------------------------------------------------------------------------------
 
-    public void openSiteNewWindow(String site){
+    public void openSiteNewWindow(String site) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.open('" + site + "','_blank');");
     }
@@ -72,9 +76,31 @@ public class WindowHandlers {
     //----------------------------------------------------------------------------------------------------
 
     public void switchToAnotherWindow(int winNumber) {
-        Set allWindowHandles= driver.getWindowHandles();// возвращает набор дискрипторов окон
-        String neededWindow= (String)allWindowHandles.toArray()[winNumber -1];
+        Set allWindowHandles = driver.getWindowHandles();// возвращает набор дискрипторов окон
+        String neededWindow = (String) allWindowHandles.toArray()[winNumber - 1];
         driver.switchTo().window(neededWindow);
+    }
+    //-----------------------------------------------------------------------------------------------------
+
+    public static void acceptAlert(WebDriver driver) {
+        {
+            try {
+                //(new WebDriverWait(driver, 10)).until(ExpectedConditions.alertIsPresent());
+                driver.switchTo().alert().accept();
+            } catch (NoAlertPresentException e) {
+                // nothing will do, because alert not appeared
+            }
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+    public static void dismissAlert(WebDriver driver) {
+        try {
+            //(new WebDriverWait(driver, 10)).until(ExpectedConditions.alertIsPresent());
+            driver.switchTo().alert().dismiss();
+        } catch (NoAlertPresentException e) {
+            // nothing will do, because alert not appeared
+        }
     }
 }
 
