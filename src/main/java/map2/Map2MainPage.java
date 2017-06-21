@@ -41,7 +41,7 @@ public class Map2MainPage extends Page {
     }
 
     public void openDealerReviewTab() {
-        Javascript.scrollToElement(driver,tabDealerReview);
+        Javascript.scrollToElement(driver, tabDealerReview);
         wait.until(ExpectedConditions.visibilityOf(tabDealerReview));
         tabDealerReview.click();
     }
@@ -61,17 +61,13 @@ public class Map2MainPage extends Page {
     public void addNewPage() {
         if (deletePageButton.size() > 0) {
             for (WebElement e : deletePageButton) {
-                //wait.until(ExpectedConditions.visibilityOf(getDeletePageButton()));
-                try{
-                    getDeletePageButton().click();
-                }catch(Exception ex){}
+                wait.until(ExpectedConditions.visibilityOf(deletePageButton.get(0)));
+                getDeletePageButton().click();
                 WindowHandlers.acceptAlert(driver);
             }
         }
         wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
-        try{
-            addNewPageButton.click();
-        }catch(Exception ex){}
+        addNewPageButton.click();
     }
 
     public void deleteCurrentWidget() {

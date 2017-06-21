@@ -59,7 +59,7 @@ public class Base1 {
         //manager = ConfigurationManager.getInstance(driver);
         logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
-        WindowHandlers.dismissAlert(driver);
+        //WindowHandlers.dismissAlert(driver);
         logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
         logger.log("Open User editor");
@@ -150,8 +150,11 @@ public class Base1 {
         logger.log("Click on Preview Page button");
         manager.getPageEditor(driver).getPreviewPage().click();
         logger.log("Switch to new opened window");
-        WindowHandlers.switchToWindowByTitleStatic(driver,"Make-A-Page 2.0 : Tools - Dealer Management System V9");
-        WindowHandlers.dismissAlert(driver);
+        WindowHandlers.switchToCertainWindow(driver,1);
+        driver.switchTo().activeElement();
+        //driver.switchTo.frame();
+
+        //driver.findElement(By.cssSelector("button#dialog_search_close")).click();
         logger.log("Click on Visit on Website");
         manager.getPreviewPage(driver).getVisitOnVebsite().click();
 

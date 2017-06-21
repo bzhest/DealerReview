@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
+import utility.utils.javascript.Javascript;
 
 /**
  * Created by Andrey on 13.04.2017.
@@ -31,7 +32,7 @@ public class PageEditor extends Page {
     @FindBy(css = ".mapx-button-ico.globe")
     WebElement previewPage;
 
-    @FindBy(how = How.CSS, using = ".menu-launcher")
+    @FindBy(how = How.CSS, using = "div.menu-launcher")
     private WebElement mapButton;
 
     @FindBy(how = How.CSS, using = "div.tab[data-tab='page-settings'][title='Page Settings']")
@@ -95,6 +96,7 @@ public class PageEditor extends Page {
     }
 
     public WebElement getPageSettingsTab() {
+        wait.until(ExpectedConditions.visibilityOf(pageSettingsTab));
         return pageSettingsTab;
     }
 
@@ -112,9 +114,17 @@ public class PageEditor extends Page {
 
     public void clickOnMapButton() {
         wait.until(ExpectedConditions.visibilityOf(mapButton));
-        try{
-            mapButton.click();
-        }catch(Exception e){}
+        int width = mapButton.getSize().getWidth();
+
+        Actions action = new Actions (driver);
+        action.moveToElement(mapButton,(width/2) - 20, 0).click().perform();
+        //Javascript.clickOnElement(driver,mapButton);
+        //Actions action = new Actions (driver);
+        //action.moveToElement(mapButton).click().perform();
+        /*try {
+            Thread.sleep(500);
+        }catch (Exception ex){}
+            mapButton.click();*/
     }
 
     public WebElement getPreviewPage() {

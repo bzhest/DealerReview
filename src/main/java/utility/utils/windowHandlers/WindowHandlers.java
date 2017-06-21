@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -79,6 +80,11 @@ public class WindowHandlers {
         Set allWindowHandles = driver.getWindowHandles();// возвращает набор дискрипторов окон
         String neededWindow = (String) allWindowHandles.toArray()[winNumber - 1];
         driver.switchTo().window(neededWindow);
+    }
+    //------------------------------------------------------------------------------------------------------
+    public static void switchToCertainWindow(WebDriver driver, Integer windowNumber){
+        ArrayList<String> windows = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windows.get(windowNumber));
     }
     //-----------------------------------------------------------------------------------------------------
 

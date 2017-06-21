@@ -14,7 +14,11 @@ public class Javascript {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView()", element);
         //js.executeScript("document.querySelector('.mcprt-link').scrollIntoView()"); way with hardcoding
+    }
 
+    public static void clickOnElement(WebDriver driver, WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click", element);
     }
 }
 
