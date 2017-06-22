@@ -6,7 +6,7 @@ import dms.DmsLoginForm;
 import dms.DmsMainPage;
 import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
-import dwsDealerReviews.DealerReviewDWS;
+import dealerReviewForm.DealerReviewForm;
 import map2.Map2MainPage;
 import map2.PageEditor;
 import map2.PreviewPage;
@@ -31,7 +31,7 @@ public class  ConfigurationManager {
     private SettingsReviewDealershipReviewSettings settingsReviewDealershipReviewSettings;
     private DmsMainPage dmsMainPage;
     private DmsLoginForm dmsLoginForm;
-    private DealerReviewDWS dealerReviewDWS;
+    private DealerReviewForm dealerReviewDWS;
     private Users users;
     private UserEditor userEditor;
     private Website website;
@@ -57,7 +57,7 @@ public class  ConfigurationManager {
         dmsLoginForm = new DmsLoginForm(driver);
         page = new Page(driver);
         dmsMainPage = new DmsMainPage(driver);
-        dealerReviewDWS = new DealerReviewDWS(driver);
+        dealerReviewDWS = new DealerReviewForm(driver);
         users = new Users(driver);
         userEditor = new UserEditor(driver);
         website = new Website(driver);
@@ -163,9 +163,9 @@ public class  ConfigurationManager {
         return dmsMainPage;
     }
 
-    public DealerReviewDWS getDealerReviewDWS(WebDriver driver) {
+    public DealerReviewForm getDealerReviewDWS(WebDriver driver) {
         if (dealerReviewDWS == null) {
-            dealerReviewDWS = new DealerReviewDWS(driver);
+            dealerReviewDWS = new DealerReviewForm(driver);
         }
         return dealerReviewDWS;
     }

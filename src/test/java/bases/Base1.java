@@ -157,6 +157,8 @@ public class Base1 {
         WindowHandlers.switchToCertainWindow(driver, 2);
         logger.log("Click button Close");
         manager.getDealerList(driver).getCloseButton().click();
+        logger.log("Click on Add Review button");
+        manager.getDealerList(driver).clickFirstAddReviewButton();
 
 
 
