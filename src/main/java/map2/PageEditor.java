@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
 import utility.utils.javascript.Javascript;
@@ -113,14 +114,15 @@ public class PageEditor extends Page {
     }
 
     public void clickOnMapButton() {
+        waitForJSandJQueryToLoad();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
         wait.until(ExpectedConditions.visibilityOf(mapButton));
-        int width = mapButton.getSize().getWidth();
-
+        /*int width = mapButton.getSize().getWidth();
         Actions action = new Actions (driver);
-        action.moveToElement(mapButton,(width/2) - 20, 0).click().perform();
+        action.moveToElement(mapButton,(width/2) - 20, 0).click().perform();*/
         //Javascript.clickOnElement(driver,mapButton);
-        //Actions action = new Actions (driver);
-        //action.moveToElement(mapButton).click().perform();
+        Actions action = new Actions (driver);
+        action.moveToElement(mapButton).click().perform();
         /*try {
             Thread.sleep(500);
         }catch (Exception ex){}
@@ -128,8 +130,13 @@ public class PageEditor extends Page {
     }
 
     public WebElement getPreviewPage() {
+        wait.until(ExpectedConditions.visibilityOf(previewPage));
         return previewPage;
     }
+
+    /*protected ExpectedCondition<Boolean> isLoadingInvisible() {
+        return ExpectedConditions.invisibilityOfElementLocated(By.className("mask"));
+    }*/
 
     public WebElement getDealerListWidget() {
         return widgetDealerList;

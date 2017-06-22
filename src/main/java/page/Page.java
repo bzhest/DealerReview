@@ -39,7 +39,7 @@ public class Page{
     public boolean waitForJSandJQueryToLoad() {
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
-    /*method for execute Java Script: page should be loaded*/
+    //method for execute Java Script: page should be loaded
         ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {

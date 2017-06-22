@@ -51,7 +51,7 @@ public class Users extends Page {
 
     public void openUserEditor(){
         Actions action = new Actions(driver);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".rootUserBranch.jstree-open.jstree-last>a")));
+        wait.until(ExpectedConditions.visibilityOf(rootUser));
         Action moveToElem = action.doubleClick(rootUser).build();
         moveToElem.perform();
 

@@ -55,15 +55,20 @@ public class Map2MainPage extends Page {
     }
 
     public void clickEditButton() {
+        waitForJSandJQueryToLoad();
+        wait.until(ExpectedConditions.visibilityOf(editPageButton));
         editPageButton.click();
     }
 
     public void addNewPage() {
+        waitForJSandJQueryToLoad();
         if (deletePageButton.size() > 0) {
             for (WebElement e : deletePageButton) {
                 wait.until(ExpectedConditions.visibilityOf(deletePageButton.get(0)));
+                waitForJSandJQueryToLoad();
                 getDeletePageButton().click();
                 WindowHandlers.acceptAlert(driver);
+                wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
             }
         }
         wait.until(ExpectedConditions.visibilityOf(addNewPageButton));

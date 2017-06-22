@@ -1,6 +1,7 @@
 
 package utility.config;
 
+import dealerList.DealerList;
 import dms.DmsLoginForm;
 import dms.DmsMainPage;
 import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
@@ -43,6 +44,7 @@ public class  ConfigurationManager {
     private Map2MainPage map2MainPage;
     private PageEditor pageEditor;
     private PreviewPage previewPage;
+    private DealerList dealerList;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -144,6 +146,13 @@ public class  ConfigurationManager {
             settingsReviewDealershipReviewSettings = new SettingsReviewDealershipReviewSettings(driver);
         }
         return settingsReviewDealershipReviewSettings;
+    }
+
+    public DealerList getDealerList(WebDriver driver){
+        if (dealerList == null){
+            dealerList = new DealerList(driver);
+        }
+        return dealerList;
     }
 
 

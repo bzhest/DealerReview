@@ -29,7 +29,7 @@ public class Base1 {
 
     protected WebDriver driver;
     protected Users user;
-    protected  WebDriverWait wait;
+    protected WebDriverWait wait;
     public StringBuffer verificationErrors = new StringBuffer();
     public DmsLoginForm dmsLoginForm;
     protected LogBaseNew logger;
@@ -150,18 +150,18 @@ public class Base1 {
         logger.log("Click on Preview Page button");
         manager.getPageEditor(driver).getPreviewPage().click();
         logger.log("Switch to new opened window");
-        WindowHandlers.switchToCertainWindow(driver,1);
-        driver.switchTo().activeElement();
-        //driver.switchTo.frame();
-
-        //driver.findElement(By.cssSelector("button#dialog_search_close")).click();
+        WindowHandlers.switchToCertainWindow(driver, 1);
         logger.log("Click on Visit on Website");
         manager.getPreviewPage(driver).getVisitOnVebsite().click();
+        logger.log("Switch from Preview Page to DWS");
+        WindowHandlers.switchToCertainWindow(driver, 2);
+        logger.log("Click button Close");
+        manager.getDealerList(driver).getCloseButton().click();
+
 
 
         /*logger.log("click on Dealer List widget");
         action.moveToElement(manager.getPageEditor(driver).getDealerListWidget()).doubleClick().perform();*/
-
 
 
     }
@@ -170,7 +170,7 @@ public class Base1 {
     @AfterSuite(alwaysRun = true)
     public void tearDown() throws Exception {
         if (driver != null)
-        driver.quit();
+            driver.quit();
 
     }
 
