@@ -13,9 +13,7 @@ import java.util.Date;
  */
 public class StdLogger implements LogBaseNew {
 
-    private ConfigurationManager manager;
 
-    public StdLogger(ConfigurationManager manager){this.manager = manager;}
 
     public static int stepCounter = 1;
 

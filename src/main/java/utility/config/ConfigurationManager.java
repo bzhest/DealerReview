@@ -99,7 +99,7 @@ public class  ConfigurationManager {
     }
 
     public LogBaseNew getLogger(String type) {
-        return type.equals("console") ? new StdLogger(this) : new FileLogger(this);
+        return type.equals("console") ? new StdLogger() : new FileLogger();
     }
 
 //-------------------------------------------------------------------------------------------------------------------------

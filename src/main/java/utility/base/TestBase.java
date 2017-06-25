@@ -1,4 +1,7 @@
+package utility.base;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeSuite;
 import utility.browser.api.WebDriverManager;
 import utility.browser.users.DefaultWebDriverManager;
 import utility.config.ConfigurationManager;
@@ -14,15 +17,16 @@ public class TestBase {
     protected WebDriverManager wdm;
     protected WebDriver driver;
 
-
+@BeforeSuite
     public void setUp(){
-        logger = new StdLogger(ConfigurationManager manager);
+        logger = new StdLogger();
         wdm = new DefaultWebDriverManager();
         driver = wdm.getWebDriver();
         beforeTest();
     }
 
     public void tearDown(){
+        wdm.destroyWebDriver(driver);
         afterTest();
     }
 

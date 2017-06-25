@@ -13,9 +13,7 @@ import java.util.Date;
  * Created by SYSTEM on 20.04.2017.
  */
 public class FileLogger implements LogBaseNew {
-    private ConfigurationManager manager;
 
-    public FileLogger(ConfigurationManager manager){this.manager = manager;}
 
     public static int stepCounter = 1;
 
