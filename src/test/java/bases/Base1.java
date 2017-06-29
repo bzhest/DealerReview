@@ -62,6 +62,7 @@ public class Base1 {
         //WindowHandlers.dismissAlert(driver);
         logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
+        //driver.findElements(By.cssSelector(".library-item.ui-draggable")).get(0).findElement(By.tagName("strong")).getText()
         logger.log("Open User editor");
         //wait.until(ExpectedConditions.presenceOfElementLocated(user.getRootUser()));
         //wait.until(ExpectedConditions.visibilityOf(user.getRootUser()));
