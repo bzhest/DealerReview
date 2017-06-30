@@ -35,8 +35,8 @@ public class DefaultWebDriverManager implements WebDriverManager {
 
     @Override
     public void destroyWebDriver(WebDriver driver) {
-        /*if(driver ==null)
-           id driver.quit();*/
+        if(driver !=null)
+           driver.quit();
         System.out.println("Quit driver - " + driver);
     }
 }

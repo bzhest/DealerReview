@@ -22,7 +22,7 @@ public class Application {
     public void open(){
         try{
             driver.get("http://it-ebooks.info");
-            //wait for appication load
+            //wait for application load
         }catch (Exception ex){
             throw  new RuntimeException("Page wasn't opened", ex);
         }
