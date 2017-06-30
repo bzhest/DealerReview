@@ -1,6 +1,7 @@
 package utility.base;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import utility.browser.api.WebDriverManager;
 import utility.browser.users.DefaultWebDriverManager;
@@ -17,6 +18,7 @@ public class TestBase {
     protected WebDriverManager wdm;
     protected WebDriver driver;
 
+
 @BeforeSuite
     public void setUp(){
         logger = new StdLogger();
@@ -24,7 +26,7 @@ public class TestBase {
         driver = wdm.getWebDriver();
         beforeTest();
     }
-
+@AfterSuite
     public void tearDown(){
         wdm.destroyWebDriver(driver);
         afterTest();

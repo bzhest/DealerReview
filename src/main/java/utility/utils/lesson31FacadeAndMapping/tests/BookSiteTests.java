@@ -27,7 +27,7 @@ public class BookSiteTests extends TestBase {
         logger.log("Check blog is present");
         Assert.assertTrue(app.mainPage().topDownloadSection().isDisplayed());
         logger.log("Check blog contains books");
-        Assert.assertTrue(app.mainPage().topDownloadedBooks().size()==10);
+        Assert.assertTrue(app.mainPage().topDownloadedBooks().size() == 10);
     }
 
     @Test(priority = 2)
@@ -35,7 +35,7 @@ public class BookSiteTests extends TestBase {
         logger.log("Check blog is present");
         Assert.assertTrue(app.mainPage().lastUploadedSection().isDisplayed());
         logger.log("Check blog contains books");
-        Assert.assertTrue(app.mainPage().topDownloadedBooks().size() == 20);
+        Assert.assertTrue(app.mainPage().lastUploadedBooks().size() == 20);
     }
 
 
@@ -50,10 +50,10 @@ public class BookSiteTests extends TestBase {
         app.searchForm().searchButton().click();
         //Assert.assertTrue(app.searchForm().searchButton().isEnabled());
         logger.log("open book page");
-        app.searchResultsPage().books().get(5).getTitle().click();
-
+        //app.searchResultsPage().books().get(5).getTitle().click();
+        app.searchResultsPage().findBookByTitle("Test-Driven Java Development").getTitle().click();
         logger.log("Check book info");
-
+        Assert.assertEquals(app.bookpage().getBook().getTitle().getText(), "Test-Driven Java Development");
     }
 
 

@@ -40,8 +40,8 @@ public class SearchForm {
 
     private WebElement radio(String value){
         try{
-            return form.findElements(By.id("type = 'radio'"))
-                    .stream().filter( r -> r.getAttribute("value").contains(value)).findFirst().get();
+            return form.findElements(By.id("type")).stream()
+                    .filter( r -> r.getAttribute("value").contains(value)).findFirst().get();
         }catch(Exception ex){
             throw new RuntimeException("radio wasn't found", ex);
         }

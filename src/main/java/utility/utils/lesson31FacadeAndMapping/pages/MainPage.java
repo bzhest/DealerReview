@@ -27,9 +27,9 @@ public class MainPage {
 
     public List<Book> topDownloadedBooks() {
         List<Book> books = new ArrayList<>();
-        for (WebElement book : driver.findElements(By.className("top_box"))) {
-            WebElement image = driver.findElement(By.tagName("img"));
-            WebElement title = driver.findElements(By.tagName("a")).get(1);
+        for (WebElement book : topDownloadSection().findElements(By.className("top_box"))) {
+            WebElement image = book.findElement(By.tagName("img"));
+            WebElement title = book.findElements(By.tagName("a")).get(0);
             books.add(new Book(image, title));
         }
         return books;
@@ -41,7 +41,7 @@ public class MainPage {
 
     public List<Book> lastUploadedBooks() {
         List<Book> books = new ArrayList<>();
-        for (WebElement row : driver.findElements(By.cssSelector("tr[height = '150']"))) {
+        for (WebElement row : lastUploadedSection().findElements(By.cssSelector("tr[height = '150']"))) {
             WebElement image1 = row.findElements(By.cssSelector("td[width = '120']")).get(0);
             WebElement image2 = row.findElements(By.cssSelector("td[width = '120']")).get(1);
 
@@ -64,8 +64,7 @@ public class MainPage {
 
     private WebElement getBlock(String title) {
         try {
-            return driver.findElements(By.cssSelector(".top"))
-                    .stream().filter(b -> b.getText().contains(title)).findFirst().get();
+            return driver.findElements(By.cssSelector(".top")).stream().filter(b -> b.getText().contains(title)).findFirst().get();
         } catch (Exception ex) {
             throw new RuntimeException("block wasn't found", ex);
         }
