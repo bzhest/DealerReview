@@ -16,7 +16,6 @@ import settings.UserEditor;
 import settings.Users;
 import settings.Website;
 import utility.browser.users.DefaultWebDriverManager;
-import utility.helpers.WebDriverHelperNew;
 import utility.logger.FileLogger;
 import utility.logger.api.LogBaseNew;
 import utility.logger.StdLogger;
@@ -38,7 +37,6 @@ public class  ConfigurationManager {
     private Page page;
     private static ConfigurationManager instance;
     public StringBuffer verificationErrors = new StringBuffer();
-    private WebDriverHelperNew webDriverHelperNew;
     private FileLogger fileLogger;
     private StdLogger stdlogger;
     private Map2MainPage map2MainPage;
@@ -104,14 +102,6 @@ public class  ConfigurationManager {
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-    //Helpers initialization
-
-    public WebDriverHelperNew getWebDriverHelperNew() {
-        if (webDriverHelperNew == null) {
-            webDriverHelperNew = new WebDriverHelperNew(this);
-        }
-        return webDriverHelperNew;
-    }
     //PageObjects initialization
 
     public PageEditor getPageEditor(WebDriver driver){
@@ -206,12 +196,7 @@ public class  ConfigurationManager {
         return previewPage;
     }
 
-    //stop driver
-   /* public void stop() {
-        if (webDriverHelperNew != null) {
-            webDriverHelperNew.stop();
-        }
-    }*/
+
 
 }
 

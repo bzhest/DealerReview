@@ -8,11 +8,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import settings.Users;
+import utility.base.TestBase;
 import utility.browser.users.DefaultWebDriverManager;
 import utility.config.ConfigurationManager;
 import utility.browser.users.LocalWebDriverFactory;
 import utility.browser.api.WebDriverManager;
 import utility.data.User;
+import utility.logger.StdLogger;
 import utility.logger.api.LogBaseNew;
 import utility.properties.PropertyLoader;
 import utility.utils.windowHandlers.WindowHandlers;
@@ -23,49 +25,29 @@ import static org.testng.Assert.fail;
 /**
  * Created by SYSTEM on 04.04.2017.
  */
-public class Base1 {
+public class Base1 extends TestBase{
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
-
-    protected WebDriver driver;
-    protected Users user;
-    protected WebDriverWait wait;
-    public StringBuffer verificationErrors = new StringBuffer();
-    public DmsLoginForm dmsLoginForm;
-    protected LogBaseNew logger;
-    protected WebDriverManager wdm;
     protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
-    protected DefaultWebDriverManager defaultWebDriverManager;
 
-    //non-static init (perform BEFORE constructor)
-    {
-        manager = ConfigurationManager.getInstance();
-        logger = manager.getLogger(manager.getLoggerFromEnv());
+
+    @Override
+    protected void beforeTest() {
+        logger.log("Navigating to test url");
+        driver.manage().window().maximize();
+        driver.get(PropertyLoader.loadProperty("dms.url"));
+        manager = ConfigurationManager.getInstance(driver);
     }
-
 
     @BeforeClass
     public void turnOnMap2() throws Exception {
-        logger.log("Navigating to test url");
-        //driver = defaultWebDriverManager.getWebDriver();
-        driver = lwf.create();
-        driver.manage().window().maximize();
-        //driver = manager.getWebDriverHelperNew().getDriver();
-        driver.get(PropertyLoader.loadProperty("dms.url"));
-        manager = ConfigurationManager.getInstance(driver);
-        //logger.log("Navigating to test url");
-        //driver = manager.getWebDriverHelperNew().getDriver();
-        //driver.get(PropertyLoader.loadProperty("dms.url"));
-        //manager = ConfigurationManager.getInstance(driver);
+
         logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
-        //WindowHandlers.dismissAlert(driver);
         logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
-        //driver.findElements(By.cssSelector(".library-item.ui-draggable")).get(0).findElement(By.tagName("strong")).getText()
         logger.log("Open User editor");
-        //wait.until(ExpectedConditions.presenceOfElementLocated(user.getRootUser()));
-        //wait.until(ExpectedConditions.visibilityOf(user.getRootUser()));
+
         manager.getUsers(driver).openUserEditor();
         logger.log("Turn on MAP2");
         manager.getUserEditor(driver).turnOnMAP2();
@@ -161,45 +143,5 @@ public class Base1 {
         logger.log("Click on Add Review button");
         manager.getDealerList(driver).clickFirstAddReviewButton();
 
-
-
-        /*logger.log("click on Dealer List widget");
-        action.moveToElement(manager.getPageEditor(driver).getDealerListWidget()).doubleClick().perform();*/
-
-
     }
-
-
-    @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
-        if (driver != null)
-            driver.quit();
-
-    }
-
-
-    public boolean waitForJSandJQueryToLoad() {
-        WebDriverWait wait = new WebDriverWait(driver, 35);
-    /*method for execute Java Script: page should be loaded*/
-        ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-            }
-        };
-        // wait for jQuery to load
-        ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
-                try {
-                    return ((Long) ((JavascriptExecutor) driver).executeScript("return jQuery.active") == 0);
-                } catch (Exception e) {
-                    // no jQuery present
-                    return true;
-                }
-            }
-        };
-        return wait.until(jQueryLoad) && wait.until(jsLoad);
-    }
-
 }

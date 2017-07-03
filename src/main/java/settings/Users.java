@@ -25,7 +25,7 @@ public class Users extends Page {
 
 
 
-    @FindBy(how = How.CSS, using = ".rootUserBranch.jstree-open.jstree-last>a")
+    @FindBy(how = How.CSS, using = ".rootUserBranch>a")
     private WebElement rootUser;
 
     @FindBy(how = How.CSS, using = "#user_tree_add")

@@ -25,7 +25,8 @@ public class DealerList extends Page {
 
 
     public WebElement getCloseButton() {
-        waitForJSandJQueryToLoad();
+        //waitForJSandJQueryToLoad();
+        wait.until(ExpectedConditions.visibilityOf(closeButton));
         return closeButton;
     }
 

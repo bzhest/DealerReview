@@ -55,24 +55,27 @@ public class Map2MainPage extends Page {
     }
 
     public void clickEditButton() {
-        waitForJSandJQueryToLoad();
+        //waitForJSandJQueryToLoad();
         wait.until(ExpectedConditions.visibilityOf(editPageButton));
         editPageButton.click();
     }
 
-    public void addNewPage() {
-        waitForJSandJQueryToLoad();
-        if (deletePageButton.size() > 0) {
+    public void addNewPage() throws Exception {
+        //waitForJSandJQueryToLoad();
+        wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
+        if (deletePageButton.size() != 0) {
             for (WebElement e : deletePageButton) {
                 wait.until(ExpectedConditions.visibilityOf(deletePageButton.get(0)));
-                waitForJSandJQueryToLoad();
+                Thread.sleep(500);
                 getDeletePageButton().click();
                 WindowHandlers.acceptAlert(driver);
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
             }
+            Thread.sleep(1000);
+        }else {
+            wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
+            addNewPageButton.click();
         }
-        wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
-        addNewPageButton.click();
     }
 
     public void deleteCurrentWidget() {
@@ -80,9 +83,8 @@ public class Map2MainPage extends Page {
     }
 
     //------------------------------------------------------
-    public void setUpDealerListWidget() {
+    public void setUpDealerListWidget() throws Exception {
         openDealerListTab();
-
         addNewPage();
         manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getNameInput(), "Dealer List");
         manager.getPageEditor(driver).inputText(manager.getPageEditor(driver).getTitleInput(), "Dealer List");

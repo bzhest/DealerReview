@@ -114,7 +114,7 @@ public class PageEditor extends Page {
     }
 
     public void clickOnMapButton() {
-        waitForJSandJQueryToLoad();
+        //waitForJSandJQueryToLoad();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
         wait.until(ExpectedConditions.visibilityOf(mapButton));
         /*int width = mapButton.getSize().getWidth();

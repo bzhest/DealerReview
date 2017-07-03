@@ -137,7 +137,8 @@ public class Website extends Page {
 
     /*set jQuery version - 1.11.2 (if it is not equal to that)*/
     public void setjQueryVersion() {
-            waitForJSandJQueryToLoad();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.text_dealership"))));
+            //waitForJSandJQueryToLoad();
         if (!jQueryValue.getText().equals("1.11.2")) {
             jQueryEditBtn.click();
             jQueryInput.clear();
@@ -153,8 +154,9 @@ public class Website extends Page {
         options.selectByVisibleText(value404);
     }
 
-    public void clickOnWebsiteMenu() {
-        waitForJSandJQueryToLoad();
+    public void clickOnWebsiteMenu() throws Exception{
+        //waitForJSandJQueryToLoad();
+        Thread.sleep(1000);
         driver.get("http://www.solomia.andreyb.ixloo.com/dms/settings/website#general");
     }
 }
