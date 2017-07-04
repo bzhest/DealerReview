@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import utility.browser.api.WebDriverManager;
 import utility.browser.users.DefaultWebDriverManager;
 import utility.config.ConfigurationManager;
@@ -29,6 +30,7 @@ public class TestBase {
         driver = wdm.getWebDriver();
         beforeTest();
     }
+
 @AfterSuite
     public void tearDown(){
         wdm.destroyWebDriver(driver);

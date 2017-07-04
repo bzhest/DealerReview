@@ -40,7 +40,7 @@ public class DealerList extends Page {
         try {
             wait.until(ExpectedConditions.visibilityOf(addReviewButtons.get(0)));
             addReviewButtons.get(0).click();
-            waitForJSandJQueryToLoad();
+            //waitForJSandJQueryToLoad();
         }catch(Exception ex){}
     }
 }

@@ -107,6 +107,8 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     @Test
     public void countCrossIconsNumber(){
         logger.log("Check if number of icons \"Cross\" to clean stars is 5");
+
+
         Assert.assertEquals(manager.getDealerReviewDWS(driver).countCrossIconsNumber(),5);}
 
     @Test

@@ -142,6 +142,7 @@ public class Base1 extends TestBase{
         manager.getDealerList(driver).getCloseButton().click();
         logger.log("Click on Add Review button");
         manager.getDealerList(driver).clickFirstAddReviewButton();
+        Thread.sleep(1000);
 
     }
 }

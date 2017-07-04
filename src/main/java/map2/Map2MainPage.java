@@ -3,6 +3,7 @@ package map2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,14 +19,26 @@ public class Map2MainPage extends Page {
         super(driver);
     }
 
-    @FindBy(how = How.CSS, using = "div.map-link.pull-right[data-action='page_create']")
+//    @FindBy(how = How.CSS, using = "div[data-action='page_create']")
+//    public WebElement addNewPageButton;
+
+    @FindBy(how = How.XPATH, using = ".//*[@data-action='page_create']")
     public WebElement addNewPageButton;
+
+    @FindBy(css = ".list-item")
+    List<WebElement> pageItem;
+
+    @FindBy(how = How.CSS, using = ".info>a")
+    public WebElement linkHere;
 
     @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Edit page']")
     public WebElement editPageButton;
 
     @FindBy(how = How.CSS, using = "span.ui-button.ui-state-default[title='Remove page']")
     public List<WebElement> deletePageButton;
+
+    @FindBy(how = How.CSS, using = ".list.row")
+    public List<WebElement> rowWithPageItems;
 
     @FindBy(how = How.CSS, using = "div.page-item[data-page='dealerlist']")
     public WebElement tabDealerList;
@@ -37,6 +50,7 @@ public class Map2MainPage extends Page {
     public WebElement tabDealerReviewForm;
 
     public void openDealerListTab() {
+        wait.until(ExpectedConditions.visibilityOf(tabDealerList));
         tabDealerList.click();
     }
 
@@ -60,22 +74,39 @@ public class Map2MainPage extends Page {
         editPageButton.click();
     }
 
-    public void addNewPage() throws Exception {
-        //waitForJSandJQueryToLoad();
-        wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
-        if (deletePageButton.size() != 0) {
-            for (WebElement e : deletePageButton) {
-                wait.until(ExpectedConditions.visibilityOf(deletePageButton.get(0)));
-                Thread.sleep(500);
+    //By noOneSavedPage = By.xpath(".//*[@class='page-browser']/div[2]/span");
+    public void addNewPage() {
+        wait.until(ExpectedConditions.visibilityOf(rowWithPageItems.get(0)));
+        sleep(1);
+        if (driver.findElements(By.cssSelector("span.info")).size() == 0) {
+            sleep(1);
+            for (WebElement e : pageItem) {
+                sleep(1);
+                wait.until(ExpectedConditions.visibilityOf(pageItem.get(0)));
                 getDeletePageButton().click();
                 WindowHandlers.acceptAlert(driver);
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
+                wait.until(ExpectedConditions.visibilityOf(rowWithPageItems.get(0)));
             }
-            Thread.sleep(1000);
-        }else {
-            wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
-            addNewPageButton.click();
+        } else {
+//            wait.until(ExpectedConditions.visibilityOf(addNewPageButton));
+            sleep(1);
+
+            System.out.println("qweqq");
+//            addNewPageButton.click();
+//            Thread.sleep(1000);
         }
+        addNewPageButton.click();
+    }
+
+    public void sleep(int sec) {
+
+        try {
+            Thread.sleep(1000 * sec);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void deleteCurrentWidget() {

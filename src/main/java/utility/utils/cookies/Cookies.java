@@ -16,7 +16,6 @@ import java.util.Set;
 public class Cookies extends TestBase {
 
 
-
     public static void main(String[] args) throws Exception {
         WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver,30);
@@ -31,12 +30,11 @@ public class Cookies extends TestBase {
         Set<Cookie> cookies = driver.manage().getCookies();
         driver.manage().deleteAllCookies();
         driver.get("http://www.andreyb.ixloo.com/dms");
+        driver.manage().deleteCookieNamed("PHPSESSID");
         for (Cookie cookie: cookies){
             driver.manage().addCookie(cookie);
         }
-        Thread.sleep(1000);
         driver.navigate().refresh();
         System.out.println("after refresh" + driver.manage().getCookies());
-        Thread.sleep(3000);
     }
 }
