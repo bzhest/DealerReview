@@ -24,7 +24,7 @@ public class Page{
 
     public Page(WebDriver driver){
         this.driver = driver;
-        wait= new WebDriverWait(driver, 20, 500);
+        wait= new WebDriverWait(driver, 25, 800);
         PageFactory.initElements(driver, this);
     }
 
@@ -66,5 +66,13 @@ public class Page{
     public void inputText(WebElement webElement, String value){
         webElement.clear();
         webElement.sendKeys(value);
+    }
+
+    public void sleep(int sec) {
+        try {
+            Thread.sleep(1000 * sec);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

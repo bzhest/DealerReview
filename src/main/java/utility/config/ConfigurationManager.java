@@ -1,7 +1,8 @@
 
 package utility.config;
 
-import dealerList.DealerList;
+import dealerList.components.ZipPopUp;
+import dealerList.page.DealerList;
 import dms.DmsLoginForm;
 import dms.DmsMainPage;
 import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
@@ -10,6 +11,7 @@ import dealerReviewForm.DealerReviewForm;
 import map2.Map2MainPage;
 import map2.PageEditor;
 import map2.PreviewPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.Page;
 import settings.UserEditor;
@@ -19,6 +21,7 @@ import utility.browser.users.DefaultWebDriverManager;
 import utility.logger.FileLogger;
 import utility.logger.api.LogBaseNew;
 import utility.logger.StdLogger;
+import utility.utils.lesson31FacadeAndMapping.drivers.components.SearchForm;
 
 /**
  * Created by SYSTEM on 04.04.2017.
@@ -43,6 +46,7 @@ public class  ConfigurationManager {
     private PageEditor pageEditor;
     private PreviewPage previewPage;
     private DealerList dealerList;
+    private ZipPopUp zipPopUp;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -194,6 +198,12 @@ public class  ConfigurationManager {
             previewPage = new PreviewPage(driver);
         }
         return previewPage;
+    }
+    public ZipPopUp getZipPopUp(WebDriver driver){
+        if (zipPopUp == null){
+            zipPopUp = new ZipPopUp(driver);
+        }
+        return zipPopUp;
     }
 
 

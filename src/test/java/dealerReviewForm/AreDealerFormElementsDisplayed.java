@@ -5,9 +5,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utility.properties.PropertyLoader;
 
 import java.util.List;
 
@@ -15,6 +18,9 @@ import java.util.List;
  * Created by SYSTEM on 06.04.2017.
  */
 public class AreDealerFormElementsDisplayed extends Base1 {
+
+
+
 
     //Form without a captcha
     @Test

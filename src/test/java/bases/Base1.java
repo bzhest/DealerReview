@@ -1,26 +1,16 @@
 package bases;
 
 
-import dms.DmsLoginForm;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.*;
-import settings.Users;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import utility.base.TestBase;
-import utility.browser.users.DefaultWebDriverManager;
-import utility.config.ConfigurationManager;
 import utility.browser.users.LocalWebDriverFactory;
-import utility.browser.api.WebDriverManager;
-import utility.data.User;
-import utility.logger.StdLogger;
-import utility.logger.api.LogBaseNew;
+import utility.config.ConfigurationManager;
 import utility.properties.PropertyLoader;
 import utility.utils.windowHandlers.WindowHandlers;
-
-
-import static org.testng.Assert.fail;
 
 /**
  * Created by SYSTEM on 04.04.2017.
@@ -29,6 +19,7 @@ public class Base1 extends TestBase{
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
     protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
+    protected WebDriverWait wait;
 
 
     @Override
@@ -139,10 +130,16 @@ public class Base1 extends TestBase{
         logger.log("Switch from Preview Page to DWS");
         WindowHandlers.switchToCertainWindow(driver, 2);
         logger.log("Click button Close");
-        manager.getDealerList(driver).getCloseButton().click();
+        //manager.getDealerList(driver).getCloseButton().click();
+        manager.getZipPopUp(driver).buttonCloseClick();
         logger.log("Click on Add Review button");
-        manager.getDealerList(driver).clickFirstAddReviewButton();
-        Thread.sleep(1000);
+        //manager.getDealerList(driver).clickFirstAddReviewButton();
+        manager.getDealerList(driver).findDealerByDealerName("")
 
+    }
+
+    @BeforeMethod
+    public void waitUntilPageAppears(){
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.panel-title"))));
     }
 }

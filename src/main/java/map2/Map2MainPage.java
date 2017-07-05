@@ -19,11 +19,11 @@ public class Map2MainPage extends Page {
         super(driver);
     }
 
-//    @FindBy(how = How.CSS, using = "div[data-action='page_create']")
-//    public WebElement addNewPageButton;
-
-    @FindBy(how = How.XPATH, using = ".//*[@data-action='page_create']")
+    @FindBy(how = How.CSS, using = "div[data-action='page_create']")
     public WebElement addNewPageButton;
+
+    /*@FindBy(how = How.XPATH, using = "./*//*[@data-action='page_create']")
+    public WebElement addNewPageButton;*/
 
     @FindBy(css = ".list-item")
     List<WebElement> pageItem;
@@ -85,6 +85,7 @@ public class Map2MainPage extends Page {
                 wait.until(ExpectedConditions.visibilityOf(pageItem.get(0)));
                 getDeletePageButton().click();
                 WindowHandlers.acceptAlert(driver);
+                sleep(1);
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
                 wait.until(ExpectedConditions.visibilityOf(rowWithPageItems.get(0)));
             }
@@ -99,15 +100,7 @@ public class Map2MainPage extends Page {
         addNewPageButton.click();
     }
 
-    public void sleep(int sec) {
 
-        try {
-            Thread.sleep(1000 * sec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void deleteCurrentWidget() {
         deletePageButton.get(0).click();
