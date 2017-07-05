@@ -57,17 +57,9 @@ public class DealerList extends Page {
         }
     }
 
-    public Integer getReviewsNumber(){
-        return Integer.parseInt(driver.findElement(By.cssSelector("p>.inline>a")).getText().replaceAll("\\d",""));
-    }
 
 
-    public String sGetUserDealerName( WebElement userDealerName){
-        String str = userDealerName.getText();
-        return str.substring(0,str.indexOf('/')).trim();
-    }
-
-    public Double getStarsNumber(){
+    /*public Double getStarsNumber(){
         double count = 0;
         List<WebElement> stars = driver.findElements(By.cssSelector("p>.fa"));
         WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
@@ -80,21 +72,11 @@ public class DealerList extends Page {
             }
         }
         return count;
-    }
+    }*/
 
-    public WebElement getCloseButton() {
-        //waitForJSandJQueryToLoad();
-        wait.until(ExpectedConditions.visibilityOf(closeButton));
-        return closeButton;
-    }
-
-    public void getFirstAddReviewButton() {
-        wait.until(ExpectedConditions.visibilityOf(addReviewButtons.get(0)));
-        addReviewButtons.get(0);
-        waitForJSandJQueryToLoad();
-    }
 
     public void clickFirstAddReviewButton() {
+
         try {
             /*wait.until(ExpectedConditions.visibilityOf(addReviewButtons.get(0)));
             addReviewButtons.get(0).click();

@@ -1,12 +1,16 @@
 package dealerList.components;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 /**
  * Here are described an object Dealer with his properties and methods
+ * sGetUserDealerName() - Receive all text before '/'
+ * iGetReviewsNumber() - Receive all digit values from a string
+ * getStarsNumber() - for each full-star class add '1' to counter, for half-star class add '0.5'
  */
 public class Dealer {
 
@@ -15,6 +19,7 @@ public class Dealer {
     private WebElement reviewsNumber;
     private WebElement buttonViewInventory;
     private WebElement buttonAddReview;
+
 
 
     public Dealer(WebElement userDealerName, List<WebElement> stars, WebElement reviewsNumber, WebElement buttonViewInventory, WebElement buttonAddReview) {
@@ -48,5 +53,24 @@ public class Dealer {
     public String sGetUserDealerName(){
         String str = getUserDealerName().getText();
         return str.substring(0,str.indexOf('/')).trim();
+    }
+
+    public Integer iGetReviewsNumber(){
+        return Integer.parseInt(getReviewsNumber().getText().replaceAll("\\d",""));
+    }
+
+    public Double getStarsNumber(WebDriver driver){
+        double count = 0;
+        List<WebElement> stars = getStars();
+        WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
+        WebElement halfStar = driver.findElement(By.cssSelector("p>.fa-star-half-o"));
+        for (WebElement star : stars){
+            if(star==fullstar){
+                count++;
+            }else if(star==halfStar){
+                count = count + 0.5;
+            }
+        }
+        return count;
     }
 }

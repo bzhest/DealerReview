@@ -134,12 +134,8 @@ public class Base1 extends TestBase{
         manager.getZipPopUp(driver).buttonCloseClick();
         logger.log("Click on Add Review button");
         //manager.getDealerList(driver).clickFirstAddReviewButton();
-        manager.getDealerList(driver).findDealerByDealerName("")
+        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
 
     }
 
-    @BeforeMethod
-    public void waitUntilPageAppears(){
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.panel-title"))));
-    }
 }
