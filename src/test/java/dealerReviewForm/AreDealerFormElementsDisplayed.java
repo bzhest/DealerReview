@@ -25,8 +25,8 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     //Form without a captcha
     @Test
     public void isWidgetDisplayed(){
-        driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
-        waitForJSandJQueryToLoad();
+        //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
+        //waitForJSandJQueryToLoad();
         logger.log("Check, if widget is displayed");
         Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetExists());}
 
@@ -102,6 +102,7 @@ public class AreDealerFormElementsDisplayed extends Base1 {
 
     @Test
     public void countStarsNumber(){
+        //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
         logger.log("Check if number of empty stars on a page is 25");
         Assert.assertEquals(manager.getDealerReviewDWS(driver).countStarsNumber(),25);}
 
@@ -113,8 +114,6 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     @Test
     public void countCrossIconsNumber(){
         logger.log("Check if number of icons \"Cross\" to clean stars is 5");
-
-
         Assert.assertEquals(manager.getDealerReviewDWS(driver).countCrossIconsNumber(),5);}
 
     @Test

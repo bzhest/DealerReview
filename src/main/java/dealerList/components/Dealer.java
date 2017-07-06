@@ -22,6 +22,7 @@ public class Dealer {
 
 
 
+
     public Dealer(WebElement userDealerName, List<WebElement> stars, WebElement reviewsNumber, WebElement buttonViewInventory, WebElement buttonAddReview) {
         this.userDealerName = userDealerName;
         this.stars = stars;
@@ -56,7 +57,7 @@ public class Dealer {
     }
 
     public Integer iGetReviewsNumber(){
-        return Integer.parseInt(getReviewsNumber().getText().replaceAll("\\d",""));
+        return Integer.parseInt(getReviewsNumber().getText().replaceAll("\\D",""));
     }
 
     public Double getStarsNumber(WebDriver driver){
@@ -65,10 +66,10 @@ public class Dealer {
         WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
         WebElement halfStar = driver.findElement(By.cssSelector("p>.fa-star-half-o"));
         for (WebElement star : stars){
-            if(star==fullstar){
+            if(star.equals(fullstar)){
                 count++;
-            }else if(star==halfStar){
-                count = count + 0.5;
+            }else if(star.equals(halfStar)){
+                count += 0.5;
             }
         }
         return count;

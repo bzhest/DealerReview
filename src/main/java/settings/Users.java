@@ -54,9 +54,7 @@ public class Users extends Page {
         wait.until(ExpectedConditions.visibilityOf(rootUser));
         Action moveToElem = action.doubleClick(rootUser).build();
         moveToElem.perform();
-
     }
-
 }
 
 

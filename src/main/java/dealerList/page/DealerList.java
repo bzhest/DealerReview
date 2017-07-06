@@ -22,10 +22,10 @@ public class DealerList extends Page {
         super(driver);
     }
 
-    /*@FindBy(css = "#dialog_search_close")
-    WebElement closeButton;
+    @FindBy(css = ".panel-heading a[aria-label = 'Next']")
+    WebElement buttonNext;
 
-    @FindBy(css = "a[href*= 'dealer-review-form']")
+    /*@FindBy(css = "a[href*= 'dealer-review-form']")
     List<WebElement> addReviewButtons;*/
 
 
@@ -34,7 +34,7 @@ public class DealerList extends Page {
         List <Dealer>  dealers = new ArrayList<>();
         for (WebElement dealer : driver.findElements(By.cssSelector("div.panel-body.no-padding-xs"))){
             WebElement userDealerName = driver.findElement(By.cssSelector("p.car-name"));
-            List<WebElement> starsNumber = driver.findElements(By.cssSelector("p>.fa"));
+            List<WebElement> starsNumber = driver.findElements(By.cssSelector(".dealer-info-wrap [class*= 'star']"));
             WebElement reviewsNumber = driver.findElement(By.cssSelector("p>.inline>a"));
             WebElement buttonViewInventory = driver.findElements(By.cssSelector(".fa.fa-eye")).get(0);
             WebElement buttonAddReview = driver.findElements(By.cssSelector(".fa.fa-plus")).get(0);
@@ -44,7 +44,7 @@ public class DealerList extends Page {
         return dealers;
     }
 
-    public Dealer findDealerByDealerName(String userDealerName) {
+   /* public Dealer findDealerByDealerName(String userDealerName) {
         try {
             Predicate<Dealer> dealer = d -> d.sGetUserDealerName().contains(userDealerName);
             if (getDealersList().stream().filter(d -> d.sGetUserDealerName().contains(userDealerName)).noneMatch(dealer)) {
@@ -55,7 +55,24 @@ public class DealerList extends Page {
         }catch(Exception ex){
             throw new RuntimeException("No user was found by given name");
         }
+    }*/
+
+    public Dealer findDealerByDealerName(String userDealerName) {
+        Predicate<Dealer> dealer = d -> d.sGetUserDealerName().contains(userDealerName);
+        if(getDealersList().stream().filter(d -> d.sGetUserDealerName().contains(userDealerName)).anyMatch(dealer)){
+            return getDealersList().stream().filter(d -> d.sGetUserDealerName().contains(userDealerName)).findFirst().get();
+        }else if(buttonNext.isDisplayed()){
+            buttonNext.click();
+            findDealerByDealerName(userDealerName);
+        } else{
+            throw new RuntimeException("Dealer wasn't found");
+
+        }
+        return null;
     }
+
+
+
 
 
 

@@ -21,6 +21,7 @@ public class TestBase {
     protected LogBaseNew logger;
     protected WebDriverManager wdm;
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
 
 @BeforeSuite
@@ -28,6 +29,8 @@ public class TestBase {
         logger = new StdLogger();
         wdm = new DefaultWebDriverManager();
         driver = wdm.getWebDriver();
+        wait = new WebDriverWait(driver,25);
+
         beforeTest();
     }
 

@@ -69,9 +69,12 @@ public class Map2MainPage extends Page {
     }
 
     public void clickEditButton() {
-        //waitForJSandJQueryToLoad();
-        wait.until(ExpectedConditions.visibilityOf(editPageButton));
-        editPageButton.click();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(editPageButton));
+            editPageButton.click();
+        }catch(Exception ex){
+
+        }
     }
 
     //By noOneSavedPage = By.xpath(".//*[@class='page-browser']/div[2]/span");

@@ -57,6 +57,7 @@ public class UserEditor extends Page {
     public void turnOnMAP2(){
         //waitForJSandJQueryToLoad();
         wait.until(ExpectedConditions.visibilityOf(accessTab));
+        //sleep(1);
         accessTab.click();
         toolsItem.click();
         if (map2Checkbox.getAttribute("checked") ==null){
@@ -74,6 +75,4 @@ public class UserEditor extends Page {
         options.selectByValue("5");
         saveBtn.click();
     }
-
-
 }
