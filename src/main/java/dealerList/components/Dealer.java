@@ -63,12 +63,12 @@ public class Dealer {
     public Double getStarsNumber(WebDriver driver){
         double count = 0;
         List<WebElement> stars = getStars();
-        WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
-        WebElement halfStar = driver.findElement(By.cssSelector("p>.fa-star-half-o"));
+        //WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
+        //WebElement halfStar = driver.findElement(By.cssSelector("p>.fa-star-half-o"));
         for (WebElement star : stars){
-            if(star.equals(fullstar)){
+            if(star.getAttribute("class").equals("fa fa-star")){
                 count++;
-            }else if(star.equals(halfStar)){
+            }else if(star.getAttribute("class").equals("fa fa-star-half-o")){
                 count += 0.5;
             }
         }

@@ -134,13 +134,10 @@ public class Base1 extends TestBase {
         manager.getZipPopUp(driver).buttonCloseClick();
         logger.log("Click on Add Review button");
         //manager.getDealerList(driver).clickFirstAddReviewButton();
-        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").iGetReviewsNumber();
-        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getStarsNumber(driver);
+        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").iGetReviewsNumber();
+        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getStarsNumber(driver);
         manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
         WindowHandlers.switchToCertainWindow(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-title"))));
-
-
     }
-
 }
