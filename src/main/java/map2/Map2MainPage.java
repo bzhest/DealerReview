@@ -70,10 +70,11 @@ public class Map2MainPage extends Page {
 
     public void clickEditButton() {
         try {
+            sleep(1);
             wait.until(ExpectedConditions.visibilityOf(editPageButton));
             editPageButton.click();
-        }catch(Exception ex){
-
+        } catch (Exception ex) {
+            throw new RuntimeException("Edit button wasn't clicked", ex);
         }
     }
 
@@ -102,7 +103,6 @@ public class Map2MainPage extends Page {
         }
         addNewPageButton.click();
     }
-
 
 
     public void deleteCurrentWidget() {

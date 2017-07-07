@@ -20,6 +20,11 @@ public class Javascript {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click", element);
     }
+
+    public static String getElementText(WebDriver driver, WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (String)js.executeScript("return arguments[0].value", element);
+    }
 }
 
 

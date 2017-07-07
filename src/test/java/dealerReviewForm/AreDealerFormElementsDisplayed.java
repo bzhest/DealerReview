@@ -14,15 +14,10 @@ import utility.properties.PropertyLoader;
 
 import java.util.List;
 
-/**
- * Created by SYSTEM on 06.04.2017.
- */
+/** Here are verified, that all default form fields and titles, bottoms are present */
+
 public class AreDealerFormElementsDisplayed extends Base1 {
 
-
-
-
-    //Form without a captcha
     @Test
     public void isWidgetDisplayed(){
         //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
@@ -120,6 +115,5 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     public void isSubmitButtonDisplayed(){
         logger.log("Check if button \"Submit\" is displayed");
         Assert.assertTrue(manager.getDealerReviewDWS(driver).isSubmitButtonDisplayed());}
-
 }
 

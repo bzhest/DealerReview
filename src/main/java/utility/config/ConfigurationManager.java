@@ -11,17 +11,15 @@ import dealerReviewForm.DealerReviewForm;
 import map2.Map2MainPage;
 import map2.PageEditor;
 import map2.PreviewPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.Page;
-import settings.UserEditor;
-import settings.Users;
-import settings.Website;
+import settings.users.userEditor.page.UserEditor;
+import settings.users.Users;
+import settings.website.Website;
 import utility.browser.users.DefaultWebDriverManager;
 import utility.logger.FileLogger;
 import utility.logger.api.LogBaseNew;
 import utility.logger.StdLogger;
-import utility.utils.lesson31FacadeAndMapping.drivers.components.SearchForm;
 
 /**
  * Created by SYSTEM on 04.04.2017.
