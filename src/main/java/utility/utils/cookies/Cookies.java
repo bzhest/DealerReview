@@ -37,4 +37,21 @@ public class Cookies extends TestBase {
         driver.navigate().refresh();
         System.out.println("after refresh" + driver.manage().getCookies());
     }
+
+    public static Set<Cookie> saveCookies(WebDriver driver){
+        return driver.manage().getCookies();
+    }
+
+    public static void makeLogOut(WebDriver driver){
+        driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
+    }
+
+    public static void enterIntoSession(WebDriver driver, Set<Cookie> cookies){
+        driver.manage().deleteCookieNamed("PHPSESSID");
+        for (Cookie cookie: cookies){
+            driver.manage().addCookie(cookie);
+        }
+        driver.navigate().refresh();
+    }
 }

@@ -1,4 +1,4 @@
-package utility.data;
+package utility.data.user;
 
 /**
  * Created by SYSTEM on 04.05.2017.

@@ -1,4 +1,4 @@
-package utility.data;
+package utility.data.user;
 
 import utility.data.api.UserDataMapper;
 

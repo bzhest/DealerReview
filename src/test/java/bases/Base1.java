@@ -2,15 +2,17 @@ package bases;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import utility.base.TestBase;
 import utility.browser.users.LocalWebDriverFactory;
 import utility.config.ConfigurationManager;
 import utility.properties.PropertyLoader;
+import utility.utils.cookies.Cookies;
 import utility.utils.windowHandlers.WindowHandlers;
+
+import java.util.Set;
 
 /**
  * Created by SYSTEM on 04.04.2017.
@@ -35,11 +37,22 @@ public class Base1 extends TestBase {
 
         logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
+        logger.log("Save cookies");
+        Set<Cookie> cookie = Cookies.saveCookies(driver);
         logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
         logger.log("Open User editor");
-
         manager.getUsers(driver).openUserEditor();
+        logger.log("Save User First and Last Name from General Tab");
+        manager.getUserEditor(driver).getGeneralTab().click();
+        String userFirstSecondName = manager.getUserEditor(driver).getGeneralTab(driver).getFirstNameAndLastName();
+        System.out.println(userFirstSecondName);
+        logger.log("Save User Address, City, State from Address tab");
+        manager.getUserEditor(driver).getAccessTab().click();
+        String userAddress = manager.getUserEditor(driver).getAddressTab(driver).getAddressText();
+        String userCity = manager.getUserEditor(driver).getAddressTab(driver).getCityText();
+        String userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
+        System.out.println("address: " + userAddress + ", " + "city: " + userCity + ", " + "state: " + userState);
         logger.log("Turn on MAP2");
         manager.getUserEditor(driver).turnOnMAP2();
         logger.log("Go to WebsiteMenu");

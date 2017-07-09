@@ -1,6 +1,6 @@
 package utility.data.api;
 
-import utility.data.User;
+import utility.data.user.User;
 
 /**
  * Created by SYSTEM on 04.05.2017.

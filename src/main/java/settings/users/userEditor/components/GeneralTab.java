@@ -1,5 +1,6 @@
 package settings.users.userEditor.components;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,18 +19,32 @@ public class GeneralTab {
         this.driver = driver;
     }
 
-    @FindBy(css = "#user_contact")
+    /*@FindBy(css = "#user_contact")
     WebElement firstName;
 
     @FindBy(css = "#user_contact2")
-    WebElement lastName;
+    WebElement lastName;*/
 
-    public String getFirstName() {
-        return Javascript.getElementText(driver,firstName);
+    public WebElement getFirstName(){
+        return driver.findElement(By.id("user_contact"));
     }
 
-    public String getLastName() {
-        return Javascript.getElementText(driver,lastName);
+    public WebElement getLastName(){
+        return driver.findElement(By.id("user_contact2"));
     }
+
+    public String getFirstNameStringValue() {
+        return Javascript.getElementText(driver,getFirstName());
+    }
+
+
+    public String getLastNameStringValue() {
+        return Javascript.getElementText(driver,getLastName());
+    }
+
+    public String getFirstNameAndLastName(){
+        return (getFirstNameStringValue() + " " + getLastNameStringValue());
+    }
+
 
 }
