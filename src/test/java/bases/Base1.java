@@ -48,11 +48,12 @@ public class Base1 extends TestBase {
         String userFirstSecondName = manager.getUserEditor(driver).getGeneralTab(driver).getFirstNameAndLastName();
         System.out.println(userFirstSecondName);
         logger.log("Save User Address, City, State from Address tab");
-        manager.getUserEditor(driver).getAccessTab().click();
+        manager.getUserEditor(driver).getAddressTab().click();
         String userAddress = manager.getUserEditor(driver).getAddressTab(driver).getAddressText();
         String userCity = manager.getUserEditor(driver).getAddressTab(driver).getCityText();
         String userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
         System.out.println("address: " + userAddress + ", " + "city: " + userCity + ", " + "state: " + userState);
+        manager.getUserEditor(driver).getAccessTab().click();
         logger.log("Turn on MAP2");
         manager.getUserEditor(driver).turnOnMAP2();
         logger.log("Go to WebsiteMenu");

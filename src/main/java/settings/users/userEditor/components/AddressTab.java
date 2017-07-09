@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utility.utils.javascript.Javascript;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,18 +38,24 @@ public class AddressTab {
     public String getAddressText(){
         return Javascript.getElementText(driver,getAddress());
     }
+    /*public String getCityText(){
+        return driver.findElement(By.cssSelector("#city_id option[value ='" +  getCityOptionValue() + "']")).getText();
+    }*/
+
     public String getCityText(){
-        return driver.findElement(By.cssSelector("#city_id option[value =" + getCityOptionValue() + " ]")).getText();
+        Select select = new Select(driver.findElement(By.cssSelector("#city_id")));
+        return select.getFirstSelectedOption().getText();
     }
 
     public String getStateText(){
-        return driver.findElement(By.cssSelector("#state_id option[value =" + getStateOptionValue() + " ]")).getText();
+        Select select = new Select(driver.findElement(By.cssSelector("#state_id")));
+        return select.getFirstSelectedOption().getText();
     }
 
-    public String getCityOptionValue(){
-        return Javascript.getElementText(driver,getCity());
+    public Integer getCityOptionValue(){
+        return Integer.parseInt(Javascript.getElementText(driver,getCity()));
     }
-    public String getStateOptionValue(){
-        return Javascript.getElementText(driver,getState());
+    public Integer getStateOptionValue(){
+        return Integer.parseInt(Javascript.getElementText(driver,getState()));
     }
 }
