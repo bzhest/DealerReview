@@ -8,7 +8,7 @@ import utility.data.api.StateDataMapper;
 public class TestApp {
     public static void main(String[] args) {
         StateDataMapper file = new FileStateDateMapper();
-        State state = file.getSateByFullName("Hawaii");
+        State state = file.getStateObjectByFullName("Hawaii");
         System.out.println(state.getShortName());
     }
 }

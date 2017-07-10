@@ -1,18 +1,11 @@
 package dealerReviewForm;
 
 import bases.Base1;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utility.properties.PropertyLoader;
-
-import java.util.List;
+import utility.data.api.StateDataMapper;
+import utility.data.state.FileStateDateMapper;
+import utility.data.state.State;
 
 /** Here are verified, that all default form fields and titles, bottoms are present */
 
@@ -115,5 +108,26 @@ public class AreDealerFormElementsDisplayed extends Base1 {
     public void isSubmitButtonDisplayed(){
         logger.log("Check if button \"Submit\" is displayed");
         Assert.assertTrue(manager.getDealerReviewDWS(driver).isSubmitButtonDisplayed());}
+
+    @Test
+    public void isUsersNicknameIsCorrect(){
+        logger.log("Check if field \"Nickname\" contains correct user's First and Second name");
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getNicknameInput().getAttribute("value"),userFirstSecondName);
+    }
+
+    @Test
+    public void isUsersEmailIsCorrect(){
+        logger.log("Check if field \"Email\" contains correct users email");
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getEmailInput().getAttribute("value"),userEmail);
+    }
+
+    @Test
+    public void isUsersLocationIsCorrect(){
+        logger.log("Check if field \"Location\" contains correct users location");
+        StateDataMapper file = new FileStateDateMapper();
+        State state = file.getStateObjectByFullName(userState);
+        String fullAddress = userAddress + ", " + userCity + " " + state.getShortName();
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"),fullAddress);
+    }
 }
 

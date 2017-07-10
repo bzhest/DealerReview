@@ -19,11 +19,9 @@ public class GeneralTab {
         this.driver = driver;
     }
 
-    /*@FindBy(css = "#user_contact")
-    WebElement firstName;
-
-    @FindBy(css = "#user_contact2")
-    WebElement lastName;*/
+    public WebElement getEmail(){
+        return driver.findElement(By.id("email"));
+    }
 
     public WebElement getFirstName(){
         return driver.findElement(By.id("user_contact"));
@@ -31,6 +29,10 @@ public class GeneralTab {
 
     public WebElement getLastName(){
         return driver.findElement(By.id("user_contact2"));
+    }
+
+    public String getEmailStringValue() {
+        return Javascript.getElementText(driver,getEmail());
     }
 
     public String getFirstNameStringValue() {

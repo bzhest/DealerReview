@@ -24,7 +24,7 @@ public class FileStateDateMapper implements StateDataMapper {
             String strLine;
             while ((strLine = br.readLine()) != null) {
                 states.add(new State(
-                        strLine.split(",")[0],
+                        strLine.split(",")[0].toUpperCase(),
                         strLine.split(",")[1]));
             }
 
@@ -37,7 +37,7 @@ public class FileStateDateMapper implements StateDataMapper {
 
     @Override
     //With Java 8;
-    public State getSateByFullName(String fullName) {
+    public State getStateObjectByFullName(String fullName) {
         State result;
         result = states.stream()
                 .filter( p -> p.getFullName().equals(fullName))
@@ -48,7 +48,7 @@ public class FileStateDateMapper implements StateDataMapper {
 
     @Override
     //Without Java 8
-    public State getSateByShortName(String shortName) {
+    public State getStateObjectByShortName(String shortName) {
         for (State state : states){
             if(state.getShortName().equals(shortName))
                 return state;

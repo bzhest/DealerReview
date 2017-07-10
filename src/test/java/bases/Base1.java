@@ -20,8 +20,13 @@ import java.util.Set;
 public class Base1 extends TestBase {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
-    protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
-    //protected WebDriverWait wait;
+    protected String userFirstSecondName;
+    protected String userEmail;
+    protected String userAddress;
+    protected String userCity;
+    protected String userState;
+    /*protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
+    //protected WebDriverWait wait;*/
 
 
     @Override
@@ -43,15 +48,16 @@ public class Base1 extends TestBase {
         manager.getDmsMainPage(driver).clickOnUsersMenu();
         logger.log("Open User editor");
         manager.getUsers(driver).openUserEditor();
-        logger.log("Save User First and Last Name from General Tab");
+        logger.log("Save User First and Last Name, Email from General Tab");
         manager.getUserEditor(driver).getGeneralTab().click();
-        String userFirstSecondName = manager.getUserEditor(driver).getGeneralTab(driver).getFirstNameAndLastName();
+        userFirstSecondName = manager.getUserEditor(driver).getGeneralTab(driver).getFirstNameAndLastName();
+        userEmail = manager.getUserEditor(driver).getGeneralTab(driver).getEmailStringValue();
         System.out.println(userFirstSecondName);
         logger.log("Save User Address, City, State from Address tab");
         manager.getUserEditor(driver).getAddressTab().click();
-        String userAddress = manager.getUserEditor(driver).getAddressTab(driver).getAddressText();
-        String userCity = manager.getUserEditor(driver).getAddressTab(driver).getCityText();
-        String userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
+        userAddress = manager.getUserEditor(driver).getAddressTab(driver).getAddressText();
+        userCity = manager.getUserEditor(driver).getAddressTab(driver).getCityText();
+        userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
         System.out.println("address: " + userAddress + ", " + "city: " + userCity + ", " + "state: " + userState);
         manager.getUserEditor(driver).getAccessTab().click();
         logger.log("Turn on MAP2");

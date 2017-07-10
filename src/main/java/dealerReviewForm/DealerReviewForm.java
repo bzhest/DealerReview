@@ -165,6 +165,19 @@ public class DealerReviewForm extends Page {
     @FindBy(how = How.CSS, using = ".fa-star-o")
     private List <WebElement> emptyStar;
 
+    //Getters
+    public WebElement getNicknameInput(){
+        return nicknameInput;
+    }
+
+    public WebElement getEmailInput(){
+        return userEmailInput;
+    }
+
+    public WebElement getLocationInput(){
+        return userLocationInput;
+    }
+
 
 
     /*methods for check if element exists*/
