@@ -18,7 +18,8 @@ public class LocalWebDriverFactory implements WebDriverFactory {
     @Override
     public WebDriver create() {
         //String browserType= ConfigurationManager.getInstance().getTestBrowser().toUpperCase();
-        BrowserType browserType = BrowserType.valueOf(ConfigurationManager.getInstance().getTestBrowser().toUpperCase());
+        //BrowserType browserType = BrowserType.valueOf(ConfigurationManager.getInstance().getTestBrowser().toUpperCase());
+        BrowserType browserType = BrowserType.fromString(ConfigurationManager.getInstance().getTestBrowser());
         switch(browserType){
             case CHROME:
                 return new ChromeDriver(DriverCapabilities.applyBrowserCapabilities());
