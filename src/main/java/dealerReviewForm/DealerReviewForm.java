@@ -60,7 +60,7 @@ public class DealerReviewForm extends Page {
     @FindBy(how = How.XPATH, using = "//label[contains(text(), 'Review Title:')]")
     private WebElement reviewTitle;
 
-    @FindBy(how = How.XPATH, using = "//label[contains(text(), 'Review Text:')]")
+    @FindBy(css = ".help-block")
     private WebElement reviewText;
 
     @FindBy(how = How.XPATH, using = "//label[contains(text(), 'Recommend this dealer:')]")

@@ -75,4 +75,13 @@ public class Page{
             e.printStackTrace();
         }
     }
+
+    public void waitFullPageLoading() {
+        new WebDriverWait(driver, 10000).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                return (Boolean) js.executeScript("return jQuery.active == 0");
+            }
+        });
+    }
 }
