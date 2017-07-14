@@ -12,6 +12,7 @@ import map2.Map2MainPage;
 import map2.PageEditor;
 import map2.PreviewPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import page.Page;
 import settings.users.userEditor.page.UserEditor;
 import settings.users.Users;

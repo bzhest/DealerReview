@@ -154,9 +154,9 @@ public class Website extends Page {
         options.selectByVisibleText(value404);
     }
 
-    public void clickOnWebsiteMenu() throws Exception{
+    public void clickOnWebsiteMenu(){
         //waitForJSandJQueryToLoad();
-        Thread.sleep(1000);
+        waitFullPageLoading();
         driver.get("http://www.solomia.andreyb.ixloo.com/dms/settings/website#general");
     }
 }

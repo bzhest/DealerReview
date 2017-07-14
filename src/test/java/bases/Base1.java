@@ -20,11 +20,7 @@ import java.util.Set;
 public class Base1 extends TestBase {
     //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
     public ConfigurationManager manager;
-    protected String userFirstSecondName;
-    protected String userEmail;
-    protected String userAddress;
-    protected String userCity;
-    protected String userState;
+
     /*protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
     //protected WebDriverWait wait;*/
 
@@ -37,7 +33,7 @@ public class Base1 extends TestBase {
         manager = ConfigurationManager.getInstance(driver);
     }
 
-    @BeforeClass
+    /*@BeforeClass
     public void turnOnMap2() throws Exception {
 
         logger.log("Log in to DMS under Supervisor");
@@ -159,5 +155,5 @@ public class Base1 extends TestBase {
         manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
         WindowHandlers.switchToCertainWindow(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-title"))));
-    }
+    }*/
 }
