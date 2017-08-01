@@ -22,26 +22,31 @@ public class TestBase {
     protected WebDriverManager wdm;
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected ConfigurationManager manager;
 
 
-@BeforeSuite
-    public void setUp(){
+    @BeforeSuite
+    public void setUp() {
         logger = new StdLogger();
         wdm = new DefaultWebDriverManager();
         driver = wdm.getWebDriver();
-        wait = new WebDriverWait(driver,25);
+        wait = new WebDriverWait(driver, 25);
+        manager = ConfigurationManager.getInstance(driver);
 
         beforeTest();
     }
 
-@AfterSuite
-    public void tearDown(){
+    @AfterSuite
+    public void tearDown() {
         wdm.destroyWebDriver(driver);
         afterTest();
     }
 
-    protected void beforeTest(){}
-    protected void afterTest(){}
+    protected void beforeTest() {
+    }
+
+    protected void afterTest() {
+    }
 
     public boolean waitForJSandJQueryToLoad() {
         WebDriverWait wait = new WebDriverWait(driver, 35);

@@ -55,13 +55,14 @@ public class  ConfigurationManager {
     }
 
     public ConfigurationManager(WebDriver driver) {
-        dmsLoginForm = new DmsLoginForm(driver);
-        page = new Page(driver);
-        dmsMainPage = new DmsMainPage(driver);
-        dealerReviewDWS = new DealerReviewForm(driver);
-        users = new Users(driver);
-        userEditor = new UserEditor(driver);
-        website = new Website(driver);
+        this.driver = driver;
+        //dmsLoginForm = new DmsLoginForm(driver);
+       // page = new Page(driver);
+       // dmsMainPage = new DmsMainPage(driver);
+       // dealerReviewDWS = new DealerReviewForm(driver);
+       // users = new Users(driver);
+       // userEditor = new UserEditor(driver);
+       // website = new Website(driver);
     }
 
     public static ConfigurationManager getInstance(WebDriver driver) {

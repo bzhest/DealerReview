@@ -18,20 +18,18 @@ import java.util.Set;
  * Created by SYSTEM on 04.04.2017.
  */
 public class Base1 extends TestBase {
-    //Чтобы работать с ConfigurationManager - в Base1 должна быть ссылка на ApplicationManager
-    public ConfigurationManager manager;
-
-    /*protected LocalWebDriverFactory lwf = new LocalWebDriverFactory();
-    //protected WebDriverWait wait;*/
-
 
     @Override
     protected void beforeTest() {
         logger.log("Navigating to test url");
         driver.manage().window().maximize();
         driver.get(PropertyLoader.loadProperty("dms.url"));
-        manager = ConfigurationManager.getInstance(driver);
     }
+
+   @BeforeClass
+    public void openURL(){
+       driver.get("google.com");
+   }
 
     /*@BeforeClass
     public void turnOnMap2() throws Exception {
