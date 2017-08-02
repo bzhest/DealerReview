@@ -6,6 +6,7 @@ import utility.base.TestBase;
 import utility.properties.PropertyLoader;
 import utility.properties.PropertyLoaderCredentials;
 import utility.utils.cookies.Cookies;
+import utility.utils.windowHandlers.WindowHandlers;
 
 import java.util.Set;
 
@@ -43,6 +44,10 @@ public class UnderManagerAddressCorrect extends TestBase{
         userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
         System.out.println("address: " + userAddress + ", " + "city: " + userCity + ", " + "state: " + userState);
         driver.get("http://www.solomia.andreyb.ixloo.com/dealer-list");
-        manager.getLoginForm(driver).inputLoginPassword(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"));
+        manager.getZipPopUp(driver).buttonCloseClick();
+        manager.getLoginForm(driver).inputLoginPassword(PropertyLoaderCredentials.loadProperty("loginValueManager"),PropertyLoaderCredentials.loadProperty("passwordValueManager"));
+        logger.log("Click on Add Review button");
+        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
+        WindowHandlers.switchToCertainWindow(driver, 1);
     }
 }
