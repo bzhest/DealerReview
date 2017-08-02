@@ -6,7 +6,7 @@
         <classes>
 
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>
-
+            <class name="dealerReviewForm.UnderManagerAddressCorrect"/>
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedOutUser"/>
 
         </classes>
