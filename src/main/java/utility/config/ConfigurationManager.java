@@ -8,6 +8,7 @@ import dms.DmsMainPage;
 import dmsDealerReviews.SettingsReviewDealershipReviewSettings;
 import dmsDealerReviews.ToolsReviewsDealerReviewsPage;
 import dealerReviewForm.DealerReviewForm;
+import loginForm.LoginForm;
 import map2.Map2MainPage;
 import map2.PageEditor;
 import map2.PreviewPage;
@@ -46,6 +47,7 @@ public class  ConfigurationManager {
     private PreviewPage previewPage;
     private DealerList dealerList;
     private ZipPopUp zipPopUp;
+    private LoginForm loginForm;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -113,6 +115,13 @@ public class  ConfigurationManager {
             pageEditor = new PageEditor(driver);
         }
         return pageEditor;
+    }
+
+    public LoginForm getLoginForm(WebDriver driver){
+        if (loginForm ==null){
+            loginForm = new LoginForm(driver);
+        }
+        return loginForm;
     }
 
     public Map2MainPage getMap2MainPage(WebDriver driver){

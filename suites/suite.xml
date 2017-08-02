@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" verbose="5" data-provider-thread-count="1" configfailurepolicy="continue">
+    <parameter name="browserName" value="chrome"/>
+    <test name="Dealer Review Form">
+        <classes>
+
+            <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>
+
+            <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedOutUser"/>
+
+        </classes>
+    </test>
+</suite>

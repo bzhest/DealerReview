@@ -14,14 +14,11 @@ import page.Page;
  * Created by SYSTEM on 16.03.2017.
  */
 public class DmsMainPage extends Page {
-    private WebDriver driver;
 
     public DmsMainPage (WebDriver driver)
     {
         super(driver);
     }
-
-
 
     @FindBy(how = How.CSS, using = "a[href='/dms/tools']")
     private WebElement toolsMenu;

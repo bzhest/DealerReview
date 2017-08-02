@@ -13,6 +13,7 @@ import utility.utils.javascript.Javascript;
 /**
  * Created by Andrey on 13.04.2017.
  */
+
 public class PageEditor extends Page {
 
     public PageEditor(WebDriver driver) {
@@ -41,6 +42,9 @@ public class PageEditor extends Page {
 
     @FindBy(how = How.CSS, using = ".ico-widget.widget-list_dealer")
     private WebElement iconDealerList;
+
+    @FindBy(how = How.CSS, using = ".ico-widget.widget-login")
+    private WebElement iconLoginForm;
 
     @FindBy(how = How.CSS, using = ".ico-widget.widget-dealer_review")
     private WebElement iconDealerReview;
@@ -88,6 +92,10 @@ public class PageEditor extends Page {
         return iconDealerList;
     }
 
+    public WebElement getIconLoginForm() {
+        return iconLoginForm;
+    }
+
     public WebElement getIconDealerReview() {
         return iconDealerReview;
     }
@@ -115,7 +123,7 @@ public class PageEditor extends Page {
 
     public void clickOnMapButton() {
         //waitForJSandJQueryToLoad();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
         wait.until(ExpectedConditions.visibilityOf(mapButton));
         /*int width = mapButton.getSize().getWidth();
         Actions action = new Actions (driver);

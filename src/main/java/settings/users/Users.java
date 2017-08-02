@@ -1,5 +1,6 @@
 package settings.users;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by SYSTEM on 07.04.2017.
  */
+@Getter
 public class Users extends Page {
 
     /*public  Users (WebDriver webDriver){
@@ -27,6 +29,10 @@ public class Users extends Page {
 
     @FindBy(how = How.CSS, using = ".rootUserBranch>a")
     private WebElement rootUser;
+
+    @FindBy(css = "#user_14189")
+    private WebElement manager;
+
 
     @FindBy(how = How.CSS, using = "#user_tree_add")
     private WebElement addUserBtn;
@@ -49,10 +55,10 @@ public class Users extends Page {
         return PageFactory.initElements(driver, userEditor.class);
     }*/
 
-    public void openUserEditor(){
+    public void openUserEditor(WebElement user){
         Actions action = new Actions(driver);
-        wait.until(ExpectedConditions.visibilityOf(rootUser));
-        Action moveToElem = action.doubleClick(rootUser).build();
+        wait.until(ExpectedConditions.visibilityOf(user));
+        Action moveToElem = action.doubleClick(user).build();
         moveToElem.perform();
     }
 }

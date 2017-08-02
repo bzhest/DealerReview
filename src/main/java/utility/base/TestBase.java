@@ -30,6 +30,7 @@ public class TestBase {
         logger = new StdLogger();
         wdm = new DefaultWebDriverManager();
         driver = wdm.getWebDriver();
+        driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 25);
         manager = ConfigurationManager.getInstance(driver);
 

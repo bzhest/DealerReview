@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import utility.base.TestBase;
 import utility.data.api.StateDataMapper;
 import utility.data.state.FileStateDateMapper;
 import utility.data.state.State;
@@ -18,7 +19,7 @@ import java.util.Set;
 
 /** Here are verified, that all default form fields and titles, bottoms are present */
 
-public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends Base1{
+public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
 
     protected String userFirstSecondName;
     protected String userEmail;
@@ -28,7 +29,7 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends Base1{
 
     @BeforeClass
     public void setUpDealerReviewForm(){
-
+        driver.get(PropertyLoader.loadProperty("dms.url"));
         logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
         logger.log("Save cookies");
@@ -36,7 +37,7 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends Base1{
         logger.log("Click on menu 'User'");
         manager.getDmsMainPage(driver).clickOnUsersMenu();
         logger.log("Open User editor");
-        manager.getUsers(driver).openUserEditor();
+        manager.getUsers(driver).openUserEditor(manager.getUsers(driver).getRootUser());
         logger.log("Save User First and Last Name, Email from General Tab");
         manager.getUserEditor(driver).getGeneralTab().click();
         userFirstSecondName = manager.getUserEditor(driver).getGeneralTab(driver).getFirstNameAndLastName();
@@ -79,6 +80,10 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends Base1{
         logger.log("drag and drop Dealer List icon");
         manager.getPageEditor(driver).addAnWidget(
                 manager.getPageEditor(driver).getIconDealerList(),
+                manager.getPageEditor(driver).getEmptyContainer());
+        logger.log("drag and drop Login Form icon");
+        manager.getPageEditor(driver).addAnWidget(
+                manager.getPageEditor(driver).getIconLoginForm(),
                 manager.getPageEditor(driver).getEmptyContainer());
         logger.log("Click on activation button");
         manager.getPageEditor(driver).getActivateButton().click();
@@ -150,7 +155,7 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends Base1{
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-title"))));
     }
 
-    @Test
+    @Test(description = "Widget Dealer Review Form is displayed")
     public void isWidgetDisplayed(){
         //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
         //waitForJSandJQueryToLoad();

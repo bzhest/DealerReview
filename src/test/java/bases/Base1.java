@@ -26,10 +26,7 @@ public class Base1 extends TestBase {
         driver.get(PropertyLoader.loadProperty("dms.url"));
     }
 
-   @BeforeClass
-    public void openURL(){
-       driver.get("google.com");
-   }
+
 
     /*@BeforeClass
     public void turnOnMap2() throws Exception {

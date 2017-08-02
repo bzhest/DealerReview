@@ -31,14 +31,8 @@ public class DmsLoginForm extends Page {
     /*method of logging to dms under supervisor*/
 
     public void loginToDMSUnderSupervisor(){
-        /*public void inputText(WebElement webElement, String value){
-            webElement.clear();
-            webElement.sendKeys(value);
-        }*/
-        //waitForJSandJQueryToLoad();
-        inputLoginPassword("andrey.bzhestovskyy@xloo.com", "andrey87");
+        inputLoginPassword(PropertyLoaderCredentials.loadProperty("loginValueSupervisor"),PropertyLoaderCredentials.loadProperty("passwordValueSupervisor"));
         signInButton.click();
-        //return PageFactory.initElements(driver, DmsMainPage.class);
     }
 
     public void inputLoginPassword(String login, String password) {
@@ -51,13 +45,13 @@ public class DmsLoginForm extends Page {
     }
 
     /*method of logging to dms under manager*/
-    public DmsMainPage loginToDMSUnderManager() {
+    /*public DmsMainPage loginToDMSUnderManager() {
         loginInput.clear();
         loginInput.sendKeys(PropertyLoaderCredentials.loadProperty("loginValueManager")); //login is taken from credentials.properties file
         passwordInput.clear();
         passwordInput.sendKeys(PropertyLoaderCredentials.loadProperty("passwordValueManager")); //password is taken from credentials.properties file
         signInButton.click();
         return PageFactory.initElements(driver, DmsMainPage.class);
-    }
+    }*/
 
 }
