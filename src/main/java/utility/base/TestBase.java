@@ -1,9 +1,11 @@
 package utility.base;
 
+import lombok.Getter;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -12,17 +14,21 @@ import utility.browser.users.DefaultWebDriverManager;
 import utility.config.ConfigurationManager;
 import utility.logger.StdLogger;
 import utility.logger.api.LogBaseNew;
+import utility.utils.windowHandlers.WindowHandlers;
 
 /**
  * Created by Andrey on 06.04.2017.
  */
+@Getter
 public class TestBase {
 
-    protected LogBaseNew logger;
-    protected WebDriverManager wdm;
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected ConfigurationManager manager;
+    protected static LogBaseNew logger;
+    protected static WebDriverManager wdm;
+    protected static WebDriver driver;
+    protected static WebDriverWait wait;
+    protected static ConfigurationManager manager;
+    protected static WindowHandlers winHand;
+
 
 
     @BeforeSuite
@@ -33,8 +39,15 @@ public class TestBase {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 25);
         manager = ConfigurationManager.getInstance(driver);
+        winHand = new WindowHandlers(driver);
 
         beforeTest();
+    }
+
+    @AfterClass
+    public void postconditions(){
+        winHand.closeExtraWindows();
+        winHand.switchToParentWindow();
     }
 
     @AfterSuite
@@ -71,6 +84,13 @@ public class TestBase {
             }
         };
         return wait.until(jQueryLoad) && wait.until(jsLoad);
+    }
+    public void sleep (Integer sec){
+        try{
+            Thread.sleep(1000 * sec);
+        }catch(Exception ex){
+            throw new RuntimeException("Can't wait for you, time is running out");
+        }
     }
 
 }

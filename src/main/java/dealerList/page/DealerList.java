@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
-import utility.properties.PropertyLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,29 +32,18 @@ public class DealerList extends Page {
     public List <Dealer> getDealersList(){
         List <Dealer>  dealers = new ArrayList<>();
         for (WebElement dealer : driver.findElements(By.cssSelector("div.panel-body.no-padding-xs"))){
-            WebElement userDealerName = driver.findElement(By.cssSelector("p.car-name"));
-            List<WebElement> starsNumber = driver.findElements(By.cssSelector(".dealer-info-wrap [class*= 'star']"));
-            WebElement reviewsNumber = driver.findElement(By.cssSelector("p>.inline>a"));
-            WebElement buttonViewInventory = driver.findElements(By.cssSelector(".fa.fa-eye")).get(0);
-            WebElement buttonAddReview = driver.findElements(By.cssSelector(".fa.fa-plus")).get(0);
+            WebElement userDealerName = dealer.findElement(By.cssSelector("p.car-name"));
+            List<WebElement> starsNumber = dealer.findElements(By.cssSelector(".dealer-info-wrap [class*= 'star']"));
+            WebElement reviewsNumber = dealer.findElement(By.cssSelector("p>.inline>a"));
+            WebElement buttonViewInventory = dealer.findElements(By.cssSelector(".fa.fa-eye")).get(0);
+            WebElement buttonAddReview = dealer.findElements(By.cssSelector(".fa.fa-plus")).get(0);
 
             dealers.add(new Dealer(userDealerName, starsNumber,reviewsNumber, buttonViewInventory,buttonAddReview));
         }
         return dealers;
     }
 
-   /* public Dealer findDealerByDealerName(String userDealerName) {
-        try {
-            Predicate<Dealer> dealer = d -> d.sGetUserDealerName().contains(userDealerName);
-            if (getDealersList().stream().filter(d -> d.sGetUserDealerName().contains(userDealerName)).noneMatch(dealer)) {
-                buttonNextPage().click();
-                wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-heading"))));
-            }
-            return getDealersList().stream().filter(d -> d.sGetUserDealerName().contains(userDealerName)).findFirst().get();
-        }catch(Exception ex){
-            throw new RuntimeException("No user was found by given name");
-        }
-    }*/
+
 
     public Dealer findDealerByDealerName(String userDealerName) {
         Predicate<Dealer> dealer = d -> d.sGetUserDealerName().contains(userDealerName);
@@ -76,7 +64,7 @@ public class DealerList extends Page {
 
 
 
-    /*public Double getStarsNumber(){
+    /*public Double dGetStarsNumber(){
         double count = 0;
         List<WebElement> stars = driver.findElements(By.cssSelector("p>.fa"));
         WebElement fullstar = driver.findElement(By.cssSelector("p>.fa.fa-star"));
@@ -101,7 +89,7 @@ public class DealerList extends Page {
 
             //waitForJSandJQueryToLoad();*/
             wait.until(ExpectedConditions.visibilityOf(findDealerByDealerName("Solomia Vasilivna").getButtonAddReview()));
-            findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
+            findDealerByDealerName("Solomia Vasilivna").clickButtonAddReview();
         }catch(Exception ex){
             throw new RuntimeException("'Add Review' button wasn't clicked");
         }

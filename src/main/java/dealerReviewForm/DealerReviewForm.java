@@ -1,5 +1,6 @@
 package dealerReviewForm;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by Andrey on 18.03.2017.
  */
+@Getter
 public class DealerReviewForm extends Page {
 
     public DealerReviewForm(WebDriver driver) {

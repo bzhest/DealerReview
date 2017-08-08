@@ -1,6 +1,5 @@
 package dealerReviewForm;
 
-import bases.Base1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +16,9 @@ import utility.utils.windowHandlers.WindowHandlers;
 
 import java.util.Set;
 
-/** Here are verified, that all default form fields and titles, bottoms are present */
+/**
+ * Here are verified, that all default form fields and titles, bottoms are present
+ */
 
 public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
 
@@ -28,7 +29,7 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
     protected String userState;
 
     @BeforeClass
-    public void setUpDealerReviewForm(){
+    public void setUpDealerReviewForm() {
         driver.get(PropertyLoader.loadProperty("dms.url"));
         logger.log("Log in to DMS under Supervisor");
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
@@ -149,129 +150,148 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
         logger.log("Click on Add Review button");
         //manager.getDealerList(driver).clickFirstAddReviewButton();
         //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").iGetReviewsNumber();
-        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getStarsNumber(driver);
-        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
+        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").dGetStarsNumber(driver);
+        manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").clickButtonAddReview();
         WindowHandlers.switchToCertainWindow(driver, 3);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-title"))));
+        sleep(1);
     }
 
     @Test(description = "Widget Dealer Review Form is displayed")
-    public void isWidgetDisplayed(){
+    public void isWidgetDisplayed() {
         //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
         //waitForJSandJQueryToLoad();
         logger.log("Check, if widget is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetExists());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetExists());
+    }
 
     @Test
-     public void isWidgetTitleDisplayed(){
+    public void isWidgetTitleDisplayed() {
         logger.log("Check if widget title is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isWidgetTitleDisplayed());
+    }
 
     @Test
-    public void isRateYourDealerTitleDisplayed(){
+    public void isRateYourDealerTitleDisplayed() {
         logger.log("Check if sign \"Rate Your Dealer\" title is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRateYourDealerTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRateYourDealerTitleDisplayed());
+    }
 
     @Test
-    public void isNicknameTitleDisplayed(){
+    public void isNicknameTitleDisplayed() {
         logger.log("Check if title \"Nickname\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isNicknameTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isNicknameTitleDisplayed());
+    }
 
     @Test
-    public void isEmailTitleDisplayed(){
+    public void isEmailTitleDisplayed() {
         logger.log("Check if title \"Email\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isEmailTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isEmailTitleDisplayed());
+    }
 
     @Test
-    public void isLocationTitleDisplayed(){
+    public void isLocationTitleDisplayed() {
         logger.log("Check if title \"Location\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isLocationTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isLocationTitleDisplayed());
+    }
 
     @Test
-    public void isParameterYourOverallRatingDisplayed(){
+    public void isParameterYourOverallRatingDisplayed() {
         logger.log("Check if title \"Your Overall Rating \" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterYourOverallRatingDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterYourOverallRatingDisplayed());
+    }
 
     @Test
-    public void isParameterCustomerServiceDisplayed(){
+    public void isParameterCustomerServiceDisplayed() {
         logger.log("Check if title \"Customer Service\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterCustomerServiceDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterCustomerServiceDisplayed());
+    }
 
     @Test
-    public void isParameterBuyingProcessDisplayed(){
+    public void isParameterBuyingProcessDisplayed() {
         logger.log("Check if title \"Buying Process\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterBuyingProcessDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterBuyingProcessDisplayed());
+    }
 
     @Test
-    public void isParameterQualityOfRepairDisplayed(){
+    public void isParameterQualityOfRepairDisplayed() {
         logger.log("Check if title \"Quality of Repair\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterQualityOfRepairDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterQualityOfRepairDisplayed());
+    }
 
     @Test
-    public void isParameterOverallFacilitiesDisplayed(){
+    public void isParameterOverallFacilitiesDisplayed() {
         logger.log("Check if title \"Overall Facilities\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterOverallFacilitiesDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isParameterOverallFacilitiesDisplayed());
+    }
 
     @Test
-    public void isReviewTitleDisplayed(){
+    public void isReviewTitleDisplayed() {
         logger.log("Check if title \"Review Title\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTitleDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTitleDisplayed());
+    }
 
     @Test
-    public void isReviewTextDisplayed(){
+    public void isReviewTextDisplayed() {
         logger.log("Check if title \"Review Text\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTextDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isReviewTextDisplayed());
+    }
 
     @Test
-    public void isRecomendThisDealerOptionDisplayed(){
+    public void isRecomendThisDealerOptionDisplayed() {
         logger.log("Check if title \"Recommend this dealer\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRecomendThisDealerOptionDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isRecomendThisDealerOptionDisplayed());
+    }
 
     @Test
-    public void isPurchaseAVehicleFromThisDealerOptionDisplayed(){
+    public void isPurchaseAVehicleFromThisDealerOptionDisplayed() {
         logger.log("Check if title \"Purchased a vehicle from this dealer\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isPurchaseAVehicleFromThisDealerOptionDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isPurchaseAVehicleFromThisDealerOptionDisplayed());
+    }
 
     @Test
-    public void countStarsNumber(){
+    public void countStarsNumber() {
         //driver.get("http://www.solomia.andreyb.ixloo.com/dealer-review-form_dealer_6287.html");
         logger.log("Check if number of empty stars on a page is 25");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).countStarsNumber(),25);}
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).countStarsNumber(), 25);
+    }
 
     @Test
-    public void isCheckboxNADisplayed(){
+    public void isCheckboxNADisplayed() {
         logger.log("Check if checkbox \"NA\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isCheckboxNADisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isCheckboxNADisplayed());
+    }
 
     @Test
-    public void countCrossIconsNumber(){
+    public void countCrossIconsNumber() {
         logger.log("Check if number of icons \"Cross\" to clean stars is 5");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).countCrossIconsNumber(),5);}
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).countCrossIconsNumber(), 5);
+    }
 
     @Test
-    public void isSubmitButtonDisplayed(){
+    public void isSubmitButtonDisplayed() {
         logger.log("Check if button \"Submit\" is displayed");
-        Assert.assertTrue(manager.getDealerReviewDWS(driver).isSubmitButtonDisplayed());}
+        Assert.assertTrue(manager.getDealerReviewDWS(driver).isSubmitButtonDisplayed());
+    }
 
     @Test
-    public void isUsersNicknameIsCorrect(){
+    public void isUsersNicknameIsCorrect() {
         logger.log("Check if field \"Nickname\" contains correct user's First and Second name");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getNicknameInput().getAttribute("value"),userFirstSecondName);
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getNicknameInput().getAttribute("value"), userFirstSecondName);
     }
 
     @Test
-    public void isUsersEmailIsCorrect(){
+    public void isUsersEmailIsCorrect() {
         logger.log("Check if field \"Email\" contains correct users email");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getEmailInput().getAttribute("value"),userEmail);
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getEmailInput().getAttribute("value"), userEmail);
     }
 
     @Test
-    public void isUsersLocationIsCorrect(){
+    public void isUsersLocationIsCorrect() {
         logger.log("Check if field \"Location\" contains correct users location");
         StateDataMapper file = new FileStateDateMapper();
         State state = file.getStateObjectByFullName(userState);
         String fullAddress = userAddress + ", " + userCity + " " + state.getShortName();
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"),fullAddress);
+        Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"), fullAddress);
     }
 }
 

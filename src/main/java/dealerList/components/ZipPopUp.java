@@ -2,6 +2,8 @@ package dealerList.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.Page;
@@ -11,13 +13,17 @@ import page.Page;
  */
 public class ZipPopUp extends Page {
 
+    @FindBy(css = "#dialog_search_close")
+    WebElement closeButton;
+
+
     public ZipPopUp(WebDriver driver) {
         super(driver);
         WebDriverWait wait = new WebDriverWait(driver, 30);
     }
 
     public void buttonCloseClick() {
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("#dialog_search_close"))));
-        driver.findElement(By.cssSelector("#dialog_search_close")).click();
+        wait.until(ExpectedConditions.visibilityOf(closeButton));
+        closeButton.click();
     }
 }

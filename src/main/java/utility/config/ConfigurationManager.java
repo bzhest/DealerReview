@@ -48,6 +48,7 @@ public class  ConfigurationManager {
     private DealerList dealerList;
     private ZipPopUp zipPopUp;
     private LoginForm loginForm;
+    private DealerReviewForm dealerReviewForm;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -115,6 +116,13 @@ public class  ConfigurationManager {
             pageEditor = new PageEditor(driver);
         }
         return pageEditor;
+    }
+
+    public DealerReviewForm getDealerReviewForm(WebDriver driver){
+        if (dealerReviewForm ==null){
+            dealerReviewForm = new DealerReviewForm(driver);
+        }
+        return dealerReviewForm;
     }
 
     public LoginForm getLoginForm(WebDriver driver){

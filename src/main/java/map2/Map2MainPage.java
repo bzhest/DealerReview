@@ -54,6 +54,8 @@ public class Map2MainPage extends Page {
         tabDealerList.click();
     }
 
+
+
     public void openDealerReviewTab() {
         Javascript.scrollToElement(driver, tabDealerReview);
         wait.until(ExpectedConditions.visibilityOf(tabDealerReview));

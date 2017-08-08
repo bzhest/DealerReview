@@ -6,9 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utility.base.TestBase;
-import utility.data.api.StateDataMapper;
-import utility.data.state.FileStateDateMapper;
-import utility.data.state.State;
 import utility.utils.cookies.Cookies;
 import utility.utils.windowHandlers.WindowHandlers;
 
@@ -17,17 +14,17 @@ import utility.utils.windowHandlers.WindowHandlers;
  */
 public class CheckElementsOnFormAreDisplayLoggedOutUser extends TestBase{
 
-@BeforeClass
+
+    @BeforeClass
     public void openUrl(){
     driver.get("http://www.solomia.andreyb.ixloo.com/dealer-list");
     Cookies.makeLogOut(driver);
     logger.log("Click button Close");
     manager.getZipPopUp(driver).buttonCloseClick();
     logger.log("Click on Add Review button");
-
-    manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").getButtonAddReview().click();
+    manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").clickButtonAddReview();
     WindowHandlers.switchToCertainWindow(driver, 1);
-    wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".panel-title"))));
+    wait.until(ExpectedConditions.visibilityOf(manager.getDealerReviewForm(driver).getNicknameTitle()));
 }
 
     @Test(description = "field should be empty")

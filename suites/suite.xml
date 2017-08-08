@@ -8,6 +8,7 @@
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>
             <class name="dealerReviewForm.UnderManagerAddressCorrect"/>
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedOutUser"/>
+            <!--<class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>-->
 
         </classes>
     </test>

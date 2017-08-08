@@ -34,7 +34,7 @@ public class PageEditor extends Page {
     @FindBy(css = ".mapx-button-ico.globe")
     WebElement previewPage;
 
-    @FindBy(how = How.CSS, using = "div.menu-launcher")
+    @FindBy(how = How.CSS, using = ".topbar.noselect>div")
     private WebElement mapButton;
 
     @FindBy(how = How.CSS, using = "div.tab[data-tab='page-settings'][title='Page Settings']")
@@ -122,19 +122,13 @@ public class PageEditor extends Page {
     }
 
     public void clickOnMapButton() {
-        //waitForJSandJQueryToLoad();
-        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("mask")));
+
         wait.until(ExpectedConditions.visibilityOf(mapButton));
-        /*int width = mapButton.getSize().getWidth();
-        Actions action = new Actions (driver);
-        action.moveToElement(mapButton,(width/2) - 20, 0).click().perform();*/
-        //Javascript.clickOnElement(driver,mapButton);
         Actions action = new Actions (driver);
         action.moveToElement(mapButton).click().perform();
-        /*try {
-            Thread.sleep(500);
-        }catch (Exception ex){}
-            mapButton.click();*/
+        if(pageSettingsTab.isDisplayed()){
+            clickOnMapButton();
+        }
     }
 
     public WebElement getPreviewPage() {

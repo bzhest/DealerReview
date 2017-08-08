@@ -3,6 +3,7 @@ package map2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
 
 /**
@@ -18,6 +19,7 @@ public class PreviewPage extends Page {
     WebElement visitOnWebsite;
 
     public WebElement getVisitOnVebsite(){
+        wait.until(ExpectedConditions.visibilityOf(visitOnWebsite));
         return visitOnWebsite;
     }
 }
