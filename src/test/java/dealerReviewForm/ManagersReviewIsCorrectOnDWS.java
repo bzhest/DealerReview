@@ -34,6 +34,8 @@ public class ManagersReviewIsCorrectOnDWS extends TestBase {
         manager.getDealerReviewForm(driver).getTitleInput().sendKeys("Where are testing Stars here");
         manager.getDealerReviewForm(driver).getContentInput().sendKeys("Where are testing Stars here");
         manager.getDealerReviewForm(driver).selectStarsOnParameters(parameterNumber,starNumbers);
+        manager.getDealerReviewForm(driver).getSubmitButton().click();
+        manager.getDealerReviewForm(driver).getPostFormReturnBtn().click();
         sleep(5);
 
     }
