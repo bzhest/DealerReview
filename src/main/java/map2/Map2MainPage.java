@@ -3,13 +3,12 @@ package map2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
-import utility.utils.javascript.Javascript;
-import utility.utils.windowHandlers.WindowHandlers;
+import utilityHelpers.javascript.Javascript;
+import utilityHelpers.windowHandlers.WindowHandlers;
 
 import java.util.List;
 

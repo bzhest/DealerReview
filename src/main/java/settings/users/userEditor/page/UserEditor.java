@@ -5,15 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.Page;
 import settings.users.userEditor.components.AccessTab;
 import settings.users.userEditor.components.AddressTab;
 import settings.users.userEditor.components.GeneralTab;
-import utility.properties.PropertyLoaderCredentials;
 
 /**
  * Created by SYSTEM on 07.04.2017.

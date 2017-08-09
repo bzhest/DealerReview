@@ -5,10 +5,8 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page.Page;
-import utility.utils.javascript.Javascript;
 
 /**
  * Created by Andrey on 13.04.2017.

@@ -36,20 +36,16 @@ public class LoginForm extends Page {
     public void inputLoginPassword(String login, String password) {
         sleep(1);
         try {
-            if(!logOutFormButton.isDisplayed()){
-                inputText(getLogin(),login);
-                inputText(getPassword(), password);
-                loginButton.click();
-
-            }else{
+            if(logOutFormButton.isDisplayed()){
                 logOutFormButton.click();
                 inputText(getLogin(),login);
                 inputText(getPassword(), password);
                 loginButton.click();
-
             }
-        }catch(RuntimeException er){
-            System.out.println("User can't be logged in");
+        }catch(Exception ex){
+            inputText(getLogin(),login);
+            inputText(getPassword(), password);
+            loginButton.click();
         }
     }
 

@@ -1,18 +1,8 @@
 package bases;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.BeforeClass;
-import utility.base.TestBase;
-import utility.browser.users.LocalWebDriverFactory;
-import utility.config.ConfigurationManager;
-import utility.properties.PropertyLoader;
-import utility.utils.cookies.Cookies;
-import utility.utils.windowHandlers.WindowHandlers;
-
-import java.util.Set;
+import utilityProject.testBase.TestBase;
+import utilityProject.properties.PropertyLoader;
 
 /**
  * Created by SYSTEM on 04.04.2017.

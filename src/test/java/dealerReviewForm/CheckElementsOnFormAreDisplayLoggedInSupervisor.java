@@ -1,18 +1,16 @@
 package dealerReviewForm;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utility.base.TestBase;
-import utility.data.api.StateDataMapper;
-import utility.data.state.FileStateDateMapper;
-import utility.data.state.State;
-import utility.properties.PropertyLoader;
-import utility.utils.cookies.Cookies;
-import utility.utils.windowHandlers.WindowHandlers;
+import utilityProject.testBase.TestBase;
+import utilityHelpers.data.api.StateDataMapper;
+import utilityHelpers.data.state.FileStateDateMapper;
+import utilityHelpers.data.state.State;
+import utilityProject.properties.PropertyLoader;
+import utilityHelpers.cookies.Cookies;
+import utilityHelpers.windowHandlers.WindowHandlers;
 
 import java.util.Set;
 

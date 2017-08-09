@@ -1,12 +1,9 @@
 package settings.users.userEditor.components;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import utility.utils.javascript.Javascript;
+import utilityHelpers.javascript.Javascript;
 
 /**
  * Created by DWork on 07.07.2017.

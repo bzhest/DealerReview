@@ -1,13 +1,12 @@
 package dealerReviewForm;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utility.base.TestBase;
-import utility.utils.cookies.Cookies;
-import utility.utils.windowHandlers.WindowHandlers;
+import utilityProject.testBase.TestBase;
+import utilityHelpers.cookies.Cookies;
+import utilityHelpers.windowHandlers.WindowHandlers;
 
 /**
  * Created by DWork on 01.08.2017.

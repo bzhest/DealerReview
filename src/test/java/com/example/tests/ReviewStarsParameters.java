@@ -320,7 +320,7 @@ public class ReviewStarsParameters extends TestBase {
         app.getFormHelper().deleteReview();
     }
 
-    /*public void selectStar(final String paramNumber, String starNumber) {
+    /*public void selectStarsOnParameters(final String paramNumber, String starNumber) {
 
         double d= Double.valueOf(starNumber);
         if (d==(int)d){
