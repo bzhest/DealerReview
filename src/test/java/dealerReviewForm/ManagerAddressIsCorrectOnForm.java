@@ -5,14 +5,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilityProject.testBase.TestBase;
-import utilityHelpers.data.api.StateDataMapper;
-import utilityHelpers.data.state.FileStateDateMapper;
-import utilityHelpers.data.state.State;
-import utilityProject.properties.PropertyLoader;
-import utilityProject.properties.PropertyLoaderCredentials;
-import utilityHelpers.cookies.Cookies;
-import utilityHelpers.windowHandlers.WindowHandlers;
+import utilities.utilityProject.testBase.TestBase;
+import utilities.utilityHelpers.data.api.StateDataMapper;
+import utilities.utilityHelpers.data.state.FileStateDateMapper;
+import utilities.utilityHelpers.data.state.State;
+import utilities.utilityProject.properties.PropertyLoader;
+import utilities.utilityProject.properties.PropertyLoaderCredentials;
+import utilities.utilityHelpers.cookies.Cookies;
+import utilities.utilityHelpers.windowHandlers.WindowHandlers;
 
 import java.util.Set;
 

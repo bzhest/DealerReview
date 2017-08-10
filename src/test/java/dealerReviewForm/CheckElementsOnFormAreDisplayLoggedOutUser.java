@@ -4,9 +4,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilityProject.testBase.TestBase;
-import utilityHelpers.cookies.Cookies;
-import utilityHelpers.windowHandlers.WindowHandlers;
+import utilities.utilityProject.testBase.TestBase;
+import utilities.utilityHelpers.cookies.Cookies;
+import utilities.utilityHelpers.windowHandlers.WindowHandlers;
 
 /**
  * Created by DWork on 01.08.2017.
@@ -43,5 +43,6 @@ public class CheckElementsOnFormAreDisplayLoggedOutUser extends TestBase{
         logger.log("Check if field \"Location\" contains correct users location");
         Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"),"");
     }
+
 
 }

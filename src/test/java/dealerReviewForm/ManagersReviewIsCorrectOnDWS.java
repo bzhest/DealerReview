@@ -2,13 +2,12 @@ package dealerReviewForm;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utilityHelpers.windowHandlers.WindowHandlers;
-import utilityProject.dataProvider.DataProviders;
-import utilityProject.properties.PropertyLoader;
-import utilityProject.properties.PropertyLoaderCredentials;
-import utilityProject.testBase.TestBase;
+import utilities.utilityHelpers.windowHandlers.WindowHandlers;
+import utilities.utilityProject.dataProvider.DataProviders;
+import utilities.utilityProject.properties.PropertyLoader;
+import utilities.utilityProject.properties.PropertyLoaderCredentials;
+import utilities.utilityProject.testBase.TestBase;
 
 /**
  * Created by DWork on 09.08.2017.
@@ -40,4 +39,9 @@ public class ManagersReviewIsCorrectOnDWS extends TestBase {
 
     }
 
+    @Override
+    protected void afterClass() {
+
+        super.afterClass();
+    }
 }

@@ -4,13 +4,13 @@ import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utilityProject.testBase.TestBase;
-import utilityHelpers.data.api.StateDataMapper;
-import utilityHelpers.data.state.FileStateDateMapper;
-import utilityHelpers.data.state.State;
-import utilityProject.properties.PropertyLoader;
-import utilityHelpers.cookies.Cookies;
-import utilityHelpers.windowHandlers.WindowHandlers;
+import utilities.utilityHelpers.data.api.StateDataMapper;
+import utilities.utilityHelpers.data.state.FileStateDateMapper;
+import utilities.utilityHelpers.data.state.State;
+import utilities.utilityProject.properties.PropertyLoader;
+import utilities.utilityHelpers.cookies.Cookies;
+import utilities.utilityHelpers.windowHandlers.WindowHandlers;
+import utilities.utilityProject.testBase.*;
 
 import java.util.Set;
 
@@ -44,6 +44,7 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
         System.out.println(userFirstSecondName);
         logger.log("Save User Address, City, State from Address tab");
         manager.getUserEditor(driver).getAddressTab().click();
+        sleep(2);
         userAddress = manager.getUserEditor(driver).getAddressTab(driver).getAddressText();
         userCity = manager.getUserEditor(driver).getAddressTab(driver).getCityText();
         userState = manager.getUserEditor(driver).getAddressTab(driver).getStateText();
