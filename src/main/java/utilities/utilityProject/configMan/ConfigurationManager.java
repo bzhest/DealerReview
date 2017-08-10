@@ -48,6 +48,7 @@ public class  ConfigurationManager {
     private ZipPopUp zipPopUp;
     private LoginForm loginForm;
     private DealerReviewForm dealerReviewForm;
+    private pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview dealerReview;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -109,6 +110,13 @@ public class  ConfigurationManager {
 //-------------------------------------------------------------------------------------------------------------------------
 
     //PageObjects initialization
+
+    public pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview dealerReview(WebDriver driver){
+        if (dealerReview ==null){
+            dealerReview = new pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview(driver);
+        }
+        return dealerReview;
+    }
 
     public Map2PageConstructor getPageEditor(WebDriver driver){
         if (pageEditor ==null){

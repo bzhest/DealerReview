@@ -12,7 +12,7 @@ import java.util.List;
  * Created by SYSTEM on 04.04.2017.
  */
 public class DealerReview extends Page {
-    /*public DealerReview(WebDriver webDriver) {super(webDriver);}*/
+    /*public ReviewObject(WebDriver webDriver) {super(webDriver);}*/
 
     public DealerReview(WebDriver driver) {
         super(driver);
