@@ -5,6 +5,7 @@ import pageObjectClasses.dms.home.Home;
 import pageObjectClasses.dms.home.settings.review.dealerReviews.DealerReview;
 import pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerList.components.ZipPopUp;
 import pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerList.page.DealerList;
+import pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReviewPage;
 import pageObjectClasses.dms.home.tools.reviews.dealerReview.DealerReviews;
 import pageObjectClasses.dms.loginPage.LoginPage;
 import pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReviewForm.DealerReviewForm;
@@ -32,7 +33,7 @@ public class  ConfigurationManager {
     private DealerReview settingsReviewDealershipReviewSettings;
     private Home dmsMainPage;
     private LoginPage dmsLoginForm;
-    private DealerReviewForm dealerReviewDWS;
+    //private DealerReviewForm dealerReviewDWS;
     private Users users;
     private UserEditor userEditor;
     private Website website;
@@ -48,7 +49,7 @@ public class  ConfigurationManager {
     private ZipPopUp zipPopUp;
     private LoginForm loginForm;
     private DealerReviewForm dealerReviewForm;
-    private pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview dealerReview;
+    private DealerReviewPage dealerReviewPage;
     //From my curses --------------------------------------------------------------------------------------------
     private static final String TEST_BROWSER = "testBrowser";
     private static final String RUN_ON = "runOn";
@@ -59,13 +60,6 @@ public class  ConfigurationManager {
 
     public ConfigurationManager(WebDriver driver) {
         this.driver = driver;
-        //dmsLoginForm = new LoginPage(driver);
-       // page = new Page(driver);
-       // dmsMainPage = new Home(driver);
-       // dealerReviewDWS = new DealerReviewForm(driver);
-       // users = new Users(driver);
-       // userEditor = new UserEditor(driver);
-       // website = new Website(driver);
     }
 
     public static ConfigurationManager getInstance(WebDriver driver) {
@@ -111,11 +105,11 @@ public class  ConfigurationManager {
 
     //PageObjects initialization
 
-    public pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview dealerReview(WebDriver driver){
-        if (dealerReview ==null){
-            dealerReview = new pageObjectClasses.dms.home.tools.MAP2.widgets.reviews.dealerReview.page.DealerReview(driver);
+    public DealerReviewPage getDealerReviewPage(WebDriver driver){
+        if (dealerReviewPage ==null){
+            dealerReviewPage = new DealerReviewPage(driver);
         }
-        return dealerReview;
+        return dealerReviewPage;
     }
 
     public Map2PageConstructor getPageEditor(WebDriver driver){
@@ -125,12 +119,14 @@ public class  ConfigurationManager {
         return pageEditor;
     }
 
-    public DealerReviewForm getDealerReviewForm(WebDriver driver){
-        if (dealerReviewForm ==null){
+    public DealerReviewForm getDealerReviewForm(WebDriver driver) {
+        if (dealerReviewForm == null) {
             dealerReviewForm = new DealerReviewForm(driver);
         }
         return dealerReviewForm;
     }
+
+
 
     public LoginForm getLoginForm(WebDriver driver){
         if (loginForm ==null){
@@ -181,12 +177,7 @@ public class  ConfigurationManager {
         return dmsMainPage;
     }
 
-    public DealerReviewForm getDealerReviewDWS(WebDriver driver) {
-        if (dealerReviewDWS == null) {
-            dealerReviewDWS = new DealerReviewForm(driver);
-        }
-        return dealerReviewDWS;
-    }
+
 
 
     public Users getUsers(WebDriver driver) {

@@ -29,15 +29,17 @@ public class ManagersReviewIsCorrectOnDWS extends TestBase {
     }
 
     @Test(dataProvider = "set of stars", dataProviderClass = DataProviders.class)
-    public void summOfStarsIsCorrect(String parameterNumber, String starNumbers, String starsAvarage,String reviewTitle) {
-        manager.getDealerReviewForm(driver).getTitleInput().sendKeys("Where are testing Stars here");
+    public void summOfStarsIsCorrect(String parameterNumber, String starNumbers, Double starsAvarage,String reviewTitle) {
+        manager.getDealerReviewForm(driver).getTitleInput().sendKeys(reviewTitle);
         manager.getDealerReviewForm(driver).getContentInput().sendKeys("Where are testing Stars here");
         manager.getDealerReviewForm(driver).selectStarsOnParameters(parameterNumber,starNumbers);
-        manager.getDealerReviewForm(driver).getSubmitButton().click();
-        manager.getDealerReviewForm(driver).getPostFormReturnBtn().click();
-        sleep(3);
-        Assert.assertEquals(manager.dealerReview(driver).getDealerReviewByReviewTitle(reviewTitle).dGetStarsNumber(driver),starsAvarage);
-
+        manager.getDealerReviewForm(driver).clickOnSubmitButton();
+        manager.getDealerReviewForm(driver).clickPostFormReturnButton();
+        //sleep(3);
+        Assert.assertEquals(manager.getDealerReviewPage(driver).getDealerReviewByReviewTitle(reviewTitle).dGetStarsNumber(driver),starsAvarage);
+        winHand.closeAllWindowsExceptCurrent();
+        WindowHandlers.switchToCertainWindow(driver, 0);
+        manager.getDealerReviewPage(driver).getAddReviewButton().click();
     }
 
     @Override

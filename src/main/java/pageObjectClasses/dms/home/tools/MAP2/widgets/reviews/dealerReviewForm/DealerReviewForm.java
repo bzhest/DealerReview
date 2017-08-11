@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.utilityProject.page.Page;
 import utilities.utilityProject.properties.PropertyLoaderCredentials;
 
@@ -104,7 +105,15 @@ public class DealerReviewForm extends Page {
     @FindBy(how = How.CSS, using = ".form-group .radio-inline input[name = 'param_purchase']:nth(1)")
     private WebElement purchasedAVehicleFromThisDealerOptionsNo;
 
+    public void clickOnSubmitButton(){
+        submitButton.click();
+        wait.until(ExpectedConditions.visibilityOf(postFormReturnBtn));
+    }
 
+    public void clickPostFormReturnButton(){
+        postFormReturnBtn.click();
+        wait.until(ExpectedConditions.urlContains("/dealer-review_user"));
+    }
     //Captcha
 
     @FindBy(how = How.XPATH, using = "//div[@class='row captcha_container capchaB']")
@@ -319,14 +328,7 @@ public class DealerReviewForm extends Page {
         }
     }
 
-    public boolean isStarsDisplayed(int parameterNumber) {
-        try{
-            stars.get(parameterNumber).isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }
+
 
     public boolean isCheckboxNADisplayed() {
         try{
@@ -337,14 +339,6 @@ public class DealerReviewForm extends Page {
         }
     }
 
-    public boolean isIconCrossDisplayed(int crossNumber) {
-        try{
-            iconCross.get(crossNumber).isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-    }
 
     public boolean isSubmitButtonDisplayed() {
         try{
@@ -355,34 +349,7 @@ public class DealerReviewForm extends Page {
         }
     }
 
-    public boolean isPostFormDisplayed() {
-        try {
-            postForm.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
-
-    public boolean isPostFormReturnBtnDisplayed() {
-        try {
-            postFormReturnBtn.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
-
-    public boolean isPostFormAddOneMoreBtnDisplayed() {
-        try {
-            postFormAddOneMoreBtn.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
-
-    public int countStarsNumber(){return emptyStar.size();}
+        public int countStarsNumber(){return emptyStar.size();}
     public int countCrossIconsNumber(){return iconCross.size();}
 
 
@@ -416,32 +383,7 @@ public class DealerReviewForm extends Page {
     public String getReviewTitleFontColor() {return reviewTitle.getCssValue("color");}
     public String getReviewTextFontColor() {return reviewText.getCssValue("color");}
 
-    /*methods for filling inputs with some values*/
 
-    public void fillNickname() {
-        nicknameInput.clear();
-        nicknameInput.sendKeys("Leo Messi");
-    }
-
-    public void fillUserEmail(String email) {
-        userEmailInput.clear();
-        userEmailInput.sendKeys(PropertyLoaderCredentials.loadProperty(email));
-    }
-
-    public void fillLocation() {
-        userLocationInput.clear();
-        userLocationInput.sendKeys("Espania, Barcelone, Nou Camp");
-    }
-
-    public void fillReviewTitle() {
-        titleInput.clear();
-        titleInput.sendKeys(PropertyLoaderCredentials.loadProperty("titleText"));
-    }
-
-    public void fillReviewContent() {
-        contentInput.clear();
-        contentInput.sendKeys(PropertyLoaderCredentials.loadProperty("contentText"));
-    }
 
     //method for selecting stars on "Rate Your Dealer" block
     public void selectStarsOnParameters(final String paramNumber, String starNumber) {
@@ -462,8 +404,8 @@ public class DealerReviewForm extends Page {
             Actions act = new Actions(driver);
             act.moveToElement(star1).moveByOffset((width/2)-8, 0).click().perform();
         }
-
     }
+
 
     /*Methods for getting text from input*/
 

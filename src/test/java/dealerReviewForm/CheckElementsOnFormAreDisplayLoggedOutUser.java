@@ -29,19 +29,19 @@ public class CheckElementsOnFormAreDisplayLoggedOutUser extends TestBase{
     @Test(description = "field should be empty")
     public void isUsersNicknameIsCorrect(){
         logger.log("Check if field \"Nickname\" contains correct user's First and Second name");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getNicknameInput().getAttribute("value"),"");
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getNicknameInput().getAttribute("value"),"");
     }
 
     @Test(description = "field should be empty")
     public void isUsersEmailIsCorrect(){
         logger.log("Check if field \"Email\" contains correct users email");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getEmailInput().getAttribute("value"),"");
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getEmailInput().getAttribute("value"),"");
     }
 
     @Test (description = "field should be empty")
     public void isUsersLocationIsCorrect(){
         logger.log("Check if field \"Location\" contains correct users location");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"),"");
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getLocationInput().getAttribute("value"),"");
     }
 
 

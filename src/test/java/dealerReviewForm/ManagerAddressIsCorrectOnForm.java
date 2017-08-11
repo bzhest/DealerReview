@@ -66,13 +66,13 @@ public class ManagerAddressIsCorrectOnForm extends TestBase{
     @Test (description = "Fields contains manager's Nickname")
     public void isUsersNicknameIsCorrect(){
         logger.log("Check if field \"Nickname\" contains correct user's First and Second name");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getNicknameInput().getAttribute("value"),userFirstSecondName);
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getNicknameInput().getAttribute("value"),userFirstSecondName);
     }
 
     @Test (description = "Fields contains manager's Email")
     public void isUsersEmailIsCorrect(){
         logger.log("Check if field \"Email\" contains correct users email");
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getEmailInput().getAttribute("value"),userEmail);
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getEmailInput().getAttribute("value"),userEmail);
     }
 
     @Test(description = "Fields contains manager's location")
@@ -81,6 +81,6 @@ public class ManagerAddressIsCorrectOnForm extends TestBase{
         StateDataMapper file = new FileStateDateMapper();
         State state = file.getStateObjectByFullName(userState);
         String fullAddress = userAddress + ", " + userCity + " " + state.getShortName();
-        Assert.assertEquals(manager.getDealerReviewDWS(driver).getLocationInput().getAttribute("value"),fullAddress);
+        Assert.assertEquals(manager.getDealerReviewForm(driver).getLocationInput().getAttribute("value"),fullAddress);
     }
 }

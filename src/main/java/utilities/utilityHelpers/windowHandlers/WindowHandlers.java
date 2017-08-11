@@ -64,6 +64,20 @@ public class WindowHandlers {
             }
         }
     }
+
+    //----------------------------------------------------------------------------------------------------
+
+    public void closeAllWindowsExceptCurrent(){
+        String currentWindow = driver.getWindowHandle();
+        driver.switchTo().window(currentWindow);
+        Set<String> allWindows = driver.getWindowHandles();
+        for(String windowHandle : allWindows){
+            if (!windowHandle.equals(currentWindow)){
+                driver.switchTo().window(windowHandle);
+                driver.close();
+            }
+        }
+    }
     //----------------------------------------------------------------------------------------------------
 
     public void openSiteNewWindow(String site) {
