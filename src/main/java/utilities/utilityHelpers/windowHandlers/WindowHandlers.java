@@ -17,7 +17,6 @@ public class WindowHandlers {
 
     public WindowHandlers(WebDriver driver) {
         this.driver = driver;
-        parentWindowHandel = driver.getWindowHandle();
     }
 
     //------------------------------------------------------------------------------------------------
@@ -77,6 +76,7 @@ public class WindowHandlers {
                 driver.close();
             }
         }
+        switchToAnotherWindow(1);
     }
     //----------------------------------------------------------------------------------------------------
 

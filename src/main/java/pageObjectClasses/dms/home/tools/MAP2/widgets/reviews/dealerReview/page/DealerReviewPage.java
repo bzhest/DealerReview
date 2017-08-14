@@ -31,7 +31,7 @@ public class DealerReviewPage extends Page {
     private By dealerReviewsList = By.cssSelector(".panel.panel-default.panel_margin");
     private By byReviewTitle = By.cssSelector("a[href^=\"/dealer-review_caption\"]");
     private By byReviewText = By.cssSelector("div .drev-comentB>div");
-    private By byStars = By.cssSelector(".drev-stars-txt [class*= 'star']");
+    private By byStars = By.cssSelector(".drev-stars>.fa");
     private By byComments = By.cssSelector("a[href^=\"/dealer-review_caption\"]");
     private By byAuthors = By.cssSelector("strong small");
 

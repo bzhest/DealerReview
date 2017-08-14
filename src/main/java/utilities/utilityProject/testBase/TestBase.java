@@ -30,6 +30,7 @@ public class TestBase {
 
 
 
+
     @BeforeSuite
     public void setUp() {
         logger = new StdLogger();
@@ -39,6 +40,7 @@ public class TestBase {
         wait = new WebDriverWait(driver, 25);
         manager = ConfigurationManager.getInstance(driver);
         winHand = new WindowHandlers(driver);
+
 
         beforeTest();
     }
@@ -53,20 +55,20 @@ public class TestBase {
     @AfterSuite
     public void tearDown() {
         wdm.destroyWebDriver(driver);
-        afterTest();
+        afterSuite();
     }
 
     protected void beforeTest() {
     }
-    protected void afterTest() {
+    protected void afterSuite() {
     }
     protected void afterClass(){
 
     }
 
-    public boolean waitForJSandJQueryToLoad() {
+    /*public boolean waitForJSandJQueryToLoad() {
         WebDriverWait wait = new WebDriverWait(driver, 35);
-    /*method for execute Java Script: page should be loaded*/
+    *//*method for execute Java Script: page should be loaded*//*
         ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
@@ -86,7 +88,7 @@ public class TestBase {
             }
         };
         return wait.until(jQueryLoad) && wait.until(jsLoad);
-    }
+    }*/
     public void sleep (Integer sec){
         try{
             Thread.sleep(1000 * sec);

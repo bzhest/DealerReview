@@ -44,12 +44,14 @@ public class ReviewObject {
 
     public Double dGetStarsNumber(WebDriver driver){
         double count = 0;
-        List<WebElement> stars = getStars();
+        //List<WebElement> stars = getStars();
         for (WebElement star : stars){
             if(star.getAttribute("class").equals("fa fa-star")){
                 count++;
             }else if(star.getAttribute("class").equals("fa fa-star-half-o")){
                 count += 0.5;
+            }else{
+                count += 0;
             }
         }
         return count;
