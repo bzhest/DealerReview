@@ -48,8 +48,9 @@ public class TestBase {
     @AfterClass
     public void postconditions(){
         afterClass();
-        winHand.closeExtraWindows();
-        winHand.switchToParentWindow();
+        //winHand.closeExtraWindows();
+        //winHand.switchToParentWindow();
+
     }
 
     @AfterSuite

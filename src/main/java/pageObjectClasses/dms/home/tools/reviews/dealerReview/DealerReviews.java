@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import utilities.utilityHelpers.cookies.Cookies;
+import utilities.utilityProject.configMan.ConfigurationManager;
 import utilities.utilityProject.page.Page;
 import utilities.utilityProject.properties.PropertyLoader;
 
@@ -51,12 +52,12 @@ public class DealerReviews extends Page {
     }*/
 
     //удаление всех ревью
-    public void deleteAllReviews() {
-        Cookies.makeLogOut(driver);
+    public void deleteAllReviews(ConfigurationManager manager) {
         driver.get(PropertyLoader.loadProperty("dms.url"));
+        Cookies.makeLogOut(driver);
         manager.getDmsLoginForm(driver).loginToDMSUnderSupervisor();
         driver.get(PropertyLoader.loadProperty("dms.url") + "/tools/reviews#dealer-review");
-        if (listOfReviews.size() > 0) {
+        while (listOfReviews.size() > 0) {
             selectAllCheckBox.click();
             deleteButton.click();
             sleep(2);

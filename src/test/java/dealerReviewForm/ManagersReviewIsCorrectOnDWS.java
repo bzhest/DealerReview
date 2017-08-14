@@ -34,7 +34,7 @@ public class ManagersReviewIsCorrectOnDWS extends TestBase {
     @Override
     protected void afterClass() {
         super.afterSuite();
-        manager.getToolsReviewsDealerReviewsPage(driver).deleteAllReviews();
+        manager.getToolsReviewsDealerReviewsPage(driver).deleteAllReviews(manager);
     }
 
     @Test(dataProvider = "Set of stars for 1 parameter", dataProviderClass = DataProviders.class)
