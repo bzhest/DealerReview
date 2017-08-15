@@ -56,7 +56,7 @@ public class TestBase {
     @AfterSuite
     public void tearDown() {
         wdm.destroyWebDriver(driver);
-        afterSuite();
+        //afterSuite();
     }
 
     protected void beforeTest() {

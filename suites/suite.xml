@@ -6,9 +6,10 @@
         <classes>
 
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>
-            <class name="dealerReviewForm.ManagerAddressIsCorrectOnForm"/>
+            <class name="dealerReviewForm.CheckManagerAddressIsCorrectOnForm"/>
             <class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedOutUser"/>
-            <!--<class name="dealerReviewForm.CheckElementsOnFormAreDisplayLoggedInSupervisor"/>-->
+            <class name="dealerReviewForm.CheckStarsCountingLogicIsCorrect"/>
+            <!--<class name="dealerReviewForm.CheckStarsCountingLogicIsCorrect"/>-->
 
         </classes>
     </test>

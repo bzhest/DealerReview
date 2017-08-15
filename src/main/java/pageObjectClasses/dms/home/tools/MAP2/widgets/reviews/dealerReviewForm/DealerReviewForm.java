@@ -386,9 +386,10 @@ public class DealerReviewForm extends Page {
 
 
     //method for selecting stars on "Rate Your Dealer" block
+    //paramNumber - take values from 1 to 5 (step 1)
+    //starNumber - take values from 0.5 to 5.0 (step 0.5)
     public void selectStarsOnParameters(final String paramNumber, String starNumber) {
-            //paramNumber - take values from 1 to 5 (step 1)
-            //starNumber - take values from 0.5 to 5.0 (step 0.5)
+
         double d= Double.valueOf(starNumber);
         if (d==(int)d){
             //Если starNumber - єто Integer, то наведение курсора на звезду со сдвигом вправо (получение целой звезди)

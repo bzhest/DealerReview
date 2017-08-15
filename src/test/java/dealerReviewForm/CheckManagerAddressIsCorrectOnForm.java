@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * Created by Andrey on 02.08.2017.
  */
-public class ManagerAddressIsCorrectOnForm extends TestBase{
+public class CheckManagerAddressIsCorrectOnForm extends TestBase{
 
     protected String userFirstSecondName;
     protected String userEmail;

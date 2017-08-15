@@ -144,12 +144,8 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
         logger.log("Switch from Preview Page to DWS");
         WindowHandlers.switchToCertainWindow(driver, 2);
         logger.log("Click button Close");
-        //manager.getDealerList(driver).getCloseButton().click();
         manager.getZipPopUp(driver).buttonCloseClick();
         logger.log("Click on Add Review button");
-        //manager.getDealerList(driver).clickFirstAddReviewButton();
-        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").iGetReviewsNumber();
-        //manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").dGetStarsNumber(driver);
         manager.getDealerList(driver).findDealerByDealerName("Solomia Vasilivna").clickButtonAddReview();
         WindowHandlers.switchToCertainWindow(driver, 3);
         sleep(1);
@@ -292,5 +288,15 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
         String fullAddress = userAddress + ", " + userCity + " " + state.getShortName();
         Assert.assertEquals(manager.getDealerReviewForm(driver).getLocationInput().getAttribute("value"), fullAddress);
     }
+
+    @Test
+    public void isNAButtonWorks(){
+        manager.getDealerReviewForm(driver).getCheckboxNA().click();
+        manager.getDealerReviewForm(driver).selectStarsOnParameters("4","1");
+        Assert.assertEquals(manager.getDealerReviewForm(driver).countStarsNumber(),25);
+        manager.getDealerReviewForm(driver).getCheckboxNA().click();
+    }
+
+
 }
 
