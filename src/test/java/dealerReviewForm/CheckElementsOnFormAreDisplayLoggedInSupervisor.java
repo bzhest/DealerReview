@@ -289,13 +289,13 @@ public class CheckElementsOnFormAreDisplayLoggedInSupervisor extends TestBase {
         Assert.assertEquals(manager.getDealerReviewForm(driver).getLocationInput().getAttribute("value"), fullAddress);
     }
 
-    @Test
+    /*@Test
     public void isNAButtonWorks(){
         manager.getDealerReviewForm(driver).getCheckboxNA().click();
         manager.getDealerReviewForm(driver).selectStarsOnParameters("4","1");
         Assert.assertEquals(manager.getDealerReviewForm(driver).countStarsNumber(),25);
         manager.getDealerReviewForm(driver).getCheckboxNA().click();
-    }
+    }*/
 
 
 }
